@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
 import { NavController, NavParams } from 'ionic-angular';
-//import { RegisterPage } from '../../../pages/register/register';
+import { RegisterPage } from '../../../pages/register/register';
 import { HomePage } from '../../../pages/home/home';
 //import { WizardPage } from '../../../pages/wizard/wizard';
 //import { AccueilPage } from '../../../pages/accueil/accueil';
@@ -37,7 +37,7 @@ export class LoginLayout1 {
 
         if( event == "onRegister" && !this.validate())
         {
-            //this.navCtrl.push(RegisterPage);
+            this.navCtrl.push(RegisterPage);
         }
       }
     
