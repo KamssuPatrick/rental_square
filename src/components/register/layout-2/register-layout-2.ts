@@ -21,8 +21,8 @@ export class RegisterLayout2 {
     private isUsernameValid: boolean = true;
     private isPrenomValid: boolean = true;
     private isPasswordValid: boolean = true;
-    private isCityValid: boolean = true;
-    private isPhotoValid: boolean = true;
+    //private isCityValid: boolean = true;
+    //private isPhotoValid: boolean = true;
     
     private regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
@@ -30,6 +30,7 @@ export class RegisterLayout2 {
 
     onEvent = (event: string): void => {
         if (event == "onRegister" && !this.validate()) {
+            console.log('remplissez tous les champs svp');
             return;
         }
         if (this.events[event]) {
@@ -38,7 +39,7 @@ export class RegisterLayout2 {
                 'prenom'  : this.prenom,
                 'email': this.email,
                 'password': this.password,
-                'photo': this.photo
+               
             });
         }
     }
@@ -47,7 +48,7 @@ export class RegisterLayout2 {
         this.isEmailValid = true;
         this.isUsernameValid = true;
         this.isPasswordValid = true;
-        this.isPhotoValid = true;
+        //this.isPhotoValid = true;
         this.isPrenomValid = true;
 
         if (!this.username ||this.username.length == 0) {
@@ -62,20 +63,19 @@ export class RegisterLayout2 {
             this.isPasswordValid = false;
         }
 
-        if (!this.password || this.password.length == 0) {
+        /*if (!this.password || this.password.length == 0) {
             this.isPasswordValid = false;
-        }
+        }*/
 
-        if (!this.photo || this.photo.length == 0) {
+        /*if (!this.photo || this.photo.length == 0) {
             this.isPhotoValid = false;
-        }
+        }*/
 
         this.isEmailValid = this.regex.test(this.email);
         
         return this.isEmailValid && 
             this.isPasswordValid && 
             this.isUsernameValid && 
-            this.isPhotoValid &&
             this.isPrenomValid;
     }
 }

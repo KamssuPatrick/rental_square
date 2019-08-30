@@ -20,7 +20,7 @@ export class RegisterPage {
 
     this.params.data = {
 
-      "username" : "Nom d'utilisateur",
+      "username" : "Nom d'utilisateurs",
       "prenom" : "Prenom d'utilisateur",
       "email" : "Email",
       "password" : "Mot de passe",
@@ -47,7 +47,15 @@ export class RegisterPage {
 
       
       onRegister: function(params) {
-        console.log('onRegister:' + JSON.stringify(params));
+        
+        let data = params;
+	    	let credentials = {
+          email: data.email,
+          password: data.password,
+          username: data.username,
+          prenom: data.prenom,
+	    	};
+        console.log('onRegister:' + credentials.username);
       },
       onSkip: function(params) {
         console.log('onSkip:' + JSON.stringify(params));

@@ -12,6 +12,11 @@ import { ImageGalleryLayout1Module } from '../components/image-gallery/layout-1/
 import { SubImageGalleryModule } from '../components/sub-image-gallery/sub-image-gallery.module';
 import { FullScreenGalleryModule } from '../components/full-screen-gallery/full-screen-gallery.module';
 
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { firebaseConfig } from '../config';
+import { Config } from '../config';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
@@ -32,6 +37,7 @@ import { AccueilPage } from '../pages/accueil/accueil';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig.fire),
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule
   ],
   bootstrap: [IonicApp],
@@ -44,8 +50,10 @@ import { AccueilPage } from '../pages/accueil/accueil';
     AccueilPage,
   ],
   providers: [
+    Config,
     StatusBar,
     SplashScreen,
+    AngularFireAuth,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
