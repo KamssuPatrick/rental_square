@@ -1,0 +1,37 @@
+
+<ion-header>
+  <ion-toolbar no-padding>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onEvent('onTextChange', $event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<!--Theme Google Card - Styled cards 2-->
+<ion-content>
+<ion-grid no-padding >
+  <ion-row *ngIf="data != null">
+    <ion-col col-12 col-lg-4 *ngFor="let item of data.items;let i = index">
+      <ion-card text-left>
+        <!--Card Image-->
+        <div card-image>
+          <img [src]="item.image" (click)="onEvent('onItemClick', item.title, $event)"/>
+          <ion-badge ion-fixed item-end class="badge-dark">{{item.prix}}</ion-badge>
+          <button ion-fixed ion-button button-action-shit (click)="onEvent('onShare', '', $event)">
+             <ion-icon name="{{item.shareIcon}}"></ion-icon>
+          </button>
+        </div>
+        <!--Card descriptiom-->
+        <ion-card-content (click)="onEvent('onItemClick', item.ville, $event)">
+          <ion-card-title>
+            <!--Card Title-->
+            <h2 card-title>{{item.ville}} --  {{item.meuble}}</h2>
+            <!--Card Subtitle-->
+            <h1 card-subtitle>{{item.piece}} pièce(s) -- {{item.superficie}}m² -- {{item.prix}}</h1>
+            <!--Card Body Text
+            <p card-body-text>{{item.description}}</p>-->
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

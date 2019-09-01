@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../../../pages/register/register';
+import { ProduitPage } from '../../../pages/produit/produit';
+import { SpinnerPage } from '../../../pages/spinner/spinner';
 
 @IonicPage()
 @Component({
@@ -14,7 +16,7 @@ export class ImageGalleryLayout1 {
   constructor(public navCtrl: NavController, navParams: NavParams) { }
 
   openSubGallery = (group: any, index: number): any => {
-    this.navCtrl.push(group.subGallery, {
+    this.navCtrl.push(group.SubGallery, {
       'group': group.items[index],
       'events': this.events,
       'layout': 1
@@ -27,7 +29,7 @@ export class ImageGalleryLayout1 {
 
   openSubGallerys(group: any, index: number)
   {
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push(ProduitPage);
   }
 
   onEvent = (event: string, item, e): void => {

@@ -8,7 +8,7 @@
       </ion-col>
       <ion-col align-self-end col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
         <!---Logo-->
-        <img [src]="data.logo">
+        <img [src]="data.logo" (click)="onEvent('onAdmin')">
         <!---Logo Subtitle-->
         <h2 login-subtitle no-margin>{{data.subtitle}}</h2>
         <!---Logo Title-->
