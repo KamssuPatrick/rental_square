@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+
 /**
  * Generated class for the RegisterPage page.
  *
@@ -13,14 +14,14 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
   params: any = {};
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.params.data = {
 
-      "username" : "Nom d'utilisateurs",
+      "username" : "Nom d'utilisateur",
       "prenom" : "Prenom d'utilisateur",
       "email" : "Email",
       "password" : "Mot de passe",
@@ -39,7 +40,12 @@ export class RegisterPage {
       "backgroundImage" : "assets/images/logo/logo_rental.jpg",
       "iconAccount" : "icon-key",
       "iconKey" : "",
-      "iconLock" : "assets/images/background/20.jpg"
+      "iconLock" : "assets/images/background/20.jpg",
+      "errorUser"           : "Field can't be empty.",
+      "errorPassword"       : "Field can't be empty.",
+      "errorEmail"          : "Invalid email address.",
+      "errorCountry"        : "Field can't be empty.",
+      "errorCity"           : "Field can't be empty."
 
     };
 
@@ -47,15 +53,7 @@ export class RegisterPage {
 
       
       onRegister: function(params) {
-        
-        let data = params;
-	    	let credentials = {
-          email: data.email,
-          password: data.password,
-          username: data.username,
-          prenom: data.prenom,
-	    	};
-        console.log('onRegister:' + credentials.username);
+        console.log('onRegister:' + JSON.stringify(params));
       },
       onSkip: function(params) {
         console.log('onSkip:' + JSON.stringify(params));

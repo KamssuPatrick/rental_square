@@ -2,10 +2,12 @@ import { Component, Input } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
 import { NavController, NavParams } from 'ionic-angular';
-import { RegisterPage } from '../../../pages/register/register';
 import { HomePage } from '../../../pages/home/home';
-//import { WizardPage } from '../../../pages/wizard/wizard';
+import { WizardPage } from '../../../pages/wizard/wizard';
 import { AccueilPage } from '../../../pages/accueil/accueil';
+import { AdminPage } from '../../../pages/admin/admin';
+import { RegisterPage } from '../../../pages/register/register';
+
 
 @IonicPage()
 @Component({
@@ -18,11 +20,12 @@ export class LoginLayout1 {
 
     public username: string;
     public password: string;
-
+    public itemP: any;
     private isUsernameValid: boolean = true;
     private isPasswordValid: boolean = true;
   
-    constructor(public navCtrl: NavController) { }
+    constructor(public navCtrl: NavController) {
+     }
 
     onEvent = (event: string): void => {
         if (event == "onLogin" && !this.validate()) {
@@ -34,10 +37,14 @@ export class LoginLayout1 {
                 'password' : this.password
             });
         }
-
-        if( event == "onRegister" && !this.validate())
-        {
+        if(event== "onRegister"){
             this.navCtrl.push(RegisterPage);
+        }
+
+        
+        if( event == "onAdmin")
+        {
+            this.navCtrl.push(AdminPage);
         }
       }
     

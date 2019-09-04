@@ -4,8 +4,8 @@
         <ion-col col-6 col-sm-3 col-md-6 col-lg-4 col-xl-3 *ngFor="let group of data.items;let i = index;">
             <ion-card background-size (click)="openSubGallerys(data, i)" [ngStyle]="{'background-image': 'url(' + group.image + ')'}">
                 <div gallery-description>
-                    <h6 gallery-subtitle>{{group.items.length}} image(s)</h6>
-                    <h2 gallery-title text-wrap>{{group.title}}</h2>
+                    <h6 gallery-subtitle>{{group.items.length}} Service(s)</h6>
+                    <h2 gallery-title text-wrap>{{group.title}} </h2>
                 </div>
             </ion-card>
         </ion-col>
