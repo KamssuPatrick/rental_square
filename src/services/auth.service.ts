@@ -23,6 +23,14 @@ export class AuthService {
 		return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email,credentials.password);
 	}
 
+	writeUserData(userId, username, email, prenom) {
+		firebase.database().ref('users/' + userId).set({
+		  username: username,
+		  email: email,
+		  prenom : prenom
+		});
+	  }
+
 	get authenticated(): boolean {
 		return this.user !== null;
 	}

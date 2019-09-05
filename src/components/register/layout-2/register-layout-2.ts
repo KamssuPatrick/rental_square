@@ -41,11 +41,16 @@ export class RegisterLayout2 {
         else{
             let credentials = {
                 email: this.email,
-                password: this.password
+                password: this.password,
+                username: this.username,
+                prenom: this.prenom
               };
       
               this.auth.signUp(credentials).then(
-                () => this.navCtrl.setRoot(AccueilPage),
+                (user) => {
+                    this.auth.writeUserData(user.user.uid, this.username, this.email, this.prenom);
+                    this.navCtrl.setRoot(AccueilPage);
+                },
                 error => this.signupError = error.message
               );
         }
