@@ -24,10 +24,13 @@ export class RegisterLayout2 {
     private isUsernameValid: boolean = true;
     private isPrenomValid: boolean = true;
     private isPasswordValid: boolean = true;
+    private isEmailUsed: boolean = true;
+    private isBadPassword: boolean = true;
     //private isCityValid: boolean = true;
     //private isPhotoValid: boolean = true;
     params: any = {};
     signupError: string;
+    codeError: string;
     
     private regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
@@ -51,7 +54,25 @@ export class RegisterLayout2 {
                     this.auth.writeUserData(user.user.uid, this.username, this.email, this.prenom);
                     this.navCtrl.setRoot(AccueilPage);
                 },
-                error => this.signupError = error.message
+                error => {
+                            this.signupError = error.message;
+                            this.codeError= error.code;
+                            if(this.codeError=="auth/weak-password"){
+                                this.isBadPassword= false;
+                                
+                            }
+                            else{
+                                this.isBadPassword= true;
+                            }
+                            if(this.codeError=="auth/email-already-in-use"){
+                                this.isEmailUsed=false;
+                            }
+                            else{
+                                this.isEmailUsed=true;
+                            }
+                            console.log(this.signupError);
+                            
+                }
               );
         }
         if (this.events[event]) {
