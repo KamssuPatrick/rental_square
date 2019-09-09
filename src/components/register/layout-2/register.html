@@ -36,7 +36,7 @@
                     <ion-label stacked>{{data.lableEmail}}</ion-label>
                     <ion-input required placeholder="{{data.email}}" type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required [(ngModel)]="email"></ion-input>
                     <ion-label error-field color="primary" *ngIf="!isEmailValid">{{data.errorEmail}}</ion-label>
-                    <ion-label error-field color="primary" *ngIf="!isEmailUsed">{{signupError}}</ion-label>
+                    <ion-label error-field color="primary" *ngIf="!isEmailNoUsed">{{signupError}}</ion-label>
                 </ion-item>
                 
 

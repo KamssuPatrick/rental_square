@@ -52,7 +52,7 @@ export class RegisterLayout2 {
               this.auth.signUp(credentials).then(
                 (user) => {
                     this.auth.writeUserData(user.user.uid, this.username, this.email, this.prenom);
-                    this.navCtrl.setRoot(AccueilPage);
+                    this.navCtrl.setRoot(AccueilPage,user);
                 },
                 error => {
                             this.signupError = error.message;

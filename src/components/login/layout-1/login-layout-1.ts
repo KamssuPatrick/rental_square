@@ -7,6 +7,7 @@ import { WizardPage } from '../../../pages/wizard/wizard';
 import { AccueilPage } from '../../../pages/accueil/accueil';
 import { AdminPage } from '../../../pages/admin/admin';
 import { RegisterPage } from '../../../pages/register/register';
+import { AuthService } from '../../../services/auth.service';
 
 
 @IonicPage()
@@ -18,22 +19,64 @@ export class LoginLayout1 {
     @Input() data: any;
     @Input() events: any;
 
-    public username: string;
+    public email: string;
     public password: string;
     public itemP: any;
-    private isUsernameValid: boolean = true;
+    private isEmailValid: boolean = true;
     private isPasswordValid: boolean = true;
+    
+    private isEmailNoUsed: boolean = true;
+    private isBadPassword: boolean = true;
+
+    private regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
-    constructor(public navCtrl: NavController) {
+    signupError: string;
+    codeError: string;
+  
+    constructor(public auth: AuthService, public navCtrl: NavController) {
      }
 
     onEvent = (event: string): void => {
         if (event == "onLogin" && !this.validate()) {
-            this.navCtrl.push(AccueilPage);
+            console.log("i m there");
+            return;
+            //this.navCtrl.push(AccueilPage);
+        }
+        else{
+            let credentials = {
+                email: this.email,
+                password: this.password
+              };
+      
+              this.auth.signInWithEmail(credentials).then(
+                (user) => {
+                    this.navCtrl.setRoot(AccueilPage,user);
+                },
+                error => {
+                            this.signupError = error.message;
+                            this.codeError= error.code;
+                            if(this.codeError=="auth/user-not-found" || this.codeError=="auth/wrong-password"){
+                                this.isEmailNoUsed= false;
+
+                            }
+                            else{
+                                this.isEmailNoUsed= true;
+                            }/*
+                            if(this.codeError=="auth/email-already-in-use"){
+                                this.isEmailUsed=false;
+                            }
+                            else{
+                                this.isEmailUsed=true;
+                            }*/
+                            console.log(this.codeError);
+                            
+                }
+              );
+
         }
         if (this.events[event]) {
             this.events[event]({
-                'username' : this.username,
+                'email' : this.email,
                 'password' : this.password
             });
         }
@@ -49,17 +92,15 @@ export class LoginLayout1 {
       }
     
     validate():boolean {
-        this.isUsernameValid = true;
+        this.isEmailValid = true;
         this.isPasswordValid = true;
-
-        if (!this.username ||this.username.length == 0) {
-            this.isUsernameValid = false;
-        }
     
         if (!this.password || this.password.length == 0) {
             this.isPasswordValid = false;
         }
-        
-        return this.isPasswordValid && this.isUsernameValid;
+
+        this.isEmailValid = this.regex.test(this.email);
+        console.log(this.isEmailValid);
+        return this.isPasswordValid && this.isEmailValid;
      }
 }

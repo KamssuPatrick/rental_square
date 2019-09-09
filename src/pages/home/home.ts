@@ -23,7 +23,10 @@ export class HomePage {
       "backgroundImage" : "assets/images/logo/back_rental.jpg",
       "iconAccount" : "icon-key",
       "iconKey" : "",
-      "iconLock" : "assets/images/background/20.jpg"
+      "iconLock" : "assets/images/background/20.jpg",
+      "errorPassword"       : "Field can't be empty.",
+      "errorEmail"          : "Invalid email address.",
+      "errorUser"           : "Field can't be empty."
 
     };
 

@@ -18,8 +18,9 @@
         <!---Input field username-->
         <ion-item transparent>
           <ion-label stacked>{{data.labelUsername}}</ion-label>
-          <ion-input required placeholder="{{data.username}}" type="text" [(ngModel)]="username"></ion-input>
-          <ion-label error-field color="primary" no-margin *ngIf="!isUsernameValid">{{data.errorUser}}</ion-label>
+          <ion-input required placeholder="{{data.email}}" type="text" [(ngModel)]="email"></ion-input>
+          <ion-label error-field color="primary" no-margin *ngIf="!isEmailValid">{{data.errorEmail}}</ion-label>
+          <ion-label error-field color="primary" *ngIf="!isEmailNoUsed">Email ou mot de passe incorrect</ion-label>
       </ion-item>
         <!---Input field password-->
         <ion-item>
