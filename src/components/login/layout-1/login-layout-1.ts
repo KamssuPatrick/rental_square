@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, ToastController } from 'ionic-angular';
 
 import { NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../../../pages/home/home';
-import { WizardPage } from '../../../pages/wizard/wizard';
 import { AccueilPage } from '../../../pages/accueil/accueil';
 import { AdminPage } from '../../../pages/admin/admin';
 import { RegisterPage } from '../../../pages/register/register';
 import { AuthService } from '../../../services/auth.service';
+import { AppSettings } from '../../../services/app-settings';
+
 
 
 @IonicPage()
@@ -27,13 +27,15 @@ export class LoginLayout1 {
     
     private isEmailNoUsed: boolean = true;
     private isBadPassword: boolean = true;
+    //private toast: any;
 
     private regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
     signupError: string;
     codeError: string;
-  
-    constructor(public auth: AuthService, public navCtrl: NavController) {
+    
+    constructor(public auth: AuthService, public navCtrl: NavController, public toastCtrl: ToastController) {
+        //this.toast=toastCtrl;
      }
 
     onEvent = (event: string): void => {
@@ -42,7 +44,7 @@ export class LoginLayout1 {
             return;
             //this.navCtrl.push(AccueilPage);
         }
-        else{
+        if(event == "onLogin" && this.validate()){
             let credentials = {
                 email: this.email,
                 password: this.password
@@ -68,7 +70,7 @@ export class LoginLayout1 {
                             else{
                                 this.isEmailUsed=true;
                             }*/
-                            console.log(this.codeError);
+                            //console.log(this.codeError);
                             
                 }
               );
@@ -89,6 +91,40 @@ export class LoginLayout1 {
         {
             this.navCtrl.push(AdminPage);
         }
+
+        if( event == "onGoogle")
+        {
+           
+            this.auth.signInWithGoogle().then(
+                (user) =>{ 
+                    let fullName= user.user.displayName.split(" ");
+                    let userName= fullName[0];
+                    let userLastName;
+                    for(let i = 1; i < fullName.length; i++){
+                        if(i==1){
+                            userLastName  = fullName[i];
+                        }
+                        else{
+                            userLastName += " " + fullName[i];
+                        }
+                       
+                     }
+                    
+                    console.log(userLastName, userName);
+                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
+                    console.log(user.user);
+                    this.navCtrl.setRoot(AccueilPage,user);
+                },
+                error => {
+                    
+                    this.signupError = error.message;
+                    this.codeError= error.code;
+                    console.log(this.codeError);
+                    this.presentToast(this.signupError);
+                    
+                }
+            );
+        }
       }
     
     validate():boolean {
@@ -103,4 +139,11 @@ export class LoginLayout1 {
         console.log(this.isEmailValid);
         return this.isPasswordValid && this.isEmailValid;
      }
+
+     presentToast(message: string) {
+        let toastItem = AppSettings.TOAST;
+        toastItem["message"] = message;
+        let toast = this.toastCtrl.create(toastItem);
+        toast.present();
+      }
 }

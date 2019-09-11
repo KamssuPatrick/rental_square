@@ -44,7 +44,7 @@ export class AuthService {
 	}
 
 	signInWithGoogle() {
-		console.log('Sign in with google');
+		console.log();
 		return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
 	}
 
