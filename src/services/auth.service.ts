@@ -43,7 +43,7 @@ export class AuthService {
 		return this.afAuth.auth.signOut();
 	}
 
-	signInWithGoogle() {
+	signInWithGoogle():Promise<any | void> {
 		console.log();
 		return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
 	}
