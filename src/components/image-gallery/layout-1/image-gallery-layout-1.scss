@@ -9,7 +9,7 @@ image-gallery-layout-1 {
     box-shadow: none !important;
 
     &[background-size] {
-      //@include darkening-blend-mode;
+      @include darkening-blend-mode;
     }
   }
 
