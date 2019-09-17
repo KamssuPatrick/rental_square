@@ -45,6 +45,11 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AppSettings } from '../services/app-settings';
 import { RegisterPage } from '../pages/register/register';
 import { AuthService } from '../services/auth.service';
+import { Tabs1Page } from '../pages/tabs1/tabs1';
+import { Tabs2Page } from '../pages/tabs2/tabs2';
+import { TabsPage } from '../pages/tabs/tabs';
+import { Tabs3Page } from '../pages/tabs3/tabs3';
+import { Tabs4Page } from '../pages/tabs4/tabs4';
 
 
 
@@ -64,7 +69,12 @@ import { AuthService } from '../services/auth.service';
     AdminPage,
     GalleryImagePage,
     ItemDetailsPageFullScreenGallery,
-    RegisterPage
+    RegisterPage,
+    Tabs1Page,
+    Tabs2Page,
+    TabsPage,
+    Tabs3Page,
+    Tabs4Page
   ],
   imports: [
     BrowserModule,
@@ -91,7 +101,12 @@ import { AuthService } from '../services/auth.service';
     AdminPage,
     GalleryImagePage,
     ItemDetailsPageFullScreenGallery,
-    RegisterPage
+    RegisterPage,
+    Tabs1Page,
+    Tabs2Page,
+    TabsPage,
+    Tabs3Page,
+    Tabs4Page
     
   ],
   providers: [
