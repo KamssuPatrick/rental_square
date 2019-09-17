@@ -1,25 +1,39 @@
 /*  #Style Login + logo 1
 ================================================*/
 login-layout-1 {
+  ion-content#bkg{
+    background-image: url('../../../assets/images/background/arch.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
   ion-grid,
   ion-row {
     height: 100%;
   }
 
   .bac {
-    background: red;
+    background: #db3236;
   }
   // Settings Logo
   img {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 0 auto;
     margin-bottom: 24px;
     display: block;
+    border-radius: 100%;
+
   }
 
+  ion-input{
+    
+    color: white;
+  }
   ion-item {
     padding-left: 0 !important;
     padding-bottom: 15px !important;
+    background: transparent!important;
 
     [error-field] {
       margin: 0 !important;

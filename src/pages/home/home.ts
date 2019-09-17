@@ -18,15 +18,16 @@ export class HomePage {
       "password" : "Mot de passe",
       "register" : "S'inscrire",
       "login"    : "Se Connecter",
-      "passer"     : "Passer",
+      "email"    : "Votre adresse e-mail",
+      "passer"   : "Passer",
       "logo"     : "assets/images/logo/logo_rental.jpg",
       "backgroundImage" : "assets/images/logo/back_rental.jpg",
       "iconAccount" : "icon-key",
       "iconKey" : "",
       "iconLock" : "assets/images/background/20.jpg",
-      "errorPassword"       : "Field can't be empty.",
-      "errorEmail"          : "Invalid email address.",
-      "errorUser"           : "Field can't be empty."
+      "errorPassword"       : "Le champ ne peut pas être vide.",
+      "errorEmail"          : "Adresse électronique invalide.",
+      "errorUser"           : "Le champ ne peut pas être vide."
 
     };
 

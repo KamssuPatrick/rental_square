@@ -1,5 +1,5 @@
 <!-- Themes Login + logo 1 -->
-<ion-content>
+<ion-content id="bkg">
   <ion-grid no-padding *ngIf="data != null">
     <ion-row padding-horizontal align-self-center>
       <ion-col align-self-start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
@@ -8,7 +8,7 @@
       </ion-col>
       <ion-col align-self-end col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
         <!---Logo-->
-        <img [src]="data.logo" (click)="onEvent('onAdmin')">
+        <img [src]="data.logo" (click)="onEvent('onAdmin')" id="logoR">
         <!---Logo Subtitle-->
         <h2 login-subtitle no-margin>{{data.subtitle}}</h2>
         <!---Logo Title-->
@@ -25,7 +25,7 @@
         <!---Input field password-->
         <ion-item>
           <ion-label stacked>{{data.labelPassword}}</ion-label>
-          <ion-input required type="password" placeholder="{{data.password}}" [(ngModel)]="password"></ion-input>
+          <ion-input required type="password"  placeholder="{{data.password}}" [(ngModel)]="password"></ion-input>
           <ion-label error-field color="primary" no-margin *ngIf="!isPasswordValid">{{data.errorPassword}}</ion-label>
         </ion-item>
       </ion-col>
@@ -35,7 +35,7 @@
         <button ion-button  full text-capitalize default-button (click)="onEvent('onLogin')">{{data.login}}</button>
         <!---Facebook button
         <button ion-button default-button color="facebook" full text-capitalize block (click)="onEvent('onFacebook')">Login with Facebook</button>-->
-        <button ion-button default-button class="bac" full text-capitalize block (click)="onEvent('onGoogle')">Login with Google</button>
+        <button ion-button default-button class="bac" full text-capitalize block (click)="onEvent('onGoogle')"><ion-icon name="logo-google"></ion-icon>Login with Google</button>
       </ion-col>
       <ion-col col-12>
         <div description text-center>

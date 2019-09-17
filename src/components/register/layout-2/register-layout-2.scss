@@ -2,6 +2,12 @@
 ================================================*/
 
 register-layout-2 {
+  ion-content#bkg{
+    background-image: url('../../../assets/images/background/arch.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
   .scroll-content {
     margin-top: 0 !important;
   }
@@ -21,6 +27,16 @@ register-layout-2 {
     background-size:cover;
   }
 
+  img {
+    max-width: 150px;
+    max-height: 150px;
+    margin: 0 auto;
+    margin-top: 30px!important;
+    display: block;
+    border-radius: 100%;
+
+  }
+
   .bar-button-default-ios,
   .toolbar-title-ios {
     padding-top: 20px;
@@ -35,6 +51,7 @@ register-layout-2 {
   ion-item {
     padding-left: 0 !important;
     padding-bottom: 15px !important;
+    background: transparent!important;
 
     [error-field] {
       margin: 0 !important;
