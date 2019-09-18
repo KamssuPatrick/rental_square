@@ -50,6 +50,8 @@ import { Tabs2Page } from '../pages/tabs2/tabs2';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Tabs3Page } from '../pages/tabs3/tabs3';
 import { Tabs4Page } from '../pages/tabs4/tabs4';
+import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
+import { DataServiceProvider } from '../providers/data-service/data-service';
 
 
 
@@ -116,7 +118,8 @@ import { Tabs4Page } from '../pages/tabs4/tabs4';
     AngularFireAuth,
     GoogleAnalytics,
     AuthService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataServiceProvider
   ]
 })
 export class AppModule {}

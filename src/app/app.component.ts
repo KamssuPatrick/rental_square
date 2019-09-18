@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { TabsPage } from '../pages/tabs/tabs';
+import { AdminPage } from '../pages/admin/admin';
+import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,14 +18,16 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   
   pages: Array<{title: string, component: any}>;
+  
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
 
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: AccueilPage }
+      { title: 'Gestion des utilisateurs', component: "UtilisateurPage" },
+      { title: 'Gestion des services', component: "UtilisateurPage" },
+      { title: 'Messagerie', component: "MessageriePage" },
+      { title: 'Mon Profil', component: "MonprofilePage" },
     ];
-
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -46,6 +50,16 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  Accueil()
+  {
+    this.nav.setRoot(AdminPage);
+  }
+
+  GestionUtilisateur()
+  {
+    this.nav.push(GestionUtilisateurPage);
   }
 }
 
