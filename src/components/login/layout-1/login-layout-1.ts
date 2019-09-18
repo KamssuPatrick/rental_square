@@ -90,7 +90,7 @@ export class LoginLayout1 {
         
         if( event == "onAdmin")
         {
-            this.navCtrl.push(AdminPage);
+            this.navCtrl.setRoot(AdminPage);
         }
 
         if( event == "onGoogle")
