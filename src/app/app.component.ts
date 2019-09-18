@@ -11,7 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = HomePage;
 
   @ViewChild(Nav) nav: Nav;
   

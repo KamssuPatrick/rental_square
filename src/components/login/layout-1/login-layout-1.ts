@@ -7,6 +7,7 @@ import { AdminPage } from '../../../pages/admin/admin';
 import { RegisterPage } from '../../../pages/register/register';
 import { AuthService } from '../../../services/auth.service';
 import { AppSettings } from '../../../services/app-settings';
+import { TabsPage } from '../../../pages/tabs/tabs';
 
 
 
@@ -52,7 +53,7 @@ export class LoginLayout1 {
       
               this.auth.signInWithEmail(credentials).then(
                 (user) => {
-                    this.navCtrl.setRoot(AccueilPage,user);
+                    this.navCtrl.setRoot(TabsPage,user);
                 },
                 error => {
                             this.signupError = error.message;
