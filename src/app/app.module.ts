@@ -51,7 +51,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { Tabs3Page } from '../pages/tabs3/tabs3';
 import { Tabs4Page } from '../pages/tabs4/tabs4';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
-import { DataServiceProvider } from '../providers/data-service/data-service';
+import { MenuProvider } from '../providers/menu/menu';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -85,7 +86,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
     AngularFireDatabaseModule, AngularFireAuthModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
-    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module
+    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -119,7 +120,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     GoogleAnalytics,
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataServiceProvider
+    MenuProvider
   ]
 })
 export class AppModule {}

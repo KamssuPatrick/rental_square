@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { MenuProvider} from '../providers/menu/menu';
+
 import { HomePage } from '../pages/home/home';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -24,7 +26,13 @@ export class MyApp {
 
     this.pages = [
       { title: 'Gestion des utilisateurs', component: "UtilisateurPage" },
-      { title: 'Gestion des services', component: "UtilisateurPage" },
+      { title: 'Villa', component: "VillaPage" },
+      { title: 'Appartements non meublés', component: "AppartementNmPage" },
+      { title: 'Appartements meublés', component: "AppartementMPage" },
+      { title: 'Immeuble', component: "ImmeublePage" },
+      { title: 'Bureau', component: "BureauPage" },
+      { title: 'Magasins/Boutiques/Local commercial', component: "MagasinPage" },
+      { title: 'Bail emphytéotique', component: "BailPage" },
       { title: 'Messagerie', component: "MessageriePage" },
       { title: 'Mon Profil', component: "MonprofilePage" },
     ];

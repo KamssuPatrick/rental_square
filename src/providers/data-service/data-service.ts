@@ -14,4 +14,9 @@ export class DataServiceProvider {
     console.log('Hello DataServiceProvider Provider');
   }
 
+  getMenus(){
+    return this.http.get('assets/data/menus.json')
+     .map((response:Response)=>response.json());
+  }
+
 }
