@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { IonicPage, Content } from 'ionic-angular';
+import { IonicPage, Content, NavController } from 'ionic-angular';
+import { GestionUtilisateurPage } from '../../../../pages/gestion-utilisateur/gestion-utilisateur';
 
 @IonicPage()
 @Component({
@@ -15,13 +16,18 @@ export class AppearanceAnimationLayout1 {
     animateItems = [];
     animateClass: any;
 
-    constructor() {
+    constructor(public navCtrl: NavController) {
         this.animateClass = { 'fade-in-left-item': true };
     }
 
     onEvent(event: string, item: any, e: any) {
         if (this.events[event]) {
             this.events[event](item);
+        }
+
+        if (event === "onItemClick")
+        {
+            this.navCtrl.push(GestionUtilisateurPage, { item:item});
         }
     }
 

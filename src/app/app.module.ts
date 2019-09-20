@@ -53,6 +53,7 @@ import { Tabs4Page } from '../pages/tabs4/tabs4';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
 import { MenuProvider } from '../providers/menu/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-dismiss/layout-1/swipe-to-dismiss-layout-1.module';
 
 
 
@@ -77,7 +78,8 @@ import { HttpClientModule } from '@angular/common/http';
     Tabs2Page,
     TabsPage,
     Tabs3Page,
-    Tabs4Page
+    Tabs4Page,
+    GestionUtilisateurPage
   ],
   imports: [
     BrowserModule,
@@ -86,7 +88,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
     AngularFireDatabaseModule, AngularFireAuthModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
-    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule
+    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -109,7 +111,8 @@ import { HttpClientModule } from '@angular/common/http';
     Tabs2Page,
     TabsPage,
     Tabs3Page,
-    Tabs4Page
+    Tabs4Page,
+    GestionUtilisateurPage
     
   ],
   providers: [
