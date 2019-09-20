@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the Tabs4Page page.
@@ -14,11 +15,17 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class Tabs4Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tabs4Page');
+  }
+
+  deconnexion()
+
+  {
+    this.app.getRootNav().push(HomePage);
   }
 
 }

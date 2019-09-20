@@ -20,7 +20,7 @@
   <ion-row>
 
     <ion-item>
-    <img src="../assets/images/avatar/user.png  ">
+    <img (click)="changeImage()" src="../assets/images/avatar/user.png  ">
     </ion-item>
 
 
@@ -31,13 +31,20 @@
 
   <ion-item>
   <ion-label>Nom</ion-label>
-    <ion-input type="number" placeholder="Nom" name="name"  required></ion-input>
+    <ion-input type="text" placeholder="Nom" name="name"  required></ion-input>
   </ion-item>
 
 <ion-item>
 <ion-label>Prénom</ion-label>
-    <ion-input type="number" placeholder="Prénom" name="name"  required></ion-input>
+    <ion-input type="text" placeholder="Prénom" name="name"  required></ion-input>
   </ion-item>
+
+<ion-item>
+  <ion-label>Email</ion-label>
+    <ion-input type="text" placeholder="Email" name="name"  required></ion-input>
+  </ion-item>
+
+  
 
 
 
@@ -51,7 +58,8 @@
       <ion-row>
         <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only id= "butt_color_supprimer" round>Se déconnecter</button>
+          <button  full ion-button text-only  (click)= "modifier()" round>Modifier</button>
+          <button  full ion-button text-only id= "butt_color_supprimer" (click)= "deconnexion()" round>Se déconnecter</button>
         </ion-col>
       </ion-row>
 
