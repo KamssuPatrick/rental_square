@@ -78,6 +78,60 @@ export class Tabs3Page {
         "subtitle" : "Subtitle",
         "textIcon" : "81min ago",
         "title" : "Vanessa Ryan"
+      },
+      {
+        "delate" : "Delete",
+        "icon" : "ios-information-circle-outline",
+        "id" : 7,
+        "reply" : "Reply",
+        "subtitle" : "Subtitle",
+        "textIcon" : "81min ago",
+        "title" : "Vanessa Ryan"
+      },
+      {
+        "delate" : "Delete",
+        "icon" : "ios-information-circle-outline",
+        "id" : 7,
+        "reply" : "Reply",
+        "subtitle" : "Subtitle",
+        "textIcon" : "81min ago",
+        "title" : "Vanessa Ryan"
+      },
+      {
+        "delate" : "Delete",
+        "icon" : "ios-information-circle-outline",
+        "id" : 7,
+        "reply" : "Reply",
+        "subtitle" : "Subtitle",
+        "textIcon" : "81min ago",
+        "title" : "Vanessa Ryan"
+      },
+      {
+        "delate" : "Delete",
+        "icon" : "ios-information-circle-outline",
+        "id" : 7,
+        "reply" : "Reply",
+        "subtitle" : "Subtitle",
+        "textIcon" : "81min ago",
+        "title" : "Vanessa Ryan"
+      },
+      {
+        "delate" : "Delete",
+        "icon" : "ios-information-circle-outline",
+        "id" : 7,
+        "reply" : "Reply",
+        "subtitle" : "Subtitle",
+        "textIcon" : "81min ago",
+        "title" : "Vanessa Ryan"
+      },
+      {
+        "delate" : "Delete",
+        "icon" : "ios-information-circle-outline",
+        "id" : 7,
+        "reply" : "Reply",
+        "subtitle" : "Subtitle",
+        "textIcon" : "81min ago",
+        "title" : "Vanessa Ryan"
       }, {
         "delate" : "Delete",
         "icon" : "ios-information-circle-outline",

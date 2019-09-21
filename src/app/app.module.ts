@@ -19,6 +19,9 @@ import { SearchBarLayout1Module } from '../components/search-bar/layout-1/search
 import { AppearanceAnimationLayout5Module } from '../components/list-view/appearance-animation/layout-5/appearance-animation-layout-5.module';
 import { ItemDetailsPageFullScreenGallery } from '../pages/item-details-full-screen-gallery/item-details-full-screen-gallery';
 
+import { SwipeToDismissLayout3Module } from '../components/list-view/swipe-to-dismiss/layout-3/swipe-to-dismiss-layout-3.module'
+
+
 
 
 
@@ -88,7 +91,7 @@ import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-di
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
     AngularFireDatabaseModule, AngularFireAuthModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
-    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module
+    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module
   ],
   bootstrap: [IonicApp],
   entryComponents: [
