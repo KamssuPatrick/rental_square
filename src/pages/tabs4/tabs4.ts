@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, App } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Profile } from '../../models/profile';
+import { AngularFireDatabase} from 'angularfire2/database';
 
 /**
  * Generated class for the Tabs4Page page.
@@ -15,7 +18,15 @@ import { HomePage } from '../home/home';
 })
 export class Tabs4Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  profile = {} as Profile;
+  
+
+  constructor(
+    public afDatabase: AngularFireDatabase,
+    public afAuth: AngularFireAuth, 
+    public navCtrl: NavController,
+    public navParams: NavParams, 
+    public app: App) {
   }
 
   ionViewDidLoad() {

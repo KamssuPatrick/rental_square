@@ -53,6 +53,7 @@ export class LoginLayout1 {
       
               this.auth.signInWithEmail(credentials).then(
                 (user) => {
+                    console.log("patttttt", user)
                     this.navCtrl.setRoot(TabsPage,user);
                 },
                 error => {

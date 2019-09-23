@@ -4,6 +4,7 @@ import { Tabs2Page } from '../tabs2/tabs2';
 import { Tabs3Page } from '../tabs3/tabs3';
 import { Tabs4Page } from '../tabs4/tabs4';
 import { MenuController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 
@@ -18,7 +19,7 @@ export class TabsPage {
   Tabs3Page = Tabs3Page;
   Tabs4Page = Tabs4Page;
 
-  constructor(
+  constructor(public afAuth: AngularFireAuth,
     public menuCtrl: MenuController
   ) {
     this.menuCtrl.enable(false, 'myMenu');
