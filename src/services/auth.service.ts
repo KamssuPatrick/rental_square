@@ -6,6 +6,7 @@ import AuthProvider = firebase.auth.AuthProvider;
 @Injectable()
 export class AuthService {
 	private user: firebase.User;
+	username: any;
 
 	constructor(public afAuth: AngularFireAuth) {
 		afAuth.authState.subscribe(user => {
@@ -23,6 +24,32 @@ export class AuthService {
 		return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email,credentials.password);
 	}
 
+	userDetails(){
+		return firebase.auth().currentUser;
+	  }
+
+	
+	getUsername()
+  {
+    // function goes to firebase and checks the profile node for the current users username 
+    var userId = this.afAuth.auth.currentUser.uid;
+
+    return firebase.database().ref(`/profiles/${userId}/username/`).once('value').then(function(snapshot){
+    var username = (snapshot.val() && snapshot.val().username) || 'Anoynymous';
+   })
+    
+  }
+
+  getCurrentUser() {
+    this.afAuth.authState.subscribe(data => {
+      console.log('A informacao de data ' + data.uid);
+      return data.uid;
+    });
+  }
+
+  
+
+	
 	writeUserData(userId, username, email, prenom) {
 		firebase.database().ref('users/' + userId).set({
 		  username: username,

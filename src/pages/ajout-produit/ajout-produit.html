@@ -24,7 +24,7 @@
   </ion-card-header>
 
     <ion-item>
-    <ion-textarea placeholder="Avis du professionnel" clearOnEdit="true"></ion-textarea>
+    <ion-textarea placeholder="Avis du professionnel" name="avis" [(ngModel)]="avis" clearOnEdit="true"></ion-textarea>
     </ion-item>
 
 
@@ -35,12 +35,12 @@
 
   <ion-item>
   <ion-label>Surface en m²</ion-label>
-    <ion-input type="number" placeholder="Surface en m²" name="name"  required></ion-input>
+    <ion-input type="number" placeholder="Surface en m²" name="surface" [(ngModel)]="surface" required></ion-input>
   </ion-item>
 
 <ion-item>
 <ion-label>Etage</ion-label>
-    <ion-input type="number" placeholder="Etage" name="name"  required></ion-input>
+    <ion-input type="number" placeholder="Etage" name="etage" [(ngModel)]="etage"  required></ion-input>
   </ion-item>
 
 
@@ -52,22 +52,22 @@
 
     <ion-item>
     <ion-label>Salon</ion-label>
-    <ion-input type="number" placeholder="Salon" name="name"  required></ion-input>
+    <ion-input type="number" placeholder="Salon" name="salon" [(ngModel)]="salon"  required></ion-input>
   </ion-item>
 
 <ion-item>
 <ion-label>Toilette</ion-label>
-    <ion-input type="number" placeholder="Toilette" name="name"  required></ion-input>
+    <ion-input type="number" placeholder="Toilette" name="toilette" [(ngModel)]="toilette"  required></ion-input>
   </ion-item>
 
   <ion-item>
   <ion-label>Cuisine</ion-label>
-    <ion-input type="number" placeholder="Cuisine" name="name"  required></ion-input>
+    <ion-input type="number" placeholder="Cuisine" name="cuisine" [(ngModel)]="cuisine"  required></ion-input>
   </ion-item>
 
 <ion-item>
 <ion-label>Chambre</ion-label>
-    <ion-input type="number" placeholder="Chambre" name="name"  required></ion-input>
+    <ion-input type="number" placeholder="Chambre" name="chambre" [(ngModel)]="chambre"  required></ion-input>
   </ion-item>
 
 
@@ -78,12 +78,12 @@
 
     <ion-item>
     <ion-label>Parking</ion-label>
-    <ion-input type="number" placeholder="Parking" name="name"  required></ion-input>
+    <ion-input type="number" placeholder="Parking" name="parking" [(ngModel)]="parking"  required></ion-input>
   </ion-item>
 
   <ion-item>
   <ion-label>Terrasse</ion-label>
-    <ion-input type="number" placeholder="Terrasse" name="name"  required></ion-input>
+    <ion-input type="number" placeholder="Terrasse" name="terrasse" [(ngModel)]="terrasse"  required></ion-input>
   </ion-item>
 
 
@@ -92,7 +92,7 @@
   </ion-card-header>
 
     <ion-item>
-    <ion-textarea placeholder="Autre" clearOnEdit="true"></ion-textarea>
+    <ion-textarea placeholder="Autre" name="autre" [(ngModel)]="autre" clearOnEdit="true"></ion-textarea>
     </ion-item>
 
 
@@ -102,7 +102,7 @@
   </ion-card-header>
 
     <ion-item>
-    <ion-textarea placeholder="Prix" clearOnEdit="true"></ion-textarea>
+    <ion-textarea placeholder="Prix" name="prix" [(ngModel)]="prix" clearOnEdit="true"></ion-textarea>
     </ion-item>
 
 
@@ -113,8 +113,12 @@
 
     <ion-item>
       <ion-label>Image principale</ion-label>
-      <ion-input type="file" accept="image/*" (change)="changeListener($event)"></ion-input>
+      <button ion-button (click)="getPicture(0)">Show Album</button>  
     </ion-item>
+
+    <ion-card >
+      <img [src]="captureDataUrl" *ngIf="captureDataUrl"/>
+    </ion-card>
 
 
     <button full>
@@ -131,7 +135,7 @@
       <ion-row>
         <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only round>Ajouter</button>
+          <button  full ion-button text-only *ngIf="captureDataUrl" (click)="Ajout()" round>Ajouter</button>
         </ion-col>
       </ion-row>
 

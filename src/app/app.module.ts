@@ -57,6 +57,7 @@ import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-uti
 import { MenuProvider } from '../providers/menu/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-dismiss/layout-1/swipe-to-dismiss-layout-1.module';
+import { AjoutProduitPage } from '../pages/ajout-produit/ajout-produit';
 
 
 
@@ -82,7 +83,8 @@ import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-di
     TabsPage,
     Tabs3Page,
     Tabs4Page,
-    GestionUtilisateurPage
+    GestionUtilisateurPage, 
+    AjoutProduitPage
   ],
   imports: [
     BrowserModule,
@@ -115,7 +117,8 @@ import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-di
     TabsPage,
     Tabs3Page,
     Tabs4Page,
-    GestionUtilisateurPage
+    GestionUtilisateurPage,
+    AjoutProduitPage
     
   ],
   providers: [
