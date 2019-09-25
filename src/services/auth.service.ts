@@ -7,6 +7,7 @@ import AuthProvider = firebase.auth.AuthProvider;
 export class AuthService {
 	private user: firebase.User;
 	username: any;
+	ref: any;
 
 	constructor(public afAuth: AngularFireAuth) {
 		afAuth.authState.subscribe(user => {
@@ -74,6 +75,33 @@ export class AuthService {
 		console.log();
 		return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
 	}
+
+	getAllUsers(){ 
+		let params={"items":[]};
+		let items=[];
+		this.ref.on('value', function(snapshot) {
+		  let i=0;
+		  
+		  let keyyy=[];
+		  
+		  keyyy= Object.keys(snapshot.val());
+		  snapshot.forEach(function(data){
+			console.log(i);
+			params.items[i]={
+			  "uid": keyyy[i],
+			  "username": data.val().username,
+			  "prenom": data.val().prenom,
+			  "image":"assets/images/avatar/user1.png"
+			};
+			i++;
+		  });
+		  
+		 
+		});
+		console.log("helllllllllooooooooooo",params)
+	   return params;
+		
+	  }
 
 	private oauthSignIn(provider: AuthProvider) {
 		if (!(<any>window).cordova) {

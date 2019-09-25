@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { VillaPage } from '../villa/villa';
+//import { Camera, CameraOptions } from 'ionic-native';
 
 /**
  * Generated class for the AjoutProduitPage page.
@@ -72,7 +73,7 @@ export class AjoutProduitPage {
   alert.present();
 }
 
-getPicture(sourceType){
+/*getPicture(sourceType){
   const cameraOptions: CameraOptions = {
     quality: 50,
     destinationType: Camera.DestinationType.DATA_URL,
@@ -87,7 +88,7 @@ getPicture(sourceType){
   }, (err) => {
       console.log(err);
   });
-}  
+}  */
   
 
   changeListener($event) : void {

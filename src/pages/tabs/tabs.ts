@@ -28,9 +28,9 @@ export class TabsPage {
   ) {
     this.menuCtrl.enable(false, 'myMenu');
 
-    console.log( "patttttt", this.navParams.get('user'));
+    //console.log( "patttttt", this.navParams.get('user'));
     this.user = firebase.auth().currentUser;
-    console.log( "pat", this.user.email);
+    //console.log( "pat", this.user.email);
 
   }
 

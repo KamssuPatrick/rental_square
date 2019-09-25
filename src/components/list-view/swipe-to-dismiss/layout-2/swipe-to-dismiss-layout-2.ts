@@ -3,6 +3,7 @@ import { IonicPage, Content, ItemSliding, NavController, AlertController } from 
 import { ModifcationProduitPage } from '../../../../pages/modifcation-produit/modifcation-produit';
 import { AjoutProduitPage } from '../../../../pages/ajout-produit/ajout-produit';
 import { AppartementNmPage } from '../../../../pages/appartement-nm/appartement-nm';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -14,8 +15,13 @@ export class SwipeToDismissLayout2 {
     @Input() events: any;
     @ViewChild(Content)
     content: Content;
+    arrData : any
 
-    constructor(public navCtrl: NavController, public alertCtrl: AlertController) { }
+    constructor(public navCtrl: NavController, public alertCtrl: AlertController, public afData: AngularFireDatabase) {
+
+      this.arrData = this.afData.list("/services/villa").valueChanges();
+      console.log("liste", this.arrData);
+     }
 
     onEvent(event: string, item: any, e: any) {
         if (this.events[event]) {

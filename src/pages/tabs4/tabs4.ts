@@ -28,6 +28,8 @@ export class Tabs4Page {
   email: any;
   uid: any;
   userId: any;
+  ref: any;
+  params: any = {};
 
 
   constructor(
@@ -42,47 +44,51 @@ export class Tabs4Page {
 
        this.userId = firebase.auth().currentUser.uid;
 
-       this.auth.getUsername().then(username=>{
- console.log('Yeah, username ', username);
+       /*this.auth.getUsername().then(username=>{
+ //console.log('Yeah, username ', username);
 })
 .catch(error=>{
 console.log('OOPS, error', error)
-})
+})*/
       
-      
-      if (this.user != null) {
-        this.email = this.user.email;
-        
-        this.uid = this.user.uid; 
-
-        
-
-        console.log('ionViewDidLoad Tabs4Page', this.auth.getEmail());
-      }
-
-      if(this.auth.userDetails()){
-        this.email = this.auth.userDetails().displayName;
-        const userSubject = new ReplaySubject(1);
-        userSubject.next(this.email);
-        console.log('ionViewDidLoad email Tabs4Page', userSubject.next(this.email));
-      }else{
-        
-      }
-
-      
-      
+this.ref =  firebase.database().ref("users");
+this.params.data = this.getAllUsers();
+console.log('ionViewDidLoad Tabs4Page', this.params.data);
       
   }
 
-  
-
-  
 
   deconnexion()
-
   {
     this.auth.signOut();
     this.app.getRootNav().push(HomePage);
   }
+
+  getAllUsers(){ 
+		let params={"items":[]};
+		let items=[];
+		this.ref.on('value', function(snapshot) {
+		  let i=0;
+		  
+		  let keyyy=[];
+		  
+		  keyyy= Object.keys(snapshot.val());
+		  snapshot.forEach(function(data){
+			console.log(i);
+			params.items[i]={
+			  "uid": keyyy[i],
+			  "username": data.val().username,
+			  "prenom": data.val().prenom,
+			  "image":"assets/images/avatar/user1.png"
+			};
+			i++;
+		  });
+		  
+		 
+		});
+		console.log("helllllllllooooooooooo",params)
+	   return params;
+		
+	  }
 
 }
