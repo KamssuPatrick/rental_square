@@ -59,6 +59,7 @@ import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-di
 import { AjoutProduitPage } from '../pages/ajout-produit/ajout-produit';
 
 import * as firebase from 'firebase/app';
+import { ModifcationProduitPage } from '../pages/modifcation-produit/modifcation-produit';
 
 
 var firebaseConfig = {
@@ -97,7 +98,8 @@ firebase.initializeApp(firebaseConfig);
     Tabs3Page,
     Tabs4Page,
     GestionUtilisateurPage, 
-    AjoutProduitPage
+    AjoutProduitPage,
+    ModifcationProduitPage
   ],
   imports: [
     BrowserModule,
@@ -131,7 +133,8 @@ firebase.initializeApp(firebaseConfig);
     Tabs3Page,
     Tabs4Page,
     GestionUtilisateurPage,
-    AjoutProduitPage
+    AjoutProduitPage,
+    ModifcationProduitPage
     
   ],
   providers: [

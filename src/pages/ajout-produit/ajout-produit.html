@@ -107,18 +107,22 @@
 
 
 
-  <ion-card-header>
-    <ion-card-title>Images</ion-card-title>
-  </ion-card-header>
-
-    <ion-item>
-      <ion-label>Image principale</ion-label>
-      <button ion-button (click)="getPicture(0)">Show Album</button>  
-    </ion-item>
-
-    <ion-card >
-      <img [src]="captureDataUrl" *ngIf="captureDataUrl"/>
-    </ion-card>
+ <ion-card text-center *ngIf="!isUploading && !isUploaded">
+    <ion-card-header>
+      <ion-card-title>Choose Images to Upload</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="fileUpload btn btn-primary">
+        <span>Upload</span>
+        <input
+          id="uploadBtn"
+          type="file"
+          class="upload"
+          (change)="uploadFile($event.target.files)"
+        />
+      </div>
+    </ion-card-content>
+  </ion-card>
 
 
     <button full>
@@ -126,16 +130,12 @@
       <input multiple type="file" (change)="loadImageFromDevice($event)" accept="image/png, image/jpeg">
     </button>
 
-    
-
-
-
              </ion-row>
 
       <ion-row>
         <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only *ngIf="captureDataUrl" (click)="Ajout()" round>Ajouter</button>
+          <button  full ion-button text-only (click)="Ajout()" round>Ajouter</button>
         </ion-col>
       </ion-row>
 

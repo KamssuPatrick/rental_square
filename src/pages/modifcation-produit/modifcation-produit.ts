@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, AlertController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { VillaPage } from '../villa/villa';
 
 /**
  * Generated class for the ModifcationProduitPage page.
@@ -14,11 +16,56 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 })
 export class ModifcationProduitPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  value:any;
+
+  avis: string;
+  surface: string;
+  etage
+  salon
+  toilette
+  cuisine
+  chambre
+  parking
+  terrasse
+  autre
+  prix
+  uid
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public afData: AngularFireDatabase) {
+
+    this.value = navParams.get('item');
+
+    console.log('pat', this.value);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ModifcationProduitPage');
+  modifier(uid)
+  {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm purchase',
+      message: 'Voulez-vous vraiment Ajouter ce produit ?',
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked' + this.avis);
+          }
+        },
+        {
+          text: 'Modifier',
+          handler: () => {
+  
+            this.afData.object("/services/villa/" + uid).set({avis: this.avis, surface: this.surface, etage: this.etage, 
+              salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+            terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+  
+            this.navCtrl.setRoot(VillaPage);
+  
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

@@ -73,7 +73,8 @@ export class VillaPage {
         "surface": data.val().surface,
         "terrasse": data.val().terrasse,
         "toilette": data.val().toilette,
-			  "image":"assets/images/avatar/user1.png"
+        "etage": data.val().etage,
+			  "image":"assets/images/gallery/brogan/villa3.jpg"
 			};
 			i++;
 		  });

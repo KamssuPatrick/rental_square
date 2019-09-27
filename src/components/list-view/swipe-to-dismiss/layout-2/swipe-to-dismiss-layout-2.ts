@@ -4,6 +4,7 @@ import { ModifcationProduitPage } from '../../../../pages/modifcation-produit/mo
 import { AjoutProduitPage } from '../../../../pages/ajout-produit/ajout-produit';
 import { AppartementNmPage } from '../../../../pages/appartement-nm/appartement-nm';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { VillaPage } from '../../../../pages/villa/villa';
 
 @IonicPage()
 @Component({
@@ -30,7 +31,7 @@ export class SwipeToDismissLayout2 {
 
         if( event == "onModifier")
         {
-            this.navCtrl.push(ModifcationProduitPage);
+            this.navCtrl.push(ModifcationProduitPage, {item: item});
         }
 
         if( event == "onAjouter")
@@ -66,10 +67,14 @@ export class SwipeToDismissLayout2 {
                 handler: () => {
                   console.log('Buy clicked');
 
-                    let index = this.data.items.indexOf(item);
+                    /*let index = this.data.items.indexOf(item);
                     if (index > -1) {
                     this.data.items.splice(index, 1);
-        }
+                                    }*/
+
+                    this.afData.list("/services/villa").remove(item);
+                    this.navCtrl.setRoot(VillaPage);
+          
                 }
               }
             ]

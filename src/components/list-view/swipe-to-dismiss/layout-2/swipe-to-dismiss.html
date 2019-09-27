@@ -6,7 +6,7 @@
         <!-- Header top Swipe To Dismiss Products + CTA -->
         <ion-list-header header-section no-margin>
           <!-- Big Title Swipe To Dismiss Products + CTA -->
-          <h1 header-title text-capitalize>{{data.header}} </h1>
+          <h1 header-title text-capitalize>Villa </h1>
           <button item-end ion-button button-clear-outline outline round (click)="onEvent('onAjouter', '', $event)">Ajouter</button>
           <!--<button item-end ion-button button-clear-outline outline round *ngIf="data.header == 'Appt non mblé'" (click)="onEvent('onAjouterApptNM', '', $event)">Ajouter</button>-->
           
@@ -14,7 +14,7 @@
         <!-- Content -->
         <ion-list no-margin>
           <ion-item-sliding *ngFor="let item of data.items" #slidingItem>
-            <ion-item border no-lines (click)="onEvent('onModifier', item.title, $event)">
+            <ion-item border no-lines (click)="onEvent('onModifier', item, $event)">
               <!-- Images -->
               <ion-thumbnail item-start>
                 <img src="{{item.image}}">
@@ -29,8 +29,8 @@
             <!--Action Button-->
             <ion-item-options no-lines>
               <!-- Button -->
-              <button ion-button text-capitalize ion-text color="delateButton" (click)="delete(item)">
-              {{item.delate}}
+              <button ion-button text-capitalize ion-text color="delateButton" (click)="delete(item.uid)">
+              <ion-icon name="trash"></ion-icon>
             </button>
             </ion-item-options>
           </ion-item-sliding>

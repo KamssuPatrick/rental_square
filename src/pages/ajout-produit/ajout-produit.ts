@@ -53,7 +53,7 @@ export class AjoutProduitPage {
         text: 'Annuler',
         role: 'cancel',
         handler: () => {
-          console.log('Cancel clicked');
+          console.log('Cancel clicked' + this.prix);
         }
       },
       {
