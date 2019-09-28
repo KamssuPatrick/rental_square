@@ -27,6 +27,7 @@ export class UtilisateurPage {
 
     this.ref =  firebase.database().ref("users");
     this.params.data = this.getAllUsers();
+    //console.log("helllllllllooooooooooo",this.params.data);
 
     this.value = navParams.get('item');
 
@@ -71,7 +72,7 @@ export class UtilisateurPage {
       
      
     });
-    console.log("helllllllllooooooooooo",params)
+    //console.log("helllllllllooooooooooo",params)
    return params;
     
   }
