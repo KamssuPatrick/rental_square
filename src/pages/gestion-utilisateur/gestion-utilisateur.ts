@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavController, NavParams, IonicPage, AlertController } from 'ionic-angular';
+import * as firebase from 'firebase/app';
 
 /**
  * Generated class for the GestionUtilisateurPage page.
@@ -18,70 +19,20 @@ export class GestionUtilisateurPage {
   value : any;
   params: any = {};
   buttonsColor: string = '';
-
+  ref:any;
+  value2 : any;
   onBloquer = this.setNext;
     text = 'Bloquer';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
 
     this.value = navParams.get('item');
+    this.ref= firebase.database().ref("users/"+ this.value);
 
-    this.params.data = {
-      "avatar" : "assets/images/avatar/3.jpg",
-      "headerImage" : "assets/images/background-small/1.jpg",
-      "headerTitle" : "Profile",
-      "items" : [ {
-        "avatar" : "assets/images/avatar/1.jpg",
-        "button" : "Follow",
-        "id" : 1,
-        "subtitle" : "Black Shirt",
-        "title" : "Black Shirt"
-      }, {
-        "avatar" : "assets/images/avatar/2.jpg",
-        "button" : "Follow",
-        "id" : 2,
-        "subtitle" : "Black Shirt",
-        "title" : "Black Shirt"
-      }, {
-        "avatar" : "assets/images/avatar/3.jpg",
-        "button" : "Follow",
-        "id" : 3,
-        "subtitle" : "Black Shirt",
-        "title" : "Black Shirt"
-      }, {
-        "avatar" : "assets/images/avatar/4.jpg",
-        "button" : "Follow",
-        "id" : 4,
-        "subtitle" : "Black Shirt",
-        "title" : "Black Shirt"
-      }, {
-        "avatar" : "assets/images/avatar/19.jpg",
-        "button" : "Follow",
-        "id" : 5,
-        "subtitle" : "Black Shirt",
-        "title" : "Black Shirt"
-      }, {
-        "avatar" : "assets/images/avatar/20.jpg",
-        "button" : "Follow",
-        "id" : 6,
-        "subtitle" : "Black Shirt",
-        "title" : "Black Shirt"
-      }, {
-        "avatar" : "assets/images/avatar/14.jpg",
-        "button" : "Follow",
-        "id" : 7,
-        "subtitle" : "Black Shirt",
-        "title" : "Black Shirt"
-      }, {
-        "avatar" : "assets/images/avatar/5.jpg",
-        "button" : "Follow",
-        "id" : 8,
-        "subtitle" : "Black Shirt",
-        "title" : "Black Shirt"
-      } ],
-      "subtitle" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "title" : "Name Surname"
-    }
+    this.params.data = this.getAllUsers();
+    this.value2=this.params.data;
+    console.log("jkkjdkfjkdjfdfh",this.value2);
+     
 
     this.params.events = {
       'onButtonClick': function (item: any) {
@@ -142,6 +93,32 @@ export class GestionUtilisateurPage {
       this.text = 'Bloquer';
     }
     //this.onBloquer = this.goToNext;
+    
+  }
+
+  getAllUsers(){ 
+    let params={};
+    this.ref.on('value', function(snapshot) {
+      let i=0;
+      
+      let keyyy=[];
+      
+      
+      
+        console.log(snapshot.val());
+        params={
+          "username": snapshot.val().username,
+          "prenom": snapshot.val().prenom,
+          "email":snapshot.val().email,
+          "avatar":"assets/images/avatar/user1.png"
+        };
+       
+       
+      
+     
+    });
+    //console.log("helllllllllooooooooooo",params)
+   return params;
     
   }
 

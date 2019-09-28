@@ -2,16 +2,21 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import AuthProvider = firebase.auth.AuthProvider;
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class AuthService {
 	private user: firebase.User;
-
-	constructor(public afAuth: AngularFireAuth) {
+	private database = firebase.database();
+	private allUser=[];
+	
+	constructor(public afAuth: AngularFireAuth , public afDB: AngularFireDatabase) {
 		afAuth.authState.subscribe(user => {
 			this.user = user;
 		});
 	}
+
+	
 
 	signInWithEmail(credentials) {
 		console.log('Sign in with email');
@@ -34,6 +39,8 @@ export class AuthService {
 	get authenticated(): boolean {
 		return this.user !== null;
 	}
+	
+	
 
 	getEmail() {
 		return this.user && this.user.email;
@@ -47,6 +54,8 @@ export class AuthService {
 		console.log();
 		return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
 	}
+
+	
 
 	private oauthSignIn(provider: AuthProvider) {
 		if (!(<any>window).cordova) {
@@ -68,5 +77,7 @@ export class AuthService {
 			});
 		}
 	}
+
+	
 
 }

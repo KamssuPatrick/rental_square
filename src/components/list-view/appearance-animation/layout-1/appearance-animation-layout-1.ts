@@ -18,6 +18,7 @@ export class AppearanceAnimationLayout1 {
 
     constructor(public navCtrl: NavController) {
         this.animateClass = { 'fade-in-left-item': true };
+
     }
 
     onEvent(event: string, item: any, e: any) {
@@ -35,6 +36,7 @@ export class AppearanceAnimationLayout1 {
         let that = this;
         that.data = changes['data'].currentValue;
         if (that.data && that.data.items) {
+            console.log("heeeeeeeeeeeeeeeeeeeee", that.data.items);
             that.animateItems = [];
             for (let i = 0; i < that.data.items.length; i++) {
                 setTimeout(function () {
@@ -43,4 +45,6 @@ export class AppearanceAnimationLayout1 {
             }
         }
     }
+
+    
 }
