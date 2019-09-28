@@ -13,12 +13,11 @@
 
 
 <ion-content >
-  <form (ngSubmit)="Ajout()" #registerForm="ngForm">
+  <form #registerForm="ngForm" *ngIf="value">
        <ion-row>
 
   <ion-card>
   <ion-card-header>
-    <ion-card-title>Avis du professionnel</ion-card-title>
   </ion-card-header>
 
     <ion-item>
@@ -32,7 +31,7 @@
   </ion-card-header>
 
     <ion-item>
-    <ion-textarea placeholder="Avis du professionnel" clearOnEdit="true"></ion-textarea>
+    <ion-textarea [(ngModel)]="value.avis" name="avis" clearOnEdit="true">}</ion-textarea>
     </ion-item>
 
 
@@ -43,12 +42,12 @@
 
   <ion-item>
   <ion-label>Surface en m²</ion-label>
-    <ion-input type="number" placeholder="Surface en m²" name="name"  required></ion-input>
+    <ion-input type="number" [(ngModel)]="value.surface" name="surface"  required></ion-input>
   </ion-item>
 
 <ion-item>
 <ion-label>Etage</ion-label>
-    <ion-input type="number" placeholder="Etage" name="name"  required></ion-input>
+    <ion-input type="number" [(ngModel)]="value.etage" name="etage"  required></ion-input>
   </ion-item>
 
 
@@ -60,22 +59,22 @@
 
     <ion-item>
     <ion-label>Salon</ion-label>
-    <ion-input type="number" placeholder="Salon" name="name"  required></ion-input>
+    <ion-input type="number" [(ngModel)]="value.salon" name="salon"  required></ion-input>
   </ion-item>
 
 <ion-item>
 <ion-label>Toilette</ion-label>
-    <ion-input type="number" placeholder="Toilette" name="name"  required></ion-input>
+    <ion-input type="number" [(ngModel)]="value.toilette" name="toilette"  required></ion-input>
   </ion-item>
 
   <ion-item>
   <ion-label>Cuisine</ion-label>
-    <ion-input type="number" placeholder="Cuisine" name="name"  required></ion-input>
+    <ion-input type="number" [(ngModel)]="value.cuisine" name="cuisine"  required></ion-input>
   </ion-item>
 
 <ion-item>
 <ion-label>Chambre</ion-label>
-    <ion-input type="number" placeholder="Chambre" name="name"  required></ion-input>
+    <ion-input type="number" [(ngModel)]="value.chambre" name="chambre"  required></ion-input>
   </ion-item>
 
 
@@ -86,12 +85,12 @@
 
     <ion-item>
     <ion-label>Parking</ion-label>
-    <ion-input type="number" placeholder="Parking" name="name"  required></ion-input>
+    <ion-input type="number" [(ngModel)]="value.parking" name="parking"  required></ion-input>
   </ion-item>
 
   <ion-item>
   <ion-label>Terrasse</ion-label>
-    <ion-input type="number" placeholder="Terrasse" name="name"  required></ion-input>
+    <ion-input type="number" [(ngModel)]="value.terrasse" name="terrasse"  required></ion-input>
   </ion-item>
 
 
@@ -100,7 +99,7 @@
   </ion-card-header>
 
     <ion-item>
-    <ion-textarea placeholder="Autre" clearOnEdit="true"></ion-textarea>
+    <ion-textarea [(ngModel)]="value.autre" name="autre" clearOnEdit="true"></ion-textarea>
     </ion-item>
 
 
@@ -110,7 +109,7 @@
   </ion-card-header>
 
     <ion-item>
-    <ion-textarea placeholder="Prix" clearOnEdit="true"></ion-textarea>
+    <ion-textarea [(ngModel)]="value.prix" name="prix" clearOnEdit="true">{{value.prix}}</ion-textarea>
     </ion-item>
 
 
@@ -137,7 +136,7 @@
       <ion-row>
         <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only round>Modifier</button>
+          <button  full ion-button text-only round (click)="modifier(value)">Modifier</button>
         </ion-col>
       </ion-row>
 

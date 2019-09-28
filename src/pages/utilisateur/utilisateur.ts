@@ -21,12 +21,13 @@ export class UtilisateurPage {
   value : any;
   Keys: any;
   ref:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public auth: AuthService) {
-    this.ref= firebase.database().ref("/users");
-    this.params.data=this.getAllUsers();
-  // console.log("moiiiiiiiiiiiiiii",this.params.data);
-  // console.log("moiiiiiiiiiiiiiii",JSON.stringify(this.params.data));
   
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+
+    this.ref =  firebase.database().ref("users");
+    this.params.data = this.getAllUsers();
+
     this.value = navParams.get('item');
 
     this.params.events = {
@@ -43,6 +44,10 @@ export class UtilisateurPage {
 
   }
 
+  
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad UtilisateurPage');
+  }
 
   getAllUsers(){ 
     let params={"items":[]};
@@ -54,29 +59,21 @@ export class UtilisateurPage {
       
       keyyy= Object.keys(snapshot.val());
       snapshot.forEach(function(data){
-        //console.log(i);
+        console.log(i);
         params.items[i]={
           "uid": keyyy[i],
           "username": data.val().username,
           "prenom": data.val().prenom,
           "image":"assets/images/avatar/user1.png"
         };
-       
         i++;
       });
       
      
     });
-    //console.log("helllllllllooooooooooo",params)
+    console.log("helllllllllooooooooooo",params)
    return params;
     
-  }
-    
-
-  
-  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UtilisateurPage');
   }
 
 }

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { VillaPage } from '../villa/villa';
+//import { Camera, CameraOptions } from 'ionic-native';
 
 /**
  * Generated class for the AjoutProduitPage page.
@@ -16,9 +19,22 @@ export class AjoutProduitPage {
 
   file: File;
 
+  avis: string;
+  surface: string;
+  etage
+  salon
+  toilette
+  cuisine
+  chambre
+  parking
+  terrasse
+  autre
+  prix
+
   myImages: Array<string>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase
+    , public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -27,8 +43,53 @@ export class AjoutProduitPage {
 
   Ajout()
   {
-    console.log("Ajouter click");
-  }
+    
+
+  let alert = this.alertCtrl.create({
+    title: 'Confirm purchase',
+    message: 'Voulez-vous vraiment Ajouter ce produit ?',
+    buttons: [
+      {
+        text: 'Annuler',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked' + this.prix);
+        }
+      },
+      {
+        text: 'Ajouter',
+        handler: () => {
+
+          this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+            salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+          terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+
+          this.navCtrl.setRoot(VillaPage);
+
+        }
+      }
+    ]
+  });
+  alert.present();
+}
+
+/*getPicture(sourceType){
+  const cameraOptions: CameraOptions = {
+    quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL,
+    encodingType: Camera.EncodingType.JPEG,
+    mediaType: Camera.MediaType.PICTURE,
+    sourceType: sourceType
+  };
+
+  Camera.getPicture(cameraOptions)
+   .then((captureDataUrl) => {
+     this.captureDataUrl = 'data:image/jpeg;base64,' + captureDataUrl;
+  }, (err) => {
+      console.log(err);
+  });
+}  */
+  
 
   changeListener($event) : void {
     this.file = $event.target.files[0];

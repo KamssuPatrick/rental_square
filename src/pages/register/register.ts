@@ -41,11 +41,11 @@ export class RegisterPage {
       "iconAccount" : "icon-key",
       "iconKey" : "",
       "iconLock" : "assets/images/background/20.jpg",
-      "errorUser"           : "Field can't be empty.",
-      "errorPassword"       : "Field can't be empty.",
-      "errorEmail"          : "Invalid email address.",
-      "errorCountry"        : "Field can't be empty.",
-      "errorCity"           : "Field can't be empty."
+      "errorUser"           : "Le champ ne peut pas être vide.",
+      "errorPassword"       : "Le champ ne peut pas être vide.",
+      "errorEmail"          : "Adresse électronique invalide.",
+      "errorCountry"        : "Le champ ne peut pas être vide.",
+      "errorCity"           : "Le champ ne peut pas être vide."
 
     };
 

@@ -3,6 +3,8 @@ import { IonicPage, Content, ItemSliding, NavController, AlertController } from 
 import { ModifcationProduitPage } from '../../../../pages/modifcation-produit/modifcation-produit';
 import { AjoutProduitPage } from '../../../../pages/ajout-produit/ajout-produit';
 import { AppartementNmPage } from '../../../../pages/appartement-nm/appartement-nm';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { VillaPage } from '../../../../pages/villa/villa';
 
 @IonicPage()
 @Component({
@@ -14,8 +16,13 @@ export class SwipeToDismissLayout2 {
     @Input() events: any;
     @ViewChild(Content)
     content: Content;
+    arrData : any
 
-    constructor(public navCtrl: NavController, public alertCtrl: AlertController) { }
+    constructor(public navCtrl: NavController, public alertCtrl: AlertController, public afData: AngularFireDatabase) {
+
+      this.arrData = this.afData.list("/services/villa").valueChanges();
+      console.log("liste", this.arrData);
+     }
 
     onEvent(event: string, item: any, e: any) {
         if (this.events[event]) {
@@ -24,7 +31,7 @@ export class SwipeToDismissLayout2 {
 
         if( event == "onModifier")
         {
-            this.navCtrl.push(ModifcationProduitPage);
+            this.navCtrl.push(ModifcationProduitPage, {item: item});
         }
 
         if( event == "onAjouter")
@@ -60,10 +67,14 @@ export class SwipeToDismissLayout2 {
                 handler: () => {
                   console.log('Buy clicked');
 
-                    let index = this.data.items.indexOf(item);
+                    /*let index = this.data.items.indexOf(item);
                     if (index > -1) {
                     this.data.items.splice(index, 1);
-        }
+                                    }*/
+
+                    this.afData.list("/services/villa").remove(item);
+                    this.navCtrl.setRoot(VillaPage);
+          
                 }
               }
             ]

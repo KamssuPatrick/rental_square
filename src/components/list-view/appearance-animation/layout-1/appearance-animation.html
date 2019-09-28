@@ -6,9 +6,15 @@
                 <ion-list no-margin>
                     <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of animateItems; let i = index;" (click)="onEvent('onItemClick', item.uid, $event)">
                         <ion-avatar item-left>
+<<<<<<< HEAD
                             <img [src]="item.image" alt="{{item.prenom}}" />
                         </ion-avatar>
                         <h2 item-title>{{item.prenom}} {{item.username}}</h2>
+=======
+                            <img [src]="item.image" alt="{{item.username}}" />
+                        </ion-avatar>
+                        <h2 item-title>{{item.prenom}}</h2>
+>>>>>>> 7e33950ca46c0efd91b3873f98d96912155335a4
                         
                     </ion-item>
                 </ion-list>

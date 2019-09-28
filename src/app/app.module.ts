@@ -27,7 +27,6 @@ import { SwipeToDismissLayout3Module } from '../components/list-view/swipe-to-di
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
-import { firebaseConfig } from '../config';
 import { Config } from '../config';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -57,7 +56,23 @@ import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-uti
 import { MenuProvider } from '../providers/menu/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-dismiss/layout-1/swipe-to-dismiss-layout-1.module';
+import { AjoutProduitPage } from '../pages/ajout-produit/ajout-produit';
 
+import * as firebase from 'firebase/app';
+import { ModifcationProduitPage } from '../pages/modifcation-produit/modifcation-produit';
+
+
+var firebaseConfig = {
+  apiKey: "AIzaSyBYWFYzzECy4ftcnac0D-j3EseW27jfXw8",
+  authDomain: "rentalsquares.firebaseapp.com",
+  databaseURL: "https://rentalsquares.firebaseio.com",
+  projectId: "rentalsquares",
+  storageBucket: "rentalsquares.appspot.com",
+  messagingSenderId: "931472530554",
+  appId: "1:931472530554:web:2ac58883a6386c5a"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 
 @NgModule({
@@ -82,7 +97,9 @@ import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-di
     TabsPage,
     Tabs3Page,
     Tabs4Page,
-    GestionUtilisateurPage
+    GestionUtilisateurPage, 
+    AjoutProduitPage,
+    ModifcationProduitPage
   ],
   imports: [
     BrowserModule,
@@ -115,7 +132,9 @@ import { SwipeToDismissLayout1Module } from '../components/list-view/swipe-to-di
     TabsPage,
     Tabs3Page,
     Tabs4Page,
-    GestionUtilisateurPage
+    GestionUtilisateurPage,
+    AjoutProduitPage,
+    ModifcationProduitPage
     
   ],
   providers: [

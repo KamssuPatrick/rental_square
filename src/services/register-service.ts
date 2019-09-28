@@ -42,19 +42,19 @@ export class RegisterService implements IService {
         "username"            : "Enter your username",
         "city"                : "Your home town",
         "country"             : "Where are you from?",
-        "password"            : "Enter your password",
-        "email"               : "Your e-mail address",
+        "password"            : "Entrez votre mot de passe",
+        "email"               : "Votre adresse e-mail",
         "skip"                : "Skip",
         "lableUsername"       : "USERNAME",
         "lablePassword"       : "PASSWORD",
         "lableEmail"          : "E-MAIL",
         "lableCountry"        : "COUNTRY",
         "lableCity"           : "CITY",
-        "errorUser"           : "Field can't be empty.",
-        "errorPassword"       : "Field can't be empty.",
-        "errorEmail"          : "Invalid email address.",
-        "errorCountry"        : "Field can't be empty.",
-        "errorCity"           : "Field can't be empty."
+        "errorUser"           : "Le champ ne peut pas être vide.",
+        "errorPassword"       : "Le champ ne peut pas être vide.",
+        "errorEmail"          : "Adresse électronique invalide.",
+        "errorCountry"        : "Le champ ne peut pas être vide.",
+        "errorCity"           : "Le champ ne peut pas être vide."
       };
     };
 

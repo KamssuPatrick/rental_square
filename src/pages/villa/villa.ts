@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { ModifcationProduitPage } from '../modifcation-produit/modifcation-produit';
+import { AngularFireDatabase} from 'angularfire2/database';
+import * as firebase from 'firebase/app';
+import { firebaseConfig } from '../../config';
 
 /**
  * Generated class for the VillaPage page.
@@ -16,48 +19,13 @@ import { ModifcationProduitPage } from '../modifcation-produit/modifcation-produ
 export class VillaPage {
 
   params: any = {};
+  ref: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-    this.params.data = {
-      "header" : "Villa",
-      "items" : [ {
-        "delate" : "Supprimer",
-        "id" : 1,
-        "image" : "assets/images/gallery/brogan/villa1.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Grant Marshall"
-      }, {
-        "delate" : "Supprimer",
-        "id" : 2,
-        "image" : "assets/images/gallery/brogan/villa4.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Pena Valdez"
-      }, {
-        "delate" : "Supprimer",
-        "id" : 3,
-        "image" : "assets/images/gallery/brogan/villa2.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Jessica Miles"
-      }, {
-        "delate" : "Supprimer",
-        "id" : 4,
-        "image" : "assets/images/gallery/brogan/villa3.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Kerri Barber"
-      }, {
-        "delate" : "Supprimer",
-        "id" : 5,
-        "image" : "assets/images/gallery/brogan/villa4.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Natasha Gamble"
-      }]
-    }
+
+    this.ref =  firebase.database().ref("services/villa");
+    this.params.data = this.getAllUsers();
     
     this.params.events = {
       'onItemClick': function (item: any) {
@@ -81,5 +49,42 @@ export class VillaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad VillaPage');
   }
+
+  getAllUsers(){ 
+		let params={"items":[]};
+		let items=[];
+		this.ref.on('value', function(snapshot) {
+		  let i=0;
+		  
+		  let keyyy=[];
+		  
+		  keyyy= Object.keys(snapshot.val());
+		  snapshot.forEach(function(data){
+			console.log(i);
+			params.items[i]={
+			  "uid": keyyy[i],
+			  "autre": data.val().autre,
+        "avis": data.val().avis,
+        "chambre": data.val().chambre,
+        "cuisine": data.val().cuisine,
+        "parking": data.val().parking,
+        "prix": data.val().prix,
+        "salon": data.val().salon,
+        "surface": data.val().surface,
+        "terrasse": data.val().terrasse,
+        "toilette": data.val().toilette,
+        "etage": data.val().etage,
+			  "image":"assets/images/gallery/brogan/villa3.jpg"
+			};
+			i++;
+		  });
+		  
+		 
+		});
+		console.log("helllllllllooooooooooo",params)
+	   return params;
+		
+	  }
+
 
 }
