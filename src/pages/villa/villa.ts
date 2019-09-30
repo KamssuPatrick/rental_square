@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, LoadingController } from 'ionic-angular';
 import { ModifcationProduitPage } from '../modifcation-produit/modifcation-produit';
 import { AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
@@ -21,12 +21,9 @@ export class VillaPage {
   params: any = {};
   ref: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
 
-
-    this.ref =  firebase.database().ref("services/villa");
-    this.params.data = this.getAllUsers();
-    
+    this.presentLoading();
     this.params.events = {
       'onItemClick': function (item: any) {
          console.log("items");
@@ -51,7 +48,7 @@ export class VillaPage {
   }
 
   getAllUsers(){ 
-		let params={"items":[]};
+		let params={"titre" : "Villa","items":[]};
 		let items=[];
 		this.ref.on('value', function(snapshot) {
 		  let i=0;
@@ -84,7 +81,19 @@ export class VillaPage {
 		console.log("helllllllllooooooooooo",params)
 	   return params;
 		
-	  }
+    }
+    
+    presentLoading() {
+      const loader = this.loadingCtrl.create({
+        content: "Please wait...",
+        duration: 1000
+      });
+
+    this.ref =  firebase.database().ref("services/villa");
+    this.params.data = this.getAllUsers();
+    loader.present();
+
+    }
 
 
 }

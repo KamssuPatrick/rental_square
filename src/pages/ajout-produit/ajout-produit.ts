@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { VillaPage } from '../villa/villa';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import * as firebase from 'firebase/app';
+import { AppartementNmPage } from '../appartement-nm/appartement-nm';
+import { AppartementMPage } from '../appartement-m/appartement-m';
+import { ImmeublePage } from '../immeuble/immeuble';
+import { BureauPage } from '../bureau/bureau';
+import { MagasinPage } from '../magasin/magasin';
+import { BailPage } from '../bail/bail';
 //import { Camera, CameraOptions } from 'ionic-native';
 
 /**
@@ -36,11 +39,12 @@ export class AjoutProduitPage {
   prix
 
   myImages: Array<string>;
+  value : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase
-    , public alertCtrl: AlertController,private transfer: FileTransfer,
-    private camera: Camera, public loadingCtrl: LoadingController,
-    public toastCtrl: ToastController) {
+    , public alertCtrl: AlertController) {
+
+      this.value = navParams.get('item');
   }
 
   ionViewDidLoad() {
@@ -49,34 +53,218 @@ export class AjoutProduitPage {
 
   Ajout()
   {
+
+    if(this.value == "Villa")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment Ajouter ce produit ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.prix);
+            }
+          },
+          {
+            text: 'Ajouter',
+            handler: () => {
     
+              this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+    
+              this.navCtrl.setRoot(VillaPage);
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
 
-  let alert = this.alertCtrl.create({
-    title: 'Confirm purchase',
-    message: 'Voulez-vous vraiment Ajouter ce produit ?',
-    buttons: [
-      {
-        text: 'Annuler',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked' + this.prix);
-        }
-      },
-      {
-        text: 'Ajouter',
-        handler: () => {
+    if(this.value == "AppartsNM")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment Ajouter ce produit ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.prix);
+            }
+          },
+          {
+            text: 'Ajouter',
+            handler: () => {
+    
+              this.afData.list("/services/appt_non_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+    
+              this.navCtrl.setRoot(AppartementNmPage);
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
 
-          this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-            salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-          terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+    if(this.value == "AppartsM")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment Ajouter ce produit ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.prix);
+            }
+          },
+          {
+            text: 'Ajouter',
+            handler: () => {
+    
+              this.afData.list("/services/appt_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+    
+              this.navCtrl.setRoot(AppartementMPage);
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
 
-          this.navCtrl.setRoot(VillaPage);
+    if(this.value == "Immeuble")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment Ajouter ce produit ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.prix);
+            }
+          },
+          {
+            text: 'Ajouter',
+            handler: () => {
+    
+              this.afData.list("/services/immeuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+    
+              this.navCtrl.setRoot(ImmeublePage);
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
 
-        }
-      }
-    ]
-  });
-  alert.present();
+    if(this.value == "Bureau")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment Ajouter ce produit ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.prix);
+            }
+          },
+          {
+            text: 'Ajouter',
+            handler: () => {
+    
+              this.afData.list("/services/bureau").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+    
+              this.navCtrl.setRoot(BureauPage);
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    if(this.value == "Magasin")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment Ajouter ce produit ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.prix);
+            }
+          },
+          {
+            text: 'Ajouter',
+            handler: () => {
+    
+              this.afData.list("/services/magasin").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+    
+              this.navCtrl.setRoot(MagasinPage);
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    if(this.value == "Bail")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment Ajouter ce produit ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.prix);
+            }
+          },
+          {
+            text: 'Ajouter',
+            handler: () => {
+    
+              this.afData.list("/services/bail").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+    
+              this.navCtrl.setRoot(BailPage);
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+  
 }
 
 /*getPicture(sourceType){
@@ -119,7 +307,7 @@ export class AjoutProduitPage {
     })
   };
 
-  getImage() {
+  /*getImage() {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
@@ -209,5 +397,5 @@ export class AjoutProduitPage {
     };
     img.src = imageUri;
   };
-
+*/
 }

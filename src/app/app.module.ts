@@ -60,6 +60,7 @@ import { AjoutProduitPage } from '../pages/ajout-produit/ajout-produit';
 
 import * as firebase from 'firebase/app';
 import { ModifcationProduitPage } from '../pages/modifcation-produit/modifcation-produit';
+import { NoteListService } from '../services/note-list.service';
 
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -154,7 +155,8 @@ firebase.initializeApp(firebaseConfig);
     GoogleAnalytics,
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MenuProvider
+    MenuProvider,
+    NoteListService
   ]
 })
 export class AppModule {}
