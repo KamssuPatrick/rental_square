@@ -2,6 +2,14 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { VillaPage } from '../villa/villa';
+import { Note } from '../../models/note/note.model';
+import { NoteListService } from '../../services/note-list.service';
+import { AppartementNmPage } from '../appartement-nm/appartement-nm';
+import { AppartementMPage } from '../appartement-m/appartement-m';
+import { ImmeublePage } from '../immeuble/immeuble';
+import { BureauPage } from '../bureau/bureau';
+import { MagasinPage } from '../magasin/magasin';
+import { BailPage } from '../bail/bail';
 
 /**
  * Generated class for the ModifcationProduitPage page.
@@ -16,7 +24,7 @@ import { VillaPage } from '../villa/villa';
 })
 export class ModifcationProduitPage {
 
-  value:any;
+ 
 
   avis: string;
   surface: string;
@@ -30,16 +38,36 @@ export class ModifcationProduitPage {
   autre
   prix
   uid
+  event : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public afData: AngularFireDatabase) {
+  value: Note = {
+    avis: '',
+    surface: '',
+    etage: '',
+    salon: '',
+    toilette: '',
+    cuisine: '',
+    chambre: '',
+    parking: '',
+    terrasse: '',
+    autre: '',
+    prix: ''
+  };
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public alertCtrl: AlertController, public afData: AngularFireDatabase,
+    private noteListService: NoteListService) {
 
     this.value = navParams.get('item');
+    this.event = navParams.get('event');
 
-    console.log('pat', this.value);
+    console.log('patttt', this.event);
   }
 
+  /*
   modifier(uid)
   {
+
     let alert = this.alertCtrl.create({
       title: 'Confirm purchase',
       message: 'Voulez-vous vraiment Ajouter ce produit ?',
@@ -66,6 +94,223 @@ export class ModifcationProduitPage {
       ]
     });
     alert.present();
+  }*/
+
+  updateNote(note: Note) {
+
+    if(this.event == "onModifierVilla")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment effectuer cette modification ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.avis);
+            }
+          },
+          {
+            text: 'Modifier',
+            handler: () => {
+    
+              this.noteListService.updateNote(note, "onModifierVilla").then(() => {
+              this.navCtrl.setRoot(VillaPage);
+              });
+    
+              
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    if(this.event == "onModifierAppartsNM")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment effectuer cette modification ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.avis);
+            }
+          },
+          {
+            text: 'Modifier',
+            handler: () => {
+    
+              this.noteListService.updateNote(note, "onModifierAppartsNM").then(() => {
+              this.navCtrl.setRoot(AppartementNmPage);
+              });
+    
+              
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    if(this.event == "onModifierAppartsM")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment effectuer cette modification ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.avis);
+            }
+          },
+          {
+            text: 'Modifier',
+            handler: () => {
+    
+              this.noteListService.updateNote(note, "onModifierAppartsM").then(() => {
+              this.navCtrl.setRoot(AppartementMPage);
+              });
+    
+              
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    if(this.event == "onModifierImmeuble")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment effectuer cette modification ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.avis);
+            }
+          },
+          {
+            text: 'Modifier',
+            handler: () => {
+    
+              this.noteListService.updateNote(note, "onModifierImmeuble").then(() => {
+              this.navCtrl.setRoot(ImmeublePage);
+              });
+    
+              
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    if(this.event == "onModifierBureau")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment effectuer cette modification ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.avis);
+            }
+          },
+          {
+            text: 'Modifier',
+            handler: () => {
+    
+              this.noteListService.updateNote(note, "onModifierBureau").then(() => {
+              this.navCtrl.setRoot(BureauPage);
+              });
+    
+              
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    if(this.event == "onModifierMagasin")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment effectuer cette modification ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.avis);
+            }
+          },
+          {
+            text: 'Modifier',
+            handler: () => {
+    
+              this.noteListService.updateNote(note, "onModifierMagasin").then(() => {
+              this.navCtrl.setRoot(MagasinPage);
+              });
+    
+              
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    if(this.event == "onModifierBail")
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Voulez-vous vraiment effectuer cette modification ?',
+        buttons: [
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked' + this.avis);
+            }
+          },
+          {
+            text: 'Modifier',
+            handler: () => {
+    
+              this.noteListService.updateNote(note, "onModifierBail").then(() => {
+              this.navCtrl.setRoot(BailPage);
+              });
+    
+              
+    
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    
+
+    
   }
 
 }

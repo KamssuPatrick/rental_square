@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, LoadingController } from 'ionic-angular';
+
+import * as firebase from 'firebase/app';
 
 /**
  * Generated class for the AccueilPage page.
@@ -14,9 +16,14 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AccueilPage {
 
-  params: any = {};
+    params: any = {};
+    ref: any;
+    value : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+
+    this.presentLoading();
+
     this.params.data = {
       "items": [
           {
@@ -212,8 +219,62 @@ this.params.data.fullscreen = "ItemDetailsPageFullScreenGallery";
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccueilPage');
+  presentLoading() {
+
+    this.ref =  firebase.database().ref("services");
+    this.params.data = this.getAllUsers();
+
+    this.value = this.navParams.get('item');
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 1000
+    });
+
+    
+
+    this.params.events = {
+      'onItemClick': function(item: any) {
+          //console.log("onItemClick" + this.data.items.title);
+          
+      },
+      'onFavorite': function(item) {
+          item.favorite = !item.favorite;
+          console.log("onFavorite");
+      }
+  };
+
+
+    loader.present();
+  }
+
+
+  
+  getAllUsers(){ 
+    let params={"items":[]};
+    let items=[];
+    this.ref.on('value', function(snapshot) {
+      let i=0;
+      
+      let keyyy=[];
+      
+      keyyy= Object.keys(snapshot.val());
+      console.log("testxcx", keyyy);
+      /*snapshot.forEach(function(data){
+        console.log(i);
+        params.items[i]={
+          "uid": keyyy[i],
+          "username": data.val().username,
+          "prenom": data.val().prenom,
+          "image":"assets/images/avatar/user1.png"
+        };
+        i++;
+      });*/
+      
+     
+    });
+    console.log("helllllllllooooooooooo",params)
+   return params;
+    
   }
 
 }

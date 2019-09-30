@@ -26,7 +26,7 @@ export class GestionUtilisateurPage {
 
     this.value = navParams.get('item');
 
-    this.params.data = {
+    /*this.params.data = {
       "avatar" : "assets/images/avatar/3.jpg",
       "headerImage" : "assets/images/background-small/1.jpg",
       "headerTitle" : "Profile",
@@ -81,7 +81,7 @@ export class GestionUtilisateurPage {
       } ],
       "subtitle" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "title" : "Name Surname"
-    }
+    }*/
 
     this.params.events = {
       'onButtonClick': function (item: any) {

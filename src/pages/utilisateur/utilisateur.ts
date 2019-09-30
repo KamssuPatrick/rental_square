@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 
 /**
@@ -19,25 +19,11 @@ export class UtilisateurPage {
   value : any;
   ref: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
 
 
-    this.ref =  firebase.database().ref("users");
-    this.params.data = this.getAllUsers();
-
-    this.value = navParams.get('item');
-
-    this.params.events = {
-      'onItemClick': function(item: any) {
-          //console.log("onItemClick" + this.data.items.title);
-          
-      },
-      'onFavorite': function(item) {
-          item.favorite = !item.favorite;
-          console.log("onFavorite");
-      }
-  };
-
+    this.presentLoading();
+    
 
   }
 
@@ -70,6 +56,34 @@ export class UtilisateurPage {
     console.log("helllllllllooooooooooo",params)
    return params;
     
+  }
+
+  presentLoading() {
+
+    this.ref =  firebase.database().ref("users");
+    this.params.data = this.getAllUsers();
+
+    this.value = this.navParams.get('item');
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 1000
+    });
+
+    
+
+    this.params.events = {
+      'onItemClick': function(item: any) {
+          //console.log("onItemClick" + this.data.items.title);
+          
+      },
+      'onFavorite': function(item) {
+          item.favorite = !item.favorite;
+          console.log("onFavorite");
+      }
+  };
+
+
+    loader.present();
   }
 
 }

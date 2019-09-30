@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, LoadingController } from 'ionic-angular';
 
+import * as firebase from 'firebase/app';
 /**
  * Generated class for the AppartementMPage page.
  *
@@ -15,48 +16,13 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 export class AppartementMPage {
 
   params: any = {};
+  ref: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
 
-    this.params.data = {
-      "header" : "Appt mblé",
-      "items" : [ {
-        "delate" : "Supprimer",
-        "id" : 1,
-        "image" : "assets/images/gallery/brogan/appart1.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Grant Marshall"
-      }, {
-        "delate" : "Supprimer",
-        "id" : 2,
-        "image" : "assets/images/gallery/brogan/appart2.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Pena Valdez"
-      }, {
-        "delate" : "Supprimer",
-        "id" : 3,
-        "image" : "assets/images/gallery/brogan/appart1.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Jessica Miles"
-      }, {
-        "delate" : "Supprimer",
-        "id" : 4,
-        "image" : "assets/images/gallery/brogan/appart3.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Kerri Barber"
-      }, {
-        "delate" : "Supprimer",
-        "id" : 5,
-        "image" : "assets/images/gallery/brogan/appart2.jpg",
-        "ionBadge" : "Modifier",
-        "subtitle" : "Lorem ipsum dolor sit amet, consectetur",
-        "title" : "Natasha Gamble"
-      }]
-    }
+
+    this.presentLoading();
+
     
     this.params.events = {
       'onItemClick': function (item: any) {
@@ -76,8 +42,54 @@ export class AppartementMPage {
      };
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AppartementMPage');
-  }
+
+  getAllUsers(){ 
+		let params={"titre" : "AppartsM","items":[]};
+		let items=[];
+		this.ref.on('value', function(snapshot) {
+		  let i=0;
+		  
+		  let keyyy=[];
+		  
+		  keyyy= Object.keys(snapshot.val());
+		  snapshot.forEach(function(data){
+			console.log(i);
+			params.items[i]={
+			  "uid": keyyy[i],
+			  "autre": data.val().autre,
+        "avis": data.val().avis,
+        "chambre": data.val().chambre,
+        "cuisine": data.val().cuisine,
+        "parking": data.val().parking,
+        "prix": data.val().prix,
+        "salon": data.val().salon,
+        "surface": data.val().surface,
+        "terrasse": data.val().terrasse,
+        "toilette": data.val().toilette,
+        "etage": data.val().etage,
+			  "image":"assets/images/gallery/brogan/villa3.jpg"
+			};
+			i++;
+		  });
+		  
+		 
+		});
+		console.log("helllllllllooooooooooo",params)
+	   return params;
+		
+    }
+    
+    presentLoading() {
+      const loader = this.loadingCtrl.create({
+        content: "Please wait...",
+        duration: 1000
+      });
+
+    this.ref =  firebase.database().ref("services/appt_meuble");
+    this.params.data = this.getAllUsers();
+    loader.present();
+
+    }
+
 
 }
