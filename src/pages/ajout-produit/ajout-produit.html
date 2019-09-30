@@ -109,17 +109,22 @@
 
  <ion-card text-center *ngIf="!isUploading && !isUploaded">
     <ion-card-header>
-      <ion-card-title>Choose Images to Upload</ion-card-title>
+      <ion-card-title>Choisissez l'arrière plan</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <div class="fileUpload btn btn-primary">
         <span>Upload</span>
-        <input
-          id="uploadBtn"
-          type="file"
-          class="upload"
-          (change)="uploadFile($event.target.files)"
-        />
+        <ion-item>
+            <p>{{imageURI}}</p>
+            <button ion-button color="secondary" (click)="getImage()">Get Image</button>
+        </ion-item>
+        <ion-item>
+          <h4>Image Preview</h4>
+          <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
+        </ion-item>
+        <ion-item>
+          <button ion-button outline (click)="uploadFile()">Upload</button>
+        </ion-item>
       </div>
     </ion-card-content>
   </ion-card>

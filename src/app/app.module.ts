@@ -61,6 +61,10 @@ import { AjoutProduitPage } from '../pages/ajout-produit/ajout-produit';
 import * as firebase from 'firebase/app';
 import { ModifcationProduitPage } from '../pages/modifcation-produit/modifcation-produit';
 
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { Camera } from '@ionic-native/camera';
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyBYWFYzzECy4ftcnac0D-j3EseW27jfXw8",
@@ -140,6 +144,11 @@ firebase.initializeApp(firebaseConfig);
   providers: [
     Config,
     StatusBar,
+    //FileUploadOptions,
+    FileTransferObject,
+    FileTransfer, // <--- This one!        
+    File,
+    Camera,
     SplashScreen,
     AngularFireAuth,
     GoogleAnalytics,
