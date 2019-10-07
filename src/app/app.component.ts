@@ -7,6 +7,7 @@ import { MenuProvider} from '../providers/menu/menu';
 
 import { HomePage } from '../pages/home/home';
 import { AccueilPage } from '../pages/accueil/accueil';
+import { PaiementPage } from '../pages/paiement/paiement';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
@@ -15,7 +16,7 @@ import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-uti
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = PaiementPage;
 
   @ViewChild(Nav) nav: Nav;
   

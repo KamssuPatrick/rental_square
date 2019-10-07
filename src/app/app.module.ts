@@ -61,6 +61,7 @@ import { AjoutProduitPage } from '../pages/ajout-produit/ajout-produit';
 import * as firebase from 'firebase/app';
 import { ModifcationProduitPage } from '../pages/modifcation-produit/modifcation-produit';
 import { NoteListService } from '../services/note-list.service';
+import { PaiementPage } from '../pages/paiement/paiement';
 
 
 var firebaseConfig = {
@@ -100,7 +101,8 @@ firebase.initializeApp(firebaseConfig);
     Tabs4Page,
     GestionUtilisateurPage, 
     AjoutProduitPage,
-    ModifcationProduitPage
+    ModifcationProduitPage,
+    PaiementPage
   ],
   imports: [
     BrowserModule,
@@ -135,7 +137,8 @@ firebase.initializeApp(firebaseConfig);
     Tabs4Page,
     GestionUtilisateurPage,
     AjoutProduitPage,
-    ModifcationProduitPage
+    ModifcationProduitPage,
+    PaiementPage
     
   ],
   providers: [

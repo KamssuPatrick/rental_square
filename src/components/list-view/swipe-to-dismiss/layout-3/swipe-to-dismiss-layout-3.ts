@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { IonicPage, Content, ItemSliding } from 'ionic-angular';
+import { IonicPage, Content, ItemSliding, AlertController, NavController } from 'ionic-angular';
+import { PaiementPage } from '../../../../pages/paiement/paiement';
 
 @IonicPage()
 @Component({
@@ -12,11 +13,36 @@ export class SwipeToDismissLayout3 {
     @ViewChild(Content)
     content: Content;
 
-    constructor() { }
+    constructor(public alertCtrl: AlertController, public navCtrl: NavController) { }
 
     onEvent(event: string, item: any, e: any) {
         if (this.events[event]) {
             this.events[event](item);
+        }
+
+        if( event == "onItemClick")
+        {
+            let alert = this.alertCtrl.create({
+                title: 'Alert',
+                message: 'Vous devez disposer d\'un compte premium pour avoir accès à ces informations',
+                buttons: [
+                  {
+                    text: 'Annuler',
+                    role: 'cancel',
+                    handler: () => {
+                    }
+                  },
+                  {
+                    text: 'Souscrire',
+                    handler: () => {
+            
+                      this.navCtrl.push(PaiementPage);
+            
+                    }
+                  }
+                ]
+              });
+              alert.present();
         }
     }
 

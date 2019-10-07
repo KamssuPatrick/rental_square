@@ -118,6 +118,7 @@ export class LoginLayout1 {
                 console.log(userLastName, userName);
                 this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
                 console.log(user.user);
+                console.log("patrck");
                 this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
                 },
                 error => {
