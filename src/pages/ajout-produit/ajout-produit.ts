@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { VillaPage } from '../villa/villa';
 import { AppartementNmPage } from '../appartement-nm/appartement-nm';
@@ -8,7 +8,11 @@ import { ImmeublePage } from '../immeuble/immeuble';
 import { BureauPage } from '../bureau/bureau';
 import { MagasinPage } from '../magasin/magasin';
 import { BailPage } from '../bail/bail';
-//import { Camera, CameraOptions } from 'ionic-native';
+import { Observable } from 'rxjs';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { storage } from 'firebase';
+import { DataProvider } from '../../providers/data-service/data';
+
 
 /**
  * Generated class for the AjoutProduitPage page.
@@ -23,7 +27,12 @@ import { BailPage } from '../bail/bail';
 })
 export class AjoutProduitPage {
 
-  file: File;
+
+  
+  files: Observable<any[]>;
+  files1: any;
+  myphoto:any;
+
   imageURI:any;
   imageFileName:any;  
   avis: string;
@@ -40,22 +49,26 @@ export class AjoutProduitPage {
 
   myImages: Array<string>;
   value : any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase
-    , public alertCtrl: AlertController) {
+  
+  constructor( private dataProvider: DataProvider, public navCtrl: NavController, private camera: Camera, public navParams: NavParams, public afData: AngularFireDatabase, private alertCtrl: AlertController, private toastCtrl: ToastController ) {
+    
 
       this.value = navParams.get('item');
+      
+     // this.files = this.dataProvider.getFiles();
+      
+      
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AjoutProduitPage');
   }
 
-  Ajout()
-  {
+  Ajout(){
 
     if(this.value == "Villa")
     {
+     
       let alert = this.alertCtrl.create({
         title: 'Confirm purchase',
         message: 'Voulez-vous vraiment Ajouter ce produit ?',
@@ -70,12 +83,25 @@ export class AjoutProduitPage {
           {
             text: 'Ajouter',
             handler: () => {
-    
-              this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
-    
-              this.navCtrl.setRoot(VillaPage);
+              let upload= this.dataProvider.uploadToStorage("profile", "villa");
+              upload.then().then(res => {
+               
+                this.dataProvider.storeInfoToDatabase(res.metadata,"villa","profile").then(data => {
+                  /*this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix});
+        
+                  this.navCtrl.setRoot(VillaPage);
+                    
+                   let toast= this.toastCtrl.create({
+                     message: data.toString(),
+                     duration:5000
+                   })*/
+                   console.log(data);
+                });
+                
+              });
+              
     
             }
           }
@@ -267,135 +293,37 @@ export class AjoutProduitPage {
   
 }
 
-/*getPicture(sourceType){
-  const cameraOptions: CameraOptions = {
-    quality: 50,
-    destinationType: Camera.DestinationType.DATA_URL,
-    encodingType: Camera.EncodingType.JPEG,
-    mediaType: Camera.MediaType.PICTURE,
-    sourceType: sourceType
-  };
 
-  Camera.getPicture(cameraOptions)
-   .then((captureDataUrl) => {
-     this.captureDataUrl = 'data:image/jpeg;base64,' + captureDataUrl;
-  }, (err) => {
-      console.log(err);
-  });
-}  */
   
 
   changeListener($event) : void {
-    this.file = $event.target.files[0];
+    this.files1 = $event.target.files[0];
   }
-  
-  
 
-  loadImageFromDevice(event) {
-    const files = event.target.files;
-    const blobReader = new FileReader();
-    files.forEach(file => {
-        blobReader.readAsArrayBuffer(file);
-        blobReader.onload = () => {
-            let blob: Blob = new Blob([new Uint8Array((blobReader.result as ArrayBuffer))]);
-            let blobURL: string = URL.createObjectURL(blob);
-            this.myImages.push(blobURL);
-        };
-        blobReader.onerror = (error) => {
-            console.log(error);
-        };
-    })
-  };
-
-  /*getImage() {
+  getImage() {
     const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      quality: 70,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum:false
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.imageURI = imageData;
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      console.log("hellaaaaaaaaaaaaaa");
+      this.myphoto = 'data:image/jpeg;base64,' + imageData;
+      const toast = this.toastCtrl.create({
+        message:this.myphoto ,
+        duration: 5000
+      });
+      toast.present();
+      console.log(this.myphoto);
+     
     }, (err) => {
-      console.log(err);
-      this.presentToast(err);
-    });
-    this.uploadImage(this.imageURI);
-  }
-
-  uploadFile() {
-    let loader = this.loadingCtrl.create({
-      content: "Uploading..."
-    });
-    loader.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
-  
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
-  
-    fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
-      .then((data) => {
-      console.log(data+" Uploaded Successfully");
-      this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-      loader.dismiss();
-      this.presentToast("Image uploaded successfully");
-    }, (err) => {
-      console.log(err);
-      loader.dismiss();
-      this.presentToast(err);
+      // Handle error
     });
   }
+ 
 
-
-
-  presentToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 3000,
-      position: 'bottom'
-    });
-  
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-  
-    toast.present();
-  }
-
-  uploadImage(imageURI){
-    return new Promise<any>((resolve, reject) => {
-      let storageRef = firebase.storage().ref();
-      let imageRef = storageRef.child('image').child('imageName');
-      this.encodeImageUri(imageURI, function(image64){
-        imageRef.putString(image64, 'data_url')
-        .then(snapshot => {
-          resolve(snapshot.downloadURL)
-        }, err => {
-          reject(err);
-          console.log(err);
-        })
-      })
-    })
-  }
-
-  encodeImageUri(imageUri, callback) {
-    var c = document.createElement('canvas');
-    var ctx = c.getContext("2d");
-    var img = new Image();
-    img.onload = function () {
-      var aux:any = this;
-      c.width = aux.width;
-      c.height = aux.height;
-      ctx.drawImage(img, 0, 0);
-      var dataURL = c.toDataURL("image/jpeg");
-      callback(dataURL);
-    };
-    img.src = imageUri;
-  };
-*/
 }

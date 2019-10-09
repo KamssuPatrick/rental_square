@@ -44,6 +44,7 @@ import { GalleryImagePage } from '../pages/gallery-image/gallery-image';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AppSettings } from '../services/app-settings';
 import { RegisterPage } from '../pages/register/register';
 import { AuthService } from '../services/auth.service';
@@ -62,9 +63,12 @@ import * as firebase from 'firebase/app';
 import { ModifcationProduitPage } from '../pages/modifcation-produit/modifcation-produit';
 import { NoteListService } from '../services/note-list.service';
 
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { Camera } from '@ionic-native/camera';
+import { DataProvider } from '../providers/data-service/data';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+
 
 
 var firebaseConfig = {
@@ -111,7 +115,7 @@ firebase.initializeApp(firebaseConfig);
     NgxErrorsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
-    AngularFireDatabaseModule, AngularFireAuthModule,
+    AngularFireDatabaseModule, AngularFireAuthModule, AngularFireStorageModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
     ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module
   ],
@@ -145,11 +149,12 @@ firebase.initializeApp(firebaseConfig);
   providers: [
     Config,
     StatusBar,
-    //FileUploadOptions,
     FileTransferObject,
     FileTransfer, // <--- This one!        
     File,
     Camera,
+    ImagePicker,
+    DataProvider,
     SplashScreen,
     AngularFireAuth,
     GoogleAnalytics,

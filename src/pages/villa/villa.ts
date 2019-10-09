@@ -3,7 +3,7 @@ import { NavController, NavParams, IonicPage, LoadingController } from 'ionic-an
 import { ModifcationProduitPage } from '../modifcation-produit/modifcation-produit';
 import { AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
-import { firebaseConfig } from '../../config';
+
 
 /**
  * Generated class for the VillaPage page.

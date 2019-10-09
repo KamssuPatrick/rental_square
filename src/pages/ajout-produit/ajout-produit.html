@@ -13,7 +13,7 @@
 
 
 <ion-content >
-  <form (ngSubmit)="Ajout()" #registerForm="ngForm">
+  <form  #registerForm="ngForm">
       <ion-row>
 
  
@@ -107,7 +107,7 @@
 
 
 
- <ion-card text-center *ngIf="!isUploading && !isUploaded">
+ <ion-card text-center>
     <ion-card-header>
       <ion-card-title>Choisissez l'arrière plan</ion-card-title>
     </ion-card-header>
@@ -115,32 +115,37 @@
       <div class="fileUpload btn btn-primary">
         <span>Upload</span>
         <ion-item>
-            <p>{{imageURI}}</p>
-            <button ion-button color="secondary" (click)="getImage()">Get Image</button>
+          <p align="center"><img src="{{myphoto}}"></p>
+
+          
+
         </ion-item>
+       
         <ion-item>
-          <h4>Image Preview</h4>
-          <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
+            <ion-fab center bottom class="upButton">
+              <button ion-fab color="primary" (click)="getImage()">
+                <ion-icon name="cloud-upload"></ion-icon>
+              </button>
+            </ion-fab>
         </ion-item>
-        <ion-item>
-          <button ion-button outline (click)="uploadFile()">Upload</button>
-        </ion-item>
+       
+        
       </div>
     </ion-card-content>
   </ion-card>
 
 
-    <button full>
+    <!--<button full>
       <ion-label>Images Secondaires</ion-label>
       <input multiple type="file" (change)="loadImageFromDevice($event)" accept="image/png, image/jpeg">
-    </button>
+    </button>-->
 
              </ion-row>
 
       <ion-row>
         <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only round>Ajouter</button>
+          <button  full ion-button text-only round (click)="Ajout()">Ajouter</button>
         </ion-col>
       </ion-row>
 
