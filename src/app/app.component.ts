@@ -11,12 +11,13 @@ import { PaiementPage } from '../pages/paiement/paiement';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
+import { PayPalPage } from '../pages/pay-pal/pay-pal';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = PaiementPage;
+  rootPage:any = PayPalPage;
 
   @ViewChild(Nav) nav: Nav;
   

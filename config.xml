@@ -6,7 +6,7 @@
     <universal-links>
         <host name="DYNAMIC_LINK_DOMAIN" scheme="https" />
         <host name="rentalsquares.firebaseapp.com" scheme="https">
-            <path url="/__/auth/callback"/>
+            <path url="/__/auth/callback" />
         </host>
     </universal-links>
     <content src="index.html" />

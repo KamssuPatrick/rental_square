@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { PayPalModule } from '../pages/pay-pal/paypal.module';
+
 
 import { LoginLayout1 } from '../components/login/layout-1/login-layout-1';
 import { RegisterLayout2 } from '../components/register/layout-2/register-layout-2';
@@ -111,7 +113,10 @@ firebase.initializeApp(firebaseConfig);
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
     AngularFireDatabaseModule, AngularFireAuthModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
-    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module
+    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module,
+    AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module,
+    PayPalModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
