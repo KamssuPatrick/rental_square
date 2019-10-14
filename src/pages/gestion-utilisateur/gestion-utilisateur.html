@@ -26,7 +26,7 @@
 
           <ion-col no-padding col-12 background-size [ngStyle]="{'background-image': 'url(../../assets/images/gallery/bend/home.jpg)'}">
               <!-- Header Title -->
-              <img src="../../assets/images/avatar/user.png" alt="User" class="userImage" > 
+              <img src="{{value2.avatars}}" alt="User" class="userImage" > 
               
               <h1 ion-text register-title text-wrap class="nnd">{{value2.username}} {{value2.prenom}}</h1>
           </ion-col>
@@ -40,7 +40,7 @@
                   </h1>
                 <div class="detail">Nom:    <span class="deco">{{value2.username}}</span></div>
                 <div class="detail">Prénom: <span class="deco">{{value2.prenom}}</span></div>
-                <div class="detail">Adresse mail: <span class="deco">{{value2.email}}</span> </div>
+                <div class="detail">Adresse mail: <span class="deco">{{value2.uid}}</span> </div>
               
               </ion-item>
               <ion-item>

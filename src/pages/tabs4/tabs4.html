@@ -16,11 +16,11 @@
 
 <ion-content >
 
-<form #registerForm="ngForm">
+<form #registerForm="ngForm" *ngIf="user">
   <ion-row>
 
     <ion-item>
-    <img (click)="changeImage()" src="../assets/images/avatar/user.png  ">
+    <img (click)="changeImage()" class="myphoto" src="{{user.photoURL}}" height='260' width='220'>
     </ion-item>
 
 
@@ -30,39 +30,28 @@
   </ion-card-header>
 
   <ion-item>
-  <ion-label floating>Nom</ion-label>
-    <ion-input ></ion-input>
+  <div class="detail">Nom:    <span class="deco">{{user.displayName}}</span></div>
+  <div class="detail">Prénom: <span class="deco">{{user.displayName}}</span></div>
+  <div class="detail">Adresse mail: <span class="deco">{{user.email}}</span> </div>
   </ion-item>
 
-<ion-item>
-<ion-label floating>Prénom</ion-label>
-    <ion-input ></ion-input>
-  </ion-item>
-
-<ion-item>
-  <ion-label floating>Email {{email}}</ion-label>
-    <ion-input ></ion-input>
-  </ion-item>
-
-  
-
-
-
-
-
-
-
-
-             </ion-row>
+    </ion-row>
 
       <ion-row>
         <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
           <button  full ion-button text-only  (click)= "modifier()" round>Modifier</button>
-          <button  full ion-button text-only id= "butt_color_supprimer" (click)= "deconnexion()" round>Se déconnecter</button>
         </ion-col>
       </ion-row>
 
     </form>
+
+    <ion-footer (click)="deconnexion()">
+  <ion-toolbar color="danger">
+    <ion-title>
+      Se déconnecter
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
 
 </ion-content>

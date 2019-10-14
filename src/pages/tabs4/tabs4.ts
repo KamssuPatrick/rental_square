@@ -7,6 +7,7 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { log } from 'util';
 
 /**
  * Generated class for the Tabs4Page page.
@@ -38,7 +39,8 @@ export class Tabs4Page {
     public navCtrl: NavController,
     public navParams: NavParams, 
     public app: App,
-    public auth: AuthService) {
+    public auth: AuthService,
+    private fireAuth: AngularFireAuth) {
 
       this.user = firebase.auth().currentUser;
 
@@ -89,6 +91,31 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
 		console.log("helllllllllooooooooooo",params)
 	   return params;
 		
-	  }
+    }
+    
+    ngOnInit() {
+      this.fireAuth.auth.onAuthStateChanged(user => {
+        if (user) {
+          this.user = {
+            uid: user.uid,
+            phoneNumber: user.phoneNumber,
+            photoURL: user.photoURL,
+            creationTime: user.metadata.creationTime,
+            lastSignInTime: user.metadata.lastSignInTime,
+            isAnonymous: user.isAnonymous,
+            email: user.email,
+            displayName: user.displayName,
+            emailVerified: user.emailVerified,
+            refreshToken: user.refreshToken
+          }
+
+          console.log("les donneesss", user.photoURL);
+        }
+        else {
+          //this.router.navigate(["/home"]);
+          console.log("pas de données");
+        }
+      })
+    }
 
 }

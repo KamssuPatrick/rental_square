@@ -65,7 +65,9 @@ export class UtilisateurPage {
           "uid": keyyy[i],
           "username": data.val().username,
           "prenom": data.val().prenom,
-          "image":"assets/images/avatar/user1.png"
+          "image":"assets/images/avatar/user1.png",
+          "phoneNumber": snapshot.val().phooneNumber,
+          "displayName": snapshot.val().displayName,
         };
         i++;
       });
