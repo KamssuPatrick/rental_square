@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MenuProvider} from '../providers/menu/menu';
+import { PaypalPage } from '../pages/paypal/paypal';
 
 import { HomePage } from '../pages/home/home';
 import { AccueilPage } from '../pages/accueil/accueil';
@@ -11,13 +12,12 @@ import { PaiementPage } from '../pages/paiement/paiement';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
-import { PayPalPage } from '../pages/pay-pal/pay-pal';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = PayPalPage;
+  rootPage:any = PaiementPage;
 
   @ViewChild(Nav) nav: Nav;
   
