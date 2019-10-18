@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { PayPalPayment, PayPalConfiguration, PayPalPaymentDetails } from '@ionic-native/paypal';
+import { PayPal } from '@ionic-native/paypal/ngx';
 
 /**
  * Generated class for the PaypalPage page.
@@ -37,17 +38,28 @@ export class PaypalPage {
     }).then(() => {
       // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
       this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+
+        acceptCreditCards: true,
+        languageOrLocale: 'pt-BR',
+        merchantName: 'CanalDoAbranches',
+        merchantPrivacyPolicyURL: '',
+        merchantUserAgreementURL: ''
         // Only needed if you get an "Internal Service Error" after PayPal login!
         //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
       })).then(() => {
-        let payment = new PayPalPayment('3.33', 'USD', 'Description', 'sale');
-        this.payPal.renderSinglePaymentUI(payment).then(() => {
+        let detail = new PayPalPaymentDetails('19.99', '0.00', '0.00');
+        let payment = new PayPalPayment('3.33', 'USD', 'CanalDoAbranches', 'Sale', detail);
+        this.payPal.renderSinglePaymentUI(payment).then((response) => {
           // Successfully paid
+
+          console.log('paiement effectué');
         }, () => {
           // Error or render dialog closed without being successful
+          console.log('paiement erreur');
         });
       }, () => {
         // Error in configuration
+        console.log('Erreur dans la configuration');
       });
     }, () => {
       // Error in initialization, maybe PayPal isn't supported or something else

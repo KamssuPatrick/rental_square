@@ -65,7 +65,7 @@ import { NoteListService } from '../services/note-list.service';
 import { PaiementPage } from '../pages/paiement/paiement';
 import { PaypalPage } from '../pages/paypal/paypal';
 
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { PayPal } from '@ionic-native/paypal/ngx';
 
 
 var firebaseConfig = {
