@@ -34,11 +34,14 @@
               <ion-card-header>
                 <ion-card-title>MonetBil</ion-card-title>
               </ion-card-header>
-
               <ion-card-content>
                 MonetBil vous permettra d'effectuer votre paiement avec les principaux moyens
                 de paiement disponibles en local,
                 c'est à dire par Orange Money, Mtn Mobile Money, Express Union
+              </ion-card-content>
+
+              <ion-card-content>
+                <button full ion-button text-only class="monet" round>Abonnez-vous par MonetBil</button>
               </ion-card-content>
             </ion-card>
 
@@ -51,15 +54,17 @@
                 PayPal, leader incontesté en matière de paiement en ligne,
                 permet aux acheteurs et aux vendeurs d'envoyer et de recevoir des paiements en ligne
               </ion-card-content>
+
+              <ion-card-content>
+               <button  full ion-button text-only class="paypal" (click) = "paypal()" round>Abonnez-vous par PayPal</button>
+              </ion-card-content>
             </ion-card>
            
 
             </div>
                   <ion-row>
         <ion-col class="signup-col">
-          <button full ion-button text-only class="monet" round>Abonnez-vous par MonetBil</button>
-          <button  full ion-button text-only class="paypal" (click) = "paypal()" round>Abonnez-vous par PayPal</button>
-        </ion-col>
+          </ion-col>
       </ion-row>
       </ion-col>
 
