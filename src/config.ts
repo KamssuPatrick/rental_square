@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Config {
 	public wordpressApiUrl = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
+
+	static payPalEnvironmentSandbox = 'AdOCNtz6mbyS9GMRR3sBQGjncCsY7_uOFFqGzC_GGeZMLYm4XN4hB1yrFnswCxGtMOpYCn4GMeGEs6eS';
+	static payPalEnvironmentProduction = '';
 }
 
 export const firebaseConfig = {

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 
+
 import { LoginLayout1 } from '../components/login/layout-1/login-layout-1';
 import { RegisterLayout2 } from '../components/register/layout-2/register-layout-2';
 import { WizardLayout3 } from '../components/wizard/layout-3/wizard-layout-3';
@@ -62,6 +63,11 @@ import * as firebase from 'firebase/app';
 import { ModifcationProduitPage } from '../pages/modifcation-produit/modifcation-produit';
 import { NoteListService } from '../services/note-list.service';
 import { PaiementPage } from '../pages/paiement/paiement';
+import { PaypalPage } from '../pages/paypal/paypal';
+
+import { PayPal } from '@ionic-native/paypal/ngx';
+import { DemenagementPage } from '../pages/demenagement/demenagement';
+import { AmenagementPage } from '../pages/amenagement/amenagement';
 
 
 var firebaseConfig = {
@@ -102,7 +108,10 @@ firebase.initializeApp(firebaseConfig);
     GestionUtilisateurPage, 
     AjoutProduitPage,
     ModifcationProduitPage,
-    PaiementPage
+    PaiementPage,
+    PaypalPage,
+    DemenagementPage,
+    AmenagementPage
   ],
   imports: [
     BrowserModule,
@@ -111,7 +120,10 @@ firebase.initializeApp(firebaseConfig);
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
     AngularFireDatabaseModule, AngularFireAuthModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
-    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module
+    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module,
+    AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module
+    
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -138,7 +150,11 @@ firebase.initializeApp(firebaseConfig);
     GestionUtilisateurPage,
     AjoutProduitPage,
     ModifcationProduitPage,
-    PaiementPage
+    PaiementPage,
+    PaypalPage,
+    AmenagementPage,
+    DemenagementPage
+    
     
   ],
   providers: [
@@ -150,7 +166,8 @@ firebase.initializeApp(firebaseConfig);
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
-    NoteListService
+    NoteListService,
+    PayPal
   ]
 })
 export class AppModule {}

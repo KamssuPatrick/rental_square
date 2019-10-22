@@ -6,17 +6,19 @@ import * as firebase from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 
 /**
- * Generated class for the DemenagementPage page.
+ * Generated class for the AmenagementPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-demenagement',
-  templateUrl: 'demenagement.html',
+  selector: 'page-amenagement',
+  templateUrl: 'amenagement.html',
 })
-export class DemenagementPage {
+export class AmenagementPage {
+
+  file: File;
 
   clientAdresse: string;
   dateAmenagement: string;
@@ -41,7 +43,7 @@ export class DemenagementPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DemenagementPage');
+    console.log('ionViewDidLoad AmenagementPage');
   }
 
   Ajout()
@@ -65,7 +67,7 @@ export class DemenagementPage {
             text: 'Envoyer',
             handler: () => {
     
-              this.afData.list("/demenagement").push({clientAdresse: this.clientAdresse, dateAmenagement: this.dateAmenagement, etage: this.etage, 
+              this.afData.list("/amenagement").push({clientAdresse: this.clientAdresse, dateAmenagement: this.dateAmenagement, etage: this.etage, 
                 distance: this.distance, destinationAdresse: this.destinationAdresse, telephone: this.telephone, heureAmenagement: this.heureAmenagement, myDate: this.myDate,
                 nbrepiece: this.nbrepiece, user: this.user});
     

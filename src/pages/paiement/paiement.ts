@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { PaypalPage } from '../paypal/paypal';
 
 /**
  * Generated class for the PaiementPage page.
@@ -19,6 +20,11 @@ export class PaiementPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaiementPage');
+  }
+
+  paypal()
+  {
+    this.navCtrl.push(PaypalPage);
   }
 
 }
