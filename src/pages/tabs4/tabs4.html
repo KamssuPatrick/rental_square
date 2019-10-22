@@ -16,53 +16,49 @@
 
 <ion-content >
 
-<<<<<<< HEAD
-<form #registerForm="ngForm" *ngIf="user">
-  <ion-row>
-
-    <ion-item>
-    <img (click)="changeImage()" class="myphoto" src="{{user.photoURL}}" height='260' width='220'>
-    </ion-item>
-
-
-
-  <ion-card-header>
-    <ion-card-title>Général</ion-card-title>
-  </ion-card-header>
-
+<ion-card class="welcome-card">
   <ion-item>
-  <div class="detail">Nom:    <span class="deco">{{user.displayName}}</span></div>
-  <div class="detail">Prénom: <span class="deco">{{user.displayName}}</span></div>
-  <div class="detail">Adresse mail: <span class="deco">{{user.email}}</span> </div>
-  </ion-item>
-
-    </ion-row>
-
-      <ion-row>
-        <ion-col class="signup-col">
+    <img src="../assets/amenagement2.jpg">
+    </ion-item>
+    <ion-card-header>
+      <ion-card-title>Aménagement</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    C'est dans un élan d'accompagnement que nous avons mis sur pieds depuis janvier 2016 un service de d'aménagement
+    professionnel. Il s'agit d'aménager délicatement les effets de nos clients. Pour cela, nous utilisons les matériels adéquats
+    pour éviter les casses à savoir:
+    <p>* Camion en très bon état </p>
+    <p>* Polystyrène</p>
+    <p>* Papier bulle</p>
+    <p>* des emballages carton</p>
+      <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only  (click)= "modifier()" round>Modifier</button>
+          <button  full ion-button text-only  (click)= "amenagement()" round>Demander un Aménagement</button>
         </ion-col>
-      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
-    </form>
-
-    <ion-footer (click)="deconnexion()">
-  <ion-toolbar color="danger">
-    <ion-title>
-      Se déconnecter
-    </ion-title>
-  </ion-toolbar>
-</ion-footer>
-
-=======
-      <ion-row>
-        <ion-col class="signup-col">
+  <ion-card class="welcome-card">
+  <ion-item>
+    <img src="../assets/demenagement.png">
+    </ion-item>
+    <ion-card-header>
+      <ion-card-title>Déménagement</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    C'est dans un élan d'accompagnement que nous avons mis sur pieds depuis janvier 2016 un service de déménagement
+    professionnel. Il s'agit de déménager délicatement les effets de nos clients. Pour cela, nous utilisons les matériels adéquats
+    pour éviter les casses à savoir:
+    <p>* Camion en très bon état </p>
+    <p>* Polystyrène</p>
+    <p>* Papier bulle</p>
+    <p>* des emballages carton</p>
+      <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only  (click)= "amenagement()" round>Aménagement</button>
-          <button  full ion-button text-only id= "butt_color_supprimer" (click)= "demenagement()" round>Déménagement</button>
+          <button  full ion-button text-only id= "butt_color_supprimer" (click)= "demenagement()" round> Demander un Déménagement</button>
         </ion-col>
-      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
->>>>>>> paypal
+    
 </ion-content>

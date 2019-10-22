@@ -17,7 +17,7 @@ import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-uti
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = TabsPage;
 
   @ViewChild(Nav) nav: Nav;
   
