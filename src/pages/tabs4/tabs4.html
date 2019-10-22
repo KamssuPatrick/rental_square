@@ -16,53 +16,12 @@
 
 <ion-content >
 
-<form #registerForm="ngForm">
-  <ion-row>
-
-    <ion-item>
-    <img (click)="changeImage()" src="../assets/images/avatar/user.png  ">
-    </ion-item>
-
-
-
-  <ion-card-header>
-    <ion-card-title>Général</ion-card-title>
-  </ion-card-header>
-
-  <ion-item>
-  <ion-label floating>Nom</ion-label>
-    <ion-input ></ion-input>
-  </ion-item>
-
-<ion-item>
-<ion-label floating>Prénom</ion-label>
-    <ion-input ></ion-input>
-  </ion-item>
-
-<ion-item>
-  <ion-label floating>Email {{email}}</ion-label>
-    <ion-input ></ion-input>
-  </ion-item>
-
-  
-
-
-
-
-
-
-
-
-             </ion-row>
-
       <ion-row>
         <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only  (click)= "modifier()" round>Modifier</button>
-          <button  full ion-button text-only id= "butt_color_supprimer" (click)= "deconnexion()" round>Se déconnecter</button>
+          <button  full ion-button text-only  (click)= "amenagement()" round>Aménagement</button>
+          <button  full ion-button text-only id= "butt_color_supprimer" (click)= "demenagement()" round>Déménagement</button>
         </ion-col>
       </ion-row>
-
-    </form>
 
 </ion-content>

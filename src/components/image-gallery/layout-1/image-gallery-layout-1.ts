@@ -20,6 +20,8 @@ export class ImageGalleryLayout1 {
       'events': this.events,
       'layout': 1
     });
+
+    console.log("ici", index);
   }
 
   ngOnChanges(changes: { [propKey: string]: any }) {

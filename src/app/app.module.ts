@@ -66,6 +66,8 @@ import { PaiementPage } from '../pages/paiement/paiement';
 import { PaypalPage } from '../pages/paypal/paypal';
 
 import { PayPal } from '@ionic-native/paypal/ngx';
+import { DemenagementPage } from '../pages/demenagement/demenagement';
+import { AmenagementPage } from '../pages/amenagement/amenagement';
 
 
 var firebaseConfig = {
@@ -107,7 +109,9 @@ firebase.initializeApp(firebaseConfig);
     AjoutProduitPage,
     ModifcationProduitPage,
     PaiementPage,
-    PaypalPage
+    PaypalPage,
+    DemenagementPage,
+    AmenagementPage
   ],
   imports: [
     BrowserModule,
@@ -147,7 +151,9 @@ firebase.initializeApp(firebaseConfig);
     AjoutProduitPage,
     ModifcationProduitPage,
     PaiementPage,
-    PaypalPage
+    PaypalPage,
+    AmenagementPage,
+    DemenagementPage
     
     
   ],
