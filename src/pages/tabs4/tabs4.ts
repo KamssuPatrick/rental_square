@@ -7,12 +7,8 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-<<<<<<< HEAD
-import { log } from 'util';
-=======
 import { AmenagementPage } from '../amenagement/amenagement';
 import { DemenagementPage } from '../demenagement/demenagement';
->>>>>>> paypal
 
 /**
  * Generated class for the Tabs4Page page.
@@ -96,39 +92,11 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
 		console.log("helllllllllooooooooooo",params)
 	   return params;
 		
-<<<<<<< HEAD
-    }
-    
-    ngOnInit() {
-      this.fireAuth.auth.onAuthStateChanged(user => {
-        if (user) {
-          this.user = {
-            uid: user.uid,
-            phoneNumber: user.phoneNumber,
-            photoURL: user.photoURL,
-            creationTime: user.metadata.creationTime,
-            lastSignInTime: user.metadata.lastSignInTime,
-            isAnonymous: user.isAnonymous,
-            email: user.email,
-            displayName: user.displayName,
-            emailVerified: user.emailVerified,
-            refreshToken: user.refreshToken
-          }
-
-          console.log("les donneesss", user.photoURL);
-        }
-        else {
-          //this.router.navigate(["/home"]);
-          console.log("pas de données");
-        }
-      })
-=======
     }*/
     
     amenagement()
     {
       this.navCtrl.push(AmenagementPage);
->>>>>>> paypal
     }
 
     demenagement()
