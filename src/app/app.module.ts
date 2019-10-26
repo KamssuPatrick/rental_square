@@ -68,6 +68,11 @@ import { File } from '@ionic-native/file/ngx';
 import { Camera } from '@ionic-native/camera';
 import { DataProvider } from '../providers/data-service/data';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { GlobalProvider } from '../providers/global/global';
+import { HttpModule } from '@angular/http';
+import { Tabs5Page } from '../pages/tabs5/tabs5';
+import { PaiementPage } from '../pages/paiement/paiement';
+import { PaypalPage } from '../pages/paypal/paypal';
 
 
 
@@ -106,9 +111,12 @@ firebase.initializeApp(firebaseConfig);
     TabsPage,
     Tabs3Page,
     Tabs4Page,
+    Tabs5Page,
     GestionUtilisateurPage, 
     AjoutProduitPage,
-    ModifcationProduitPage
+    ModifcationProduitPage,
+    PaiementPage,
+    PaypalPage
   ],
   imports: [
     BrowserModule,
@@ -116,6 +124,7 @@ firebase.initializeApp(firebaseConfig);
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
     AngularFireDatabaseModule, AngularFireAuthModule, AngularFireStorageModule,
+    HttpModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
     ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module
   ],
@@ -141,9 +150,12 @@ firebase.initializeApp(firebaseConfig);
     TabsPage,
     Tabs3Page,
     Tabs4Page,
+    Tabs5Page,
     GestionUtilisateurPage,
     AjoutProduitPage,
-    ModifcationProduitPage
+    ModifcationProduitPage,
+    PaiementPage,
+    PaypalPage
     
   ],
   providers: [
@@ -161,7 +173,8 @@ firebase.initializeApp(firebaseConfig);
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
-    NoteListService
+    NoteListService,
+    GlobalProvider
   ]
 })
 export class AppModule {}

@@ -7,6 +7,8 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { AmenagementPage } from '../amenagement/amenagement';
+import { DemenagementPage } from '../demenagement/demenagement';
 
 /**
  * Generated class for the Tabs4Page page.
@@ -38,7 +40,8 @@ export class Tabs4Page {
     public navCtrl: NavController,
     public navParams: NavParams, 
     public app: App,
-    public auth: AuthService) {
+    public auth: AuthService,
+    private fireAuth: AngularFireAuth) {
 
       this.user = firebase.auth().currentUser;
 
@@ -52,7 +55,7 @@ console.log('OOPS, error', error)
 })*/
       
 this.ref =  firebase.database().ref("users");
-this.params.data = this.getAllUsers();
+//this.params.data = this.getAllUsers();
 console.log('ionViewDidLoad Tabs4Page', this.params.data);
       
   }
@@ -64,7 +67,7 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
     this.app.getRootNav().push(HomePage);
   }
 
-  getAllUsers(){ 
+  /*getAllUsers(){ 
 		let params={"items":[]};
 		let items=[];
 		this.ref.on('value', function(snapshot) {
@@ -89,6 +92,15 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
 		console.log("helllllllllooooooooooo",params)
 	   return params;
 		
-	  }
+    }*/
+    
+    amenagement()
+    {
+      this.navCtrl.push(AmenagementPage);
+    }
 
+    demenagement()
+    {
+      this.navCtrl.push(DemenagementPage);
+    }
 }

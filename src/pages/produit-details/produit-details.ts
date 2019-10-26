@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, AlertController } from 'ionic-angular';
+import * as firebase from 'firebase/app';
+import { GalleryImagePage } from '../gallery-image/gallery-image';
 
 /**
  * Generated class for the ProduitDetailsPage page.
@@ -15,36 +17,23 @@ import { NavController, NavParams } from 'ionic-angular';
 export class ProduitDetailsPage {
 
   params: any = {};
+  ref:any;
+  value2 : any;
+  value : any;
+  links: any;
+  img: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
 
 
-    this.params.data = {
-      "headerImage" : "assets/images/gallery/brogan/villa1.jpg",
-      "headerTitle" : "",
-      "items" : [ {
-        "button" : "$63.99",
-        "category" : "NEW OFFER",
-        "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        "id" : 1,
-        "productDescriptions" : [ {
-          "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-          "id" : 1
-        }, {
-          "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          "id" : 2
-        }, {
-          "description" : "passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum",
-          "id" : 3
-        }, {
-          "description" : "passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum",
-          "id" : 4
-        } ],
-        "subtitle" : "Available Now",
-        "title" : "Super & Black"
-      } ],
-      "shareIcon" : "heart"
-    }
+    this.value = navParams.get('item');
+    this.img = navParams.get('image');
+    this.ref= firebase.database().ref("services/villa/"+ this.value);
+
+    this.params.data = this.getAllUsers();
+    this.value2=this.params.data;
+    console.log("jkkjdkfjkdjfdfh",this.img);
+    
 
     this.params.events = {
       'onShare': function (item: any) {
@@ -57,8 +46,71 @@ export class ProduitDetailsPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProduitDetailsPage');
+
+  getAllUsers(){ 
+    let params={};
+    this.ref.on('value', function(snapshot) {
+      let i=0;
+      
+      let keyyy=[];
+		  let link: any;
+		  keyyy= Object.keys(snapshot.val());
+		  
+        let propic:any;
+        let nn= firebase.database().ref(`files/villa/profile/${snapshot.val().profilePic}`);
+        nn.on('value', async function(idPP){
+          propic=idPP;
+          console.log("propicss: ",propic.val().fullPath);
+          let urli=propic.val().fullPath;
+          var storage = firebase.storage();
+          var pathReference = storage.ref();
+          //console.log("urli: ",urli);
+
+          pathReference.child(urli).getDownloadURL().then(function(url) {
+            link=url;
+
+            console.log("urliss: ",snapshot.val().autre);
+           
+  
+          }).catch(function(error) {
+            // Handle any errors
+            console.log("error admin: ",error)
+          });
+        });
+
+        
+        
+      
+      
+      
+        console.log(snapshot.val());
+        
+        params={
+          "autre": snapshot.val().autre,
+          "avis": snapshot.val().avis,
+          "chambre":snapshot.val().chambre,
+          "cuisine":snapshot.val().cuisine,
+          "etage": snapshot.val().etage,
+          "parking": snapshot.val().parking,
+          "prix": snapshot.val().prix,
+          "profilePic": snapshot.val().profilePic,
+          "salon": snapshot.val().salon,
+          "surface": snapshot.val().surface,
+          "terrasse": snapshot.val().terrasse,
+          "toilette": snapshot.val().toilette,
+          "uid": snapshot.val().uid
+        };
+       
+      
+     
+    });
+    //console.log("helllllllllooooooooooo",params)
+   return params;
+    
+  }
+
+  onGalleryClick(){
+    this.navCtrl.push(GalleryImagePage);
   }
 
 }

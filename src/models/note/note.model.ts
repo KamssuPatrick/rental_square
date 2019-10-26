@@ -11,4 +11,5 @@ export interface Note {
     surface: string;
     terrasse: string;
     toilette: string;
+    image: string;
 }

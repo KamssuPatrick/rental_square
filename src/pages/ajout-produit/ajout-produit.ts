@@ -83,16 +83,20 @@ export class AjoutProduitPage {
           {
             text: 'Ajouter',
             handler: () => {
-              let upload= this.dataProvider.uploadToStorage("profile", "villa");
+              let upload= this.dataProvider.uploadToStorage(this.myphoto, "villa");
+              
               upload.then().then(res => {
-               
+                console.log("this.dataProvider.url", this.dataProvider.url);
+                
+                
                 this.dataProvider.storeInfoToDatabase(res.metadata,"villa","profile").then(data => {
-                  /*this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                  this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix});
-        
-                  this.navCtrl.setRoot(VillaPage);
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, profilePic:data.key});
                     
+                  this.navCtrl.setRoot(VillaPage);
+
+                  /*  
                    let toast= this.toastCtrl.create({
                      message: data.toString(),
                      duration:5000
@@ -127,12 +131,29 @@ export class AjoutProduitPage {
             text: 'Ajouter',
             handler: () => {
     
-              this.afData.list("/services/appt_non_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
-    
-              this.navCtrl.setRoot(AppartementNmPage);
-    
+              let upload= this.dataProvider.uploadToStorage(this.myphoto, "appt_non_meuble");
+              
+              upload.then().then(res => {
+                console.log("this.dataProvider.url", this.dataProvider.url);
+                
+                
+                this.dataProvider.storeInfoToDatabase(res.metadata,"appt_non_meuble","profile").then(data => {
+                  this.afData.list("/services/appt_non_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, profilePic:data.key});
+                    
+                  this.navCtrl.setRoot(AppartementNmPage);
+
+                  /*  
+                   let toast= this.toastCtrl.create({
+                     message: data.toString(),
+                     duration:5000
+                   })*/
+                   console.log(data);
+                });
+                
+              });
+              
             }
           }
         ]
@@ -157,13 +178,30 @@ export class AjoutProduitPage {
             text: 'Ajouter',
             handler: () => {
     
-              this.afData.list("/services/appt_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
-    
-              this.navCtrl.setRoot(AppartementMPage);
-    
-            }
+              
+              let upload= this.dataProvider.uploadToStorage(this.myphoto, "appt_meuble");
+              
+              upload.then().then(res => {
+                console.log("this.dataProvider.url", this.dataProvider.url);
+                
+                
+                this.dataProvider.storeInfoToDatabase(res.metadata,"appt_meuble","profile").then(data => {
+                  this.afData.list("/services/appt_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, profilePic:data.key});
+                    
+                  this.navCtrl.setRoot(AppartementMPage);
+
+                  /*  
+                   let toast= this.toastCtrl.create({
+                     message: data.toString(),
+                     duration:5000
+                   })*/
+                   console.log(data);
+                });
+                
+              });
+              }
           }
         ]
       });
@@ -187,11 +225,30 @@ export class AjoutProduitPage {
             text: 'Ajouter',
             handler: () => {
     
-              this.afData.list("/services/immeuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
-    
-              this.navCtrl.setRoot(ImmeublePage);
+             
+              
+              let upload= this.dataProvider.uploadToStorage(this.myphoto, "immeuble");
+              
+              upload.then().then(res => {
+                console.log("this.dataProvider.url", this.dataProvider.url);
+                
+                
+                this.dataProvider.storeInfoToDatabase(res.metadata,"immeuble","profile").then(data => {
+                  this.afData.list("/services/immeuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, profilePic:data.key});
+                    
+                  this.navCtrl.setRoot(ImmeublePage);
+
+                  /*  
+                   let toast= this.toastCtrl.create({
+                     message: data.toString(),
+                     duration:5000
+                   })*/
+                   console.log(data);
+                });
+                
+              });
     
             }
           }
@@ -217,11 +274,29 @@ export class AjoutProduitPage {
             text: 'Ajouter',
             handler: () => {
     
-              this.afData.list("/services/bureau").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
-    
-              this.navCtrl.setRoot(BureauPage);
+              
+              let upload= this.dataProvider.uploadToStorage(this.myphoto, "bureau");
+              
+              upload.then().then(res => {
+                console.log("this.dataProvider.url", this.dataProvider.url);
+                
+                
+                this.dataProvider.storeInfoToDatabase(res.metadata,"bureau","profile").then(data => {
+                  this.afData.list("/services/bureau").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, profilePic:data.key});
+                    
+                  this.navCtrl.setRoot(BureauPage);
+
+                  /*  
+                   let toast= this.toastCtrl.create({
+                     message: data.toString(),
+                     duration:5000
+                   })*/
+                   console.log(data);
+                });
+                
+              });
     
             }
           }
@@ -247,11 +322,29 @@ export class AjoutProduitPage {
             text: 'Ajouter',
             handler: () => {
     
-              this.afData.list("/services/magasin").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
-    
-              this.navCtrl.setRoot(MagasinPage);
+               
+              let upload= this.dataProvider.uploadToStorage(this.myphoto, "magasin");
+              
+              upload.then().then(res => {
+                console.log("this.dataProvider.url", this.dataProvider.url);
+                
+                
+                this.dataProvider.storeInfoToDatabase(res.metadata,"magasin","profile").then(data => {
+                  this.afData.list("/services/magasin").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, profilePic:data.key});
+                    
+                  this.navCtrl.setRoot(MagasinPage);
+
+                  /*  
+                   let toast= this.toastCtrl.create({
+                     message: data.toString(),
+                     duration:5000
+                   })*/
+                   console.log(data);
+                });
+                
+              });
     
             }
           }
@@ -277,11 +370,29 @@ export class AjoutProduitPage {
             text: 'Ajouter',
             handler: () => {
     
-              this.afData.list("/services/bail").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-              terrasse: this.terrasse, autre: this.autre, prix: this.prix});
-    
-              this.navCtrl.setRoot(BailPage);
+              
+              let upload= this.dataProvider.uploadToStorage(this.myphoto, "bail");
+              
+              upload.then().then(res => {
+                console.log("this.dataProvider.url", this.dataProvider.url);
+                
+                
+                this.dataProvider.storeInfoToDatabase(res.metadata,"bail","profile").then(data => {
+                  this.afData.list("/services/bail").push({avis: this.avis, surface: this.surface, etage: this.etage, 
+                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, profilePic:data.key});
+                    
+                  this.navCtrl.setRoot(BailPage);
+
+                  /*  
+                   let toast= this.toastCtrl.create({
+                     message: data.toString(),
+                     duration:5000
+                   })*/
+                   console.log(data);
+                });
+                
+              });
     
             }
           }
@@ -318,7 +429,7 @@ export class AjoutProduitPage {
         duration: 5000
       });
       toast.present();
-      console.log(this.myphoto);
+      //console.log(this.myphoto);
      
     }, (err) => {
       // Handle error

@@ -7,12 +7,71 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>demenagement</ion-title>
+    <ion-title>Déménagement</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+ <form (ngSubmit)="Ajout()" #registerForm="ngForm">
+      <ion-row>
+
+    <ion-item>
+    
+  <ion-label>Adresse du client</ion-label>
+    <ion-textarea placeholder="Adresse du client" name="clientAdresse" [(ngModel)]="clientAdresse" clearOnEdit="true"></ion-textarea>
+    </ion-item>
+
+  <ion-item>
+  <ion-label>Date d'aménagement</ion-label>
+    <ion-input type="date" placeholder="Date d'aménagement" name="dateAmenagement" [(ngModel)]="dateAmenagement" required></ion-input>
+    
+  </ion-item>
+
+<ion-item>
+<ion-label>Adresse de destination</ion-label>
+    <ion-input type="text" placeholder="Adresse de destination" name="destinationAdresse" [(ngModel)]="destinationAdresse"  required></ion-input>
+  </ion-item>
+
+    <ion-item>
+    <ion-label>Distance de portage</ion-label>
+    <ion-input type="number" placeholder="Distance de portage" name="distance" [(ngModel)]="distance"  required></ion-input>
+  </ion-item>
+
+<ion-item>
+<ion-label>Etage</ion-label>
+    <ion-input type="number" placeholder="Etage" name="etage" [(ngModel)]="etage"  required></ion-input>
+  </ion-item>
+
+  <ion-item>
+  <ion-label>Nombre de pièce</ion-label>
+    <ion-input type="number" placeholder="Nombre de pièce" name="nbrepiece" [(ngModel)]="nbrepiece"  required></ion-input>
+  </ion-item>
+
+<ion-item>
+<ion-label>Heure d'Aménagement</ion-label>
+    <ion-input type="time" placeholder="Heure d'Aménagement" name="heureAmenagement" [(ngModel)]="heureAmenagement"  required></ion-input>
+  </ion-item>
+
+
+    <ion-item>
+    <ion-label>Votre numéro de téléphone</ion-label>
+    <ion-input type="number" placeholder="Numéro de téléphone" name="telephone" [(ngModel)]="telephone"  required></ion-input>
+  </ion-item>
+
+  
+
+             </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
+          <button  full ion-button text-only round>Envoyer</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
 
 </ion-content>

@@ -10,6 +10,7 @@ import { AccueilPage } from '../pages/accueil/accueil';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
+import { GlobalProvider } from '../providers/global/global';
 
 @Component({
   templateUrl: 'app.html'

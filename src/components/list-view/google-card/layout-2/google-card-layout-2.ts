@@ -52,7 +52,7 @@ export class GoogleCardLayout2 {
     }
 
 
-    onEvent(event: string, item: any, e: any) {
+    onEvent(event: string, item: any, image: any, e: any) {
         if (this.events[event]) {
 
             if ('onTextChange' === event) {
@@ -65,7 +65,7 @@ export class GoogleCardLayout2 {
 
         if( event == "onItemClick")
         {
-            this.navCtrl.push(ProduitDetailsPage);
+            this.navCtrl.push(ProduitDetailsPage, { item:item, image:image});
         }
 
         

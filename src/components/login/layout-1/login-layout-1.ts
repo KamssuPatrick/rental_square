@@ -8,6 +8,9 @@ import { RegisterPage } from '../../../pages/register/register';
 import { AuthService } from '../../../services/auth.service';
 import { AppSettings } from '../../../services/app-settings';
 import { TabsPage } from '../../../pages/tabs/tabs';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+import firebase from 'firebase';
 
 
 
@@ -35,7 +38,8 @@ export class LoginLayout1 {
     signupError: string;
     codeError: string;
     
-    constructor(public auth: AuthService, public navCtrl: NavController, public toastCtrl: ToastController) {
+    constructor(public auth: AuthService, public navCtrl: NavController, public toastCtrl: ToastController, 
+        public fire: AngularFireAuth) {
         //this.toast=toastCtrl;
      }
 
@@ -94,6 +98,38 @@ export class LoginLayout1 {
             this.navCtrl.setRoot(AdminPage);
         }
 
+        if( event == "onFacebook")
+        {
+            this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+            .then( (user) =>{ 
+                let fullName= user.user.displayName.split(" ");
+                let userName= fullName[0];
+                let userLastName;
+                for(let i = 1; i < fullName.length; i++){
+                    if(i==1){
+                        userLastName  = fullName[i];
+                    }
+                    else{
+                        userLastName += " " + fullName[i];
+                    }
+                   
+                 }
+                
+                console.log(userLastName, userName);
+                this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
+                console.log(user.user);
+                console.log("patrck");
+                this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
+                },
+                error => {
+                    
+                    this.signupError = error.message;
+                    this.codeError= error.code;
+                    console.log(this.codeError);
+                    this.presentToast(this.signupError);
+            })
+        }
+
         if( event == "onGoogle")
         {
            
@@ -115,7 +151,7 @@ export class LoginLayout1 {
                     console.log(userLastName, userName);
                     this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
                     console.log(user.user);
-                    this.navCtrl.setRoot(AccueilPage,user);
+                    this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
                 },
                 error => {
                     

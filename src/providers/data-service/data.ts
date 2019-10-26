@@ -6,7 +6,7 @@ import { map } from "rxjs/operator/map";
 
 @Injectable()
 export class DataProvider{
-
+    url:any;
     constructor(private afData: AngularFireDatabase, private afStorage: AngularFireStorage){
 
     }
@@ -29,9 +29,10 @@ export class DataProvider{
       }
       
       uploadToStorage(information,nameP):AngularFireUploadTask{
-        let newName =`${new Date().getTime()}.txt`;
-      
-        return this.afStorage.ref(`files/${nameP}/${newName}`).putString(information);
+        let newName =`${new Date().getTime()}`;
+        
+       return this.afStorage.ref(`files/${nameP}/${newName}`).putString(information,"data_url");
+       
       }
       
       storeInfoToDatabase(metainfo,nameP,typeI){

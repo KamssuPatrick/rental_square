@@ -1,0 +1,74 @@
+<!--
+  Generated template for the PaiementPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>paiement</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+<ion-grid no-padding >
+        <ion-row center>
+  
+
+
+          <ion-col no-padding col-12 background-size [ngStyle]="{'background-image': 'url(../../assets/images/gallery/bend/achat.jpeg)'}">
+              <!-- Header Title -->
+              <img src="../../assets/images/gallery/bend/achat.jpeg" alt="User" class="userImage" > 
+              
+              <h1 ion-text register-title text-wrap class="nnd"> 10 000 XAF</h1>
+          </ion-col>
+          <ion-col form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+            <div  class="boss">
+              
+
+              <ion-card>
+              <ion-card-header>
+                <ion-card-title>MonetBil</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                MonetBil vous permettra d'effectuer votre paiement avec les principaux moyens
+                de paiement disponibles en local,
+                c'est à dire par Orange Money, Mtn Mobile Money, Express Union
+              </ion-card-content>
+
+              <ion-card-content>
+                <button full ion-button text-only class="monet" round>Abonnez-vous par MonetBil</button>
+              </ion-card-content>
+            </ion-card>
+
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Paypal</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                PayPal, leader incontesté en matière de paiement en ligne,
+                permet aux acheteurs et aux vendeurs d'envoyer et de recevoir des paiements en ligne
+              </ion-card-content>
+
+              <ion-card-content>
+               <button  full ion-button text-only class="paypal" (click) = "paypal()" round>Abonnez-vous par PayPal</button>
+              </ion-card-content>
+            </ion-card>
+           
+
+            </div>
+                  <ion-row>
+        <ion-col class="signup-col">
+          </ion-col>
+      </ion-row>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

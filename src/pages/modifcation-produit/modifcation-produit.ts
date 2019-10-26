@@ -51,7 +51,8 @@ export class ModifcationProduitPage {
     parking: '',
     terrasse: '',
     autre: '',
-    prix: ''
+    prix: '',
+    image: ''
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 

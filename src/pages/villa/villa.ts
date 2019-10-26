@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage, LoadingController } from 'ionic-angular';
-import { ModifcationProduitPage } from '../modifcation-produit/modifcation-produit';
-import { AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+import { AngularFireStorage } from "angularfire2/storage";
 
 
 /**
@@ -20,8 +19,8 @@ export class VillaPage {
 
   params: any = {};
   ref: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+  urlImg:any;
+  constructor(public afStorage: AngularFireStorage, public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
 
     this.presentLoading();
     this.params.events = {
@@ -50,30 +49,52 @@ export class VillaPage {
   getAllUsers(){ 
 		let params={"titre" : "Villa","items":[]};
 		let items=[];
-		this.ref.on('value', function(snapshot) {
-		  let i=0;
+    	this.ref.on('value',  function(snapshot) {
+      let i=0;
+      
 		  
 		  let keyyy=[];
-		  
+		  let link: any;
 		  keyyy= Object.keys(snapshot.val());
 		  snapshot.forEach(function(data){
-			console.log(i);
-			params.items[i]={
-			  "uid": keyyy[i],
-			  "autre": data.val().autre,
-        "avis": data.val().avis,
-        "chambre": data.val().chambre,
-        "cuisine": data.val().cuisine,
-        "parking": data.val().parking,
-        "prix": data.val().prix,
-        "salon": data.val().salon,
-        "surface": data.val().surface,
-        "terrasse": data.val().terrasse,
-        "toilette": data.val().toilette,
-        "etage": data.val().etage,
-			  "image":"assets/images/gallery/brogan/villa3.jpg"
-			};
-			i++;
+        let propic:any;
+        let nn= firebase.database().ref(`files/villa/profile/${data.val().profilePic}`);
+        nn.on('value',  function(idPP){
+          propic=idPP;
+          console.log("propic: ",propic.val().fullPath);
+          let urli=propic.val().fullPath;
+          var storage = firebase.storage();
+          var pathReference = storage.ref();
+          
+          
+          pathReference.child(urli).getDownloadURL().then(function(url) {
+            link=url;
+
+            params.items[i]={
+              "uid": keyyy[i],
+              "autre": data.val().autre,
+              "avis": data.val().avis,
+              "chambre": data.val().chambre,
+              "cuisine": data.val().cuisine,
+              "parking": data.val().parking,
+              "prix": data.val().prix,
+              "salon": data.val().salon,
+              "surface": data.val().surface,
+              "terrasse": data.val().terrasse,
+              "toilette": data.val().toilette,
+              "etage": data.val().etage,
+              "image": link
+            };
+            console.log("ImgUrlqsdqsdqsdq",i);
+			      i++;
+            
+          }).catch(function(error) {
+            // Handle any errors
+            console.log("error admin: ",error)
+          });
+        });
+
+			
 		  });
 		  
 		 
@@ -90,8 +111,10 @@ export class VillaPage {
       });
 
     this.ref =  firebase.database().ref("services/villa");
-    this.params.data = this.getAllUsers();
+    this.params.data= this.getAllUsers();
     loader.present();
+    
+    
 
     }
 

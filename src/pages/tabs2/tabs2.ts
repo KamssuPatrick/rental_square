@@ -24,37 +24,25 @@ export class Tabs2Page {
         "id" : 1,
         "image" : "assets/images/background/4.jpg",
         "subtitle" : "Monday, 15th Oct. 2017",
-        "title" : "Free Ride"
+        "title" : "Appartements"
       }, {
         "delate" : "Delete",
         "id" : 2,
         "image" : "assets/images/background/0.jpg",
         "subtitle" : "Thursday, 20th Feb. 2017",
-        "title" : "Main Stage Event"
+        "title" : "Villa"
       }, {
         "delate" : "Delete",
         "id" : 3,
         "image" : "assets/images/background/3.jpg",
         "subtitle" : "Friday, 10th Aug. 2017",
-        "title" : "Mountain Tour"
+        "title" : "Immeuble"
       }, {
         "delate" : "Delete",
         "id" : 4,
         "image" : "assets/images/background/5.jpg",
         "subtitle" : "Wednesday, 17th May 2016",
-        "title" : "Sea Tour"
-      }, {
-        "delate" : "Delete",
-        "id" : 5,
-        "image" : "assets/images/background/6.jpg",
-        "subtitle" : "Sunday, 11th June 2017",
-        "title" : "Open Air Concert"
-      }, {
-        "delate" : "Delete",
-        "id" : 6,
-        "image" : "assets/images/background/1.jpg",
-        "subtitle" : "Friday, 10th Jan. 2017",
-        "title" : "Bridge Tour"
+        "title" : "Fonds de commerce"
       } ]
     }
 
