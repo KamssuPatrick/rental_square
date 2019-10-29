@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Content, Events, LoadingController, Platform, ActionSheetController } from 'ionic-angular';
+import { ChatProvider } from '../../providers/chat/chat';
+import { Component, NgZone, ViewChild } from '@angular/core';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the Tabs3Page page.
@@ -14,154 +16,92 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class Tabs3Page {
 
-  params: any = {};
+  userDetails
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  details = {}
 
+  myDetails = {}
 
-    this.params.data = {
-      "button" : "Ok",
-      "header" : "Inbox",
-      "items" : [ {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 1,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "6min ago",
-        "title" : "Grant Marshall"
-      }, {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 2,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "58min ago",
-        "title" : "Pena Valdez"
-      }, {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 3,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "92min ago",
-        "title" : "Jessica Miles"
-      }, {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 4,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "93min ago",
-        "title" : "Kerri Barber"
-      }, {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 5,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "43min ago",
-        "title" : "Natasha Gamble"
-      }, {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 6,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "62min ago",
-        "title" : "White Castaneda"
-      }, {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 7,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "81min ago",
-        "title" : "Vanessa Ryan"
-      },
-      {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 7,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "81min ago",
-        "title" : "Vanessa Ryan"
-      },
-      {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 7,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "81min ago",
-        "title" : "Vanessa Ryan"
-      },
-      {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 7,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "81min ago",
-        "title" : "Vanessa Ryan"
-      },
-      {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 7,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "81min ago",
-        "title" : "Vanessa Ryan"
-      },
-      {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 7,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "81min ago",
-        "title" : "Vanessa Ryan"
-      },
-      {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 7,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "81min ago",
-        "title" : "Vanessa Ryan"
-      }, {
-        "delate" : "Delete",
-        "icon" : "ios-information-circle-outline",
-        "id" : 8,
-        "reply" : "Reply",
-        "subtitle" : "Subtitle",
-        "textIcon" : "51min ago",
-        "title" : "Meredith Hendricks"
-      } ],
-      "subtitle" : "Mark all messages as read.",
-      "title" : "12"
+  newMessage = {
+    body: ''
+  }
+
+  allMessages = []
+
+  @ViewChild('content') content: Content
+
+  constructor(public chatProvider: ChatProvider,  public ngZone: NgZone, public events: Events, public actionSheetController: ActionSheetController, private platform: Platform, public loadCtrl: LoadingController, public authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams,) {
+    this.userDetails = this.navParams.get('Details')
+
+    this.events.subscribe('AdminDetails', ()=>{
+      this.ngZone.run(()=>{
+        this.details = this.authProvider.AdminDetails
+        console.log(this.details);
+      })
+    })
+
+    this.events.subscribe('myDetails', ()=>{
+      this.ngZone.run(()=>{
+        this.myDetails = this.authProvider.myDetails
+      })
+    })
+
+    this.events.subscribe('messages', ()=>{
+      this.ngZone.run(()=>{
+        this.allMessages = this.chatProvider.allMessages
+      })
+    })
+
+    if(this.allMessages.length > 6){
+      setTimeout(()=>{
+        for(let i=0; i<10; i++){
+          this.allMessages[i]
+        }
+      }, 300)
     }
-
-    
-    this.params.events = {
-      'onItemClick': function (item: any) {
-         console.log("item");
-       },
-      'onDelete': function (item: any) {
-         console.log("Delete");
-       },
-      'onButtonClick': function (item: any) {
-         console.log("Info");
-       }
-     };
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MessageriePage');
+  callFunction(){
+    this.content.scrollToBottom(0);
+  }
+  
+
+  ionViewWillEnter(){
+  }
+
+  ionViewDidLeave(){
+    this.events.subscribe('AdminDetails')
+    this.events.subscribe('myDetails')
+    this.events.subscribe('messages')
+  }
+
+  ionViewDidEnter(){
+    this.authProvider.getAdminDetails()
+    this.authProvider.getMyDetails()
+    this.chatProvider.getMessagesA()
+  }
+
+
+
+
+
+  sendMessageA(){
+    var res = this.newMessage.body
+    var res1 = res.trim()
+      if(res1 == ''){
+          console.log("Can't send empty message")
+          this.newMessage.body = ' '
+      } else{
+          this.chatProvider.sendMessageA(this.newMessage).then(()=>{
+            this.newMessage.body = ' '
+          }).catch((err)=>{
+            console.log(err)
+          })
+      }
+
+
+
   }
 
 }

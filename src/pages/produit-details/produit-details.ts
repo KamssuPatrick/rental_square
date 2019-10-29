@@ -22,13 +22,52 @@ export class ProduitDetailsPage {
   value : any;
   links: any;
   img: any;
+  index: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
 
 
     this.value = navParams.get('item');
     this.img = navParams.get('image');
-    this.ref= firebase.database().ref("services/villa/"+ this.value);
+    this.index = navParams.get('index');
+
+
+    if(this.index == 0)
+    {
+      this.ref= firebase.database().ref("services/villa/"+ this.value);
+    }
+
+    if(this.index == 1)
+    {
+      this.ref= firebase.database().ref("services/appt_non_meuble/"+ this.value);
+    }
+
+    if(this.index == 2)
+    {
+      this.ref= firebase.database().ref("services/appt_meuble/"+ this.value);
+    }
+
+    if(this.index == 3)
+    {
+      this.ref= firebase.database().ref("services/immeuble/"+ this.value);
+    }
+
+    if(this.index == 4)
+    {
+      this.ref= firebase.database().ref("services/bureau/"+ this.value);
+    }
+
+    if(this.index == 5)
+    {
+      this.ref= firebase.database().ref("services/magasin/"+ this.value);
+    }
+
+    if(this.index == 6)
+    {
+      this.ref= firebase.database().ref("services/bail/"+ this.value);
+    }
+
+    
 
     this.params.data = this.getAllUsers();
     this.value2=this.params.data;

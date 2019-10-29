@@ -30,6 +30,7 @@ import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { Config } from '../config';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ChatbodyPage } from '../pages/chatbody/chatbody';
 
 
 
@@ -73,6 +74,13 @@ import { HttpModule } from '@angular/http';
 import { Tabs5Page } from '../pages/tabs5/tabs5';
 import { PaiementPage } from '../pages/paiement/paiement';
 import { PaypalPage } from '../pages/paypal/paypal';
+import { ChatProvider } from '../providers/chat/chat';
+import { AuthProvider } from '../providers/auth/auth';
+import { AmenagementPage } from '../pages/amenagement/amenagement';
+import { DemenagementPage } from '../pages/demenagement/demenagement';
+import { Tabs6Page } from '../pages/tabs6/tabs6';
+import { StickyListHeaderLayout2Module } from '../components/list-view/sticky-list-header/layout-2/sticky-list-header-layout-2.module';
+import { IonAffixModule } from 'ion-affix';
 
 
 
@@ -112,21 +120,26 @@ firebase.initializeApp(firebaseConfig);
     Tabs3Page,
     Tabs4Page,
     Tabs5Page,
+    Tabs6Page,
     GestionUtilisateurPage, 
     AjoutProduitPage,
     ModifcationProduitPage,
     PaiementPage,
-    PaypalPage
+    PaypalPage,
+    ChatbodyPage,
+    AmenagementPage,
+    DemenagementPage
   ],
   imports: [
     BrowserModule,
     NgxErrorsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
-    AngularFireDatabaseModule, AngularFireAuthModule, AngularFireStorageModule,
+    AngularFireDatabaseModule, AngularFireAuthModule, AngularFireStorageModule,IonAffixModule,
     HttpModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
-    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module
+    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module, 
+    StickyListHeaderLayout2Module
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -151,11 +164,15 @@ firebase.initializeApp(firebaseConfig);
     Tabs3Page,
     Tabs4Page,
     Tabs5Page,
+    Tabs6Page,
     GestionUtilisateurPage,
     AjoutProduitPage,
     ModifcationProduitPage,
     PaiementPage,
-    PaypalPage
+    PaypalPage,
+    ChatbodyPage,
+    AmenagementPage,
+    DemenagementPage
     
   ],
   providers: [
@@ -174,7 +191,9 @@ firebase.initializeApp(firebaseConfig);
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
     NoteListService,
-    GlobalProvider
+    GlobalProvider,
+    ChatProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

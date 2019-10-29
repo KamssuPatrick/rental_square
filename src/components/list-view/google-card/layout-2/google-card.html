@@ -13,19 +13,19 @@
       <ion-card text-left>
         <!--Card Image-->
         <div card-image>
-          <img [src]="item.image" height='240' (click)="onEvent('onItemClick', item.uid,item.image, $event)"/>
-          <ion-badge ion-fixed item-end class="badge-dark">{{item.prix}} / mois</ion-badge>
+          <img [src]="item.image" height='240' (click)="detail(item.uid,item.image, item.index)"/>
+          <ion-badge ion-fixed item-end class="badge-dark">{{item.prix}} / jour</ion-badge>
           <button ion-fixed ion-button button-action-shit (click)="onEvent('onShare', '', $event)">
              <ion-icon ></ion-icon>
           </button>
         </div>
         <!--Card descriptiom-->
-        <ion-card-content (click)="onEvent('onItemClick', item.autre, $event)">
+        <ion-card-content (click)="onEvent('onItemClick', item.uid, item.image, $event)">
           <ion-card-title>
             <!--Card Title-->
-            <h2 card-title>{{item.titre}} --  {{item.autre}}</h2>
+            <h2 card-title>{{item.surface}} m²</h2>
             <!--Card Subtitle-->
-            <h1 card-subtitle>{{item.titre}} pièce(s) -- {{item.autre}}m² -- {{item.autre}}</h1>
+            <h1 card-subtitle>{{item.avis}}</h1>
             <!--Card Body Text
             <p card-body-text>{{item.description}}</p>-->
           </ion-card-title>

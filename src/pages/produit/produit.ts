@@ -33,17 +33,6 @@ export class ProduitPage {
 
     this.presentLoading(this.newVal);
 
-    this.params.events = {
-      'onItemClick': function (item: any) {
-         console.log("item");
-         },
-      'onShare': function (item: any) {
-         console.log("Share");
-         },
-      'onButtonClick': function (item: any) {
-         console.log("Refine");
-         }
-     };
   }
 
   ionViewDidLoad() {
@@ -65,47 +54,62 @@ export class ProduitPage {
         
         let keyyy=[];
         let link: any;
-        keyyy= Object.keys(snapshot.val());
-        snapshot.forEach(function(data){
-          let propic:any;
-          let nn= firebase.database().ref(`files/villa/profile/${data.val().profilePic}`);
-          nn.on('value', function(idPP){
-            propic=idPP;
-            console.log("propic: ",propic.val().fullPath);
-            let urli=propic.val().fullPath;
-            var storage = firebase.storage();
-            var pathReference = storage.ref();
-            //console.log("urli: ",urli);
-            
-            pathReference.child(urli).getDownloadURL().then(function(url) {
-              link=url;
-  
-              params.items[i]={
-                "uid": keyyy[i],
-                "autre": data.val().autre,
-                "avis": data.val().avis,
-                "chambre": data.val().chambre,
-                "cuisine": data.val().cuisine,
-                "parking": data.val().parking,
-                "prix": data.val().prix,
-                "salon": data.val().salon,
-                "surface": data.val().surface,
-                "terrasse": data.val().terrasse,
-                "toilette": data.val().toilette,
-                "etage": data.val().etage,
-                "image": link
-              };
-              
-              i++;
-              console.log("ImgUrl",link);
-            }).catch(function(error) {
-              // Handle any errors
-              console.log("error admin: ",error)
-            });
-          });
-  
         
-        });
+        if(snapshot != null || snapshot != '')
+        {
+          keyyy= Object.keys(snapshot.val());
+
+          console.log("isi par");
+
+          snapshot.forEach(function(data){
+            let propic:any;
+            let nn= firebase.database().ref(`files/villa/profile/${data.val().profilePic}`);
+            nn.on('value', function(idPP){
+              propic=idPP;
+              console.log("propic: ",propic.val().fullPath);
+              let urli=propic.val().fullPath;
+              var storage = firebase.storage();
+              var pathReference = storage.ref();
+              //console.log("urli: ",urli);
+              
+              pathReference.child(urli).getDownloadURL().then(function(url) {
+                link=url;
+    
+                params.items[i]={
+                  "uid": keyyy[i],
+                  "autre": data.val().autre,
+                  "avis": data.val().avis,
+                  "chambre": data.val().chambre,
+                  "cuisine": data.val().cuisine,
+                  "parking": data.val().parking,
+                  "prix": data.val().prix,
+                  "salon": data.val().salon,
+                  "surface": data.val().surface,
+                  "terrasse": data.val().terrasse,
+                  "toilette": data.val().toilette,
+                  "etage": data.val().etage,
+                  "image": link,
+                  "index": values
+                };
+                
+                i++;
+                console.log("ImgUrl",link);
+              }).catch(function(error) {
+                // Handle any errors
+                console.log("error admin: ",error)
+              });
+            });
+    
+          
+          });
+        }
+
+        else
+        {
+          console.log("isi par");
+        }
+
+       
         
        
       });
@@ -156,7 +160,8 @@ export class ProduitPage {
                 "terrasse": data.val().terrasse,
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
-                "image": link
+                "image": link,
+                "index": values
               };
               
               i++;
@@ -192,7 +197,14 @@ export class ProduitPage {
         
         let keyyy=[];
         let link: any;
-        keyyy= Object.keys(snapshot.val());
+
+        if(snapshot != null || snapshot != '')
+        {
+          keyyy= Object.keys(snapshot.val());
+
+          console.log("isi par");
+
+       
         snapshot.forEach(function(data){
           let propic:any;
           let nn= firebase.database().ref(`files/appt_meuble/profile/${data.val().profilePic}`);
@@ -220,7 +232,8 @@ export class ProduitPage {
                 "terrasse": data.val().terrasse,
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
-                "image": link
+                "image": link,
+                "index": values
               };
               
               i++;
@@ -230,9 +243,13 @@ export class ProduitPage {
               console.log("error admin: ",error)
             });
           });
+
+        
   
         
         });
+
+      }
         
        
       });
@@ -255,7 +272,12 @@ export class ProduitPage {
         
         let keyyy=[];
         let link: any;
-        keyyy= Object.keys(snapshot.val());
+
+        if(snapshot != null || snapshot != '')
+        {
+          keyyy= Object.keys(snapshot.val());
+
+          console.log("isi par");
         snapshot.forEach(function(data){
           let propic:any;
           let nn= firebase.database().ref(`files/immeuble/profile/${data.val().profilePic}`);
@@ -283,7 +305,8 @@ export class ProduitPage {
                 "terrasse": data.val().terrasse,
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
-                "image": link
+                "image": link,
+                "index": values
               };
               
               i++;
@@ -296,6 +319,8 @@ export class ProduitPage {
   
         
         });
+
+        }
         
        
       });
@@ -347,7 +372,8 @@ export class ProduitPage {
                 "terrasse": data.val().terrasse,
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
-                "image": link
+                "image": link,
+                "index": values
               };
               
               i++;
@@ -410,7 +436,8 @@ export class ProduitPage {
                 "terrasse": data.val().terrasse,
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
-                "image": link
+                "image": link,
+                "index": values
               };
               
               i++;
@@ -473,7 +500,8 @@ export class ProduitPage {
                 "terrasse": data.val().terrasse,
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
-                "image": link
+                "image": link,
+                "index": values
               };
               
               i++;

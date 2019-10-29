@@ -11,8 +11,9 @@ import { TabsPage } from '../../../pages/tabs/tabs';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import firebase from 'firebase';
+import { AuthProvider } from '../../../providers/auth/auth';
 
-
+declare var window: any;
 
 @IonicPage()
 @Component({
@@ -38,7 +39,7 @@ export class LoginLayout1 {
     signupError: string;
     codeError: string;
     
-    constructor(public auth: AuthService, public navCtrl: NavController, public toastCtrl: ToastController, 
+    constructor(public authProvider: AuthProvider, public auth: AuthService, public navCtrl: NavController, public toastCtrl: ToastController, 
         public fire: AngularFireAuth) {
         //this.toast=toastCtrl;
      }
@@ -54,10 +55,11 @@ export class LoginLayout1 {
                 email: this.email,
                 password: this.password
               };
-      
               this.auth.signInWithEmail(credentials).then(
                 (user) => {
-                    this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
+                    this.navCtrl.setRoot(TabsPage,{user:  user.user.uid, email: user.user.email});
+                    window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
+
                     console.log("test", user.user.email);
                 },
                 error => {
@@ -117,9 +119,11 @@ export class LoginLayout1 {
                 
                 console.log(userLastName, userName);
                 this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
+                window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
+
                 console.log(user.user);
                 console.log("patrck");
-                this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
+                this.navCtrl.setRoot(TabsPage,{user:  user.user.uid, email: user.user.email});
                 },
                 error => {
                     
@@ -150,8 +154,10 @@ export class LoginLayout1 {
                     
                     console.log(userLastName, userName);
                     this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
+                    window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
+
                     console.log(user.user);
-                    this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
+                    this.navCtrl.setRoot(TabsPage,{user:  user.user.uid, email: user.user.email});
                 },
                 error => {
                     

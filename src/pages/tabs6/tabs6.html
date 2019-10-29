@@ -1,0 +1,47 @@
+<!--
+  Generated template for the Tabs6Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>tabs6</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content no-padding>
+  <div *ngIf="params != null">
+    <ion-list *ngFor="let item of params.items">
+      <!--Text Header Top-->
+      <ion-list-header no-lines header-title text-capitalize  >
+        {{item.groupName}}
+      </ion-list-header>
+      <ion-card *ngFor="let element of item.items">
+        <!--Big Card -->
+         <ion-slides class="to-top" pager>
+          <ion-slide *ngFor="let image of element.img">
+            <img [src]="image" alt="">
+          </ion-slide>
+        </ion-slides>
+        <!--Gallery Card -->
+        <div list-images (click)="onEvent('onItemClick', element.title, $event)">
+          <div images background-size [ngStyle]="{'background-image': 'url(' + element.image2 + ')'}" title="{{element.title}}"></div>
+          <div images background-size [ngStyle]="{'background-image': 'url(' + element.image3 + ')'}" title="{{element.title}}"></div>
+          <div images background-size [ngStyle]="{'background-image': 'url(' + element.image4 + ')'}" title="{{element.title}}"></div>
+          <div images background-size [ngStyle]="{'background-image': 'url(' + element.image5 + ')'}" title="{{element.title}}"></div>
+        </div>
+        <!-- Card Content -->
+        <ion-card-content no-padding >
+          <!-- Card Title -->
+          <h2 card-title item-start text-wrap margin-top>{{element.title}}</h2>
+          <span span-large float-left>{{element.price}}</span>
+          <span span-small ion-text padding-left text-uppercase color="primary" text-wrap float-left>{{element.subtitle}}</span>
+          <button ion-button round float-right  (click)="onEvent('onBuy', element, $event)">{{element.buy}}</button>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

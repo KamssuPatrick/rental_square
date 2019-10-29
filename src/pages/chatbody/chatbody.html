@@ -1,0 +1,76 @@
+
+<ion-header>
+
+  <ion-navbar color="header">
+    <ion-title>{{details.Name}}</ion-title>
+    <div class="Online" *ngIf="details.Status == onlineStatus"></div>
+    <div class="Offline" *ngIf="details.Status == offlineStatus"></div>
+    <span class="Status">{{details.Status}}</span>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding #content>
+
+
+
+<!-- <ion-list>
+    <ion-item *ngFor="let item of Conversations; let i = index">
+        <ion-avatar item-left>
+            <img src="{{allUsers[i].Photo}}" alt="">
+            <div class="Online" *ngIf="allUsers[i] == OnlineStatus" >  </div>
+        </ion-avatar>
+        <div>
+            <h3 text-left>{{allUsers[i].Name}} <span float-end>{{item.Time}}</span> </h3>
+            <h3>{{item.Body}}</h3>
+        </div>
+    </ion-item>
+</ion-list> -->
+
+
+
+
+<div>
+    <ion-list no-lines style="border: none;">
+        <ion-item *ngFor="let message of allMessages; let last = last">
+
+            {{last ? callFunction() : ''}}
+
+            <!-- <ion-avatar item-right *ngIf="message.Id != details.Id">
+                <img src="{{myDetails.Photo}}">
+            </ion-avatar> -->
+            <div class="bubble you" *ngIf="message.Id != details">
+                <h3>{{message.Body}}</h3>
+            </div>
+
+            <!-- <ion-avatar item-left *ngIf="message.Id === details.Id">
+                <img src="{{details.Photo}}">
+            </ion-avatar> -->
+            <div class="bubble me" *ngIf="message.Id === details">
+                <h3>{{message.Body}}</h3>
+            </div>
+
+        </ion-item>
+    </ion-list>
+</div>
+
+
+
+
+
+  
+
+</ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+    <ion-textarea #chat_input type="text" [(ngModel)]="newMessage.body" ></ion-textarea>
+      <ion-buttons end>
+          <button ion-button ion-icon icon-only (click)="sendMessage()">
+              <ion-icon name="send"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-toolbar>     
+
+</ion-footer>

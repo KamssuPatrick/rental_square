@@ -7,16 +7,48 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tabs3</ion-title>
+    <ion-title>Chat</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content>
-<swipe-to-dismiss-layout-1
-    [data]="params.data"
-    [events]="params.events">
-</swipe-to-dismiss-layout-1>
+<ion-content #content>
+
+  <div>
+    <ion-list no-lines style="border: none;">
+        <ion-item *ngFor="let message of allMessages; let last = last">
+
+            {{last ? callFunction() : ''}}
+
+            <!-- <ion-avatar item-right *ngIf="message.Id != details.Id">
+                <img src="{{myDetails.Photo}}">
+            </ion-avatar> -->
+            <div class="bubble you" *ngIf="message.Id != 'QVbwfPEMT6hsoj7aWlytER7V94F2'">
+                <h3>{{message.Body}}</h3>
+            </div>
+
+            <!-- <ion-avatar item-left *ngIf="message.Id === details.Id">
+                <img src="{{details.Photo}}">
+            </ion-avatar> -->
+            <div class="bubble me" *ngIf="message.Id === 'QVbwfPEMT6hsoj7aWlytER7V94F2'">
+                <h3>{{message.Body}}</h3>
+            </div>
+
+        </ion-item>
+    </ion-list>
+</div>
 
 </ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+    <ion-textarea #chat_input type="text" [(ngModel)]="newMessage.body" ></ion-textarea>
+      <ion-buttons end>
+          <button ion-button ion-icon icon-only (click)="sendMessageA()">
+              <ion-icon name="send"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-toolbar>     
+
+</ion-footer>
 
