@@ -31,6 +31,25 @@
                     <ion-input required placeholder="{{data.prenom}}" type="text" [(ngModel)]="prenom"></ion-input>
                     <ion-label error-field color="primary" no-margin *ngIf="!isPrenomValid">{{data.errorUser}} kjjk</ion-label>
                 </ion-item>
+
+                <ion-item>
+                    <!---Input field username-->
+                    <ion-label stacked>{{data.lablePrenom}}</ion-label>
+                    <ion-input required placeholder="{{data.profession}}" type="text" [(ngModel)]="profession"></ion-input>
+                   </ion-item>
+
+                <ion-item>
+                    <!---Input field username-->
+                    <ion-label stacked>{{data.lablePrenom}}</ion-label>
+                    <ion-input required placeholder="{{data.societe}}" type="text" [(ngModel)]="societe"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <!---Input field username-->
+                    <ion-label stacked>{{data.lableTelephone}}</ion-label>
+                    <ion-input required placeholder="{{data.telephone}}" type="number" [(ngModel)]="telephone"></ion-input>
+                </ion-item>
+
                  <ion-item >
                     <!---Input field email-->
                     <ion-label stacked>{{data.lableEmail}}</ion-label>

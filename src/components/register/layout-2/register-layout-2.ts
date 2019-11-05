@@ -19,6 +19,9 @@ export class RegisterLayout2 {
     public city: string;
     public email: string;
     public prenom: string;
+    public profession : string;
+    public societe : string;
+    public telephone: any;
 
     private isEmailValid: boolean = true;
     private isUsernameValid: boolean = true;
@@ -46,7 +49,10 @@ export class RegisterLayout2 {
                 email: this.email,
                 password: this.password,
                 username: this.username,
-                prenom: this.prenom
+                prenom: this.prenom,
+                profession: this.profession,
+                societe: this.societe,
+                telephone: this.telephone
               };
       
               this.auth.signUp(credentials).then(

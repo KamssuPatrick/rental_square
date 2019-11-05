@@ -81,6 +81,8 @@ import { DemenagementPage } from '../pages/demenagement/demenagement';
 import { Tabs6Page } from '../pages/tabs6/tabs6';
 import { StickyListHeaderLayout2Module } from '../components/list-view/sticky-list-header/layout-2/sticky-list-header-layout-2.module';
 import { IonAffixModule } from 'ion-affix';
+import { AppearanceAnimationLayout3Module } from '../components/list-view/appearance-animation/layout-3/appearance-animation-layout-3.module';
+import { GestionDemePage } from '../pages/gestion-deme/gestion-deme';
 
 
 
@@ -128,7 +130,8 @@ firebase.initializeApp(firebaseConfig);
     PaypalPage,
     ChatbodyPage,
     AmenagementPage,
-    DemenagementPage
+    DemenagementPage,
+    GestionDemePage
   ],
   imports: [
     BrowserModule,
@@ -139,7 +142,7 @@ firebase.initializeApp(firebaseConfig);
     HttpModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
     ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module, 
-    StickyListHeaderLayout2Module
+    StickyListHeaderLayout2Module,AppearanceAnimationLayout3Module
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -172,7 +175,8 @@ firebase.initializeApp(firebaseConfig);
     PaypalPage,
     ChatbodyPage,
     AmenagementPage,
-    DemenagementPage
+    DemenagementPage,
+    GestionDemePage
     
   ],
   providers: [

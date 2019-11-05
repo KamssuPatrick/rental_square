@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tabs6</ion-title>
+    <ion-title>Appartements meublés</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -39,7 +39,7 @@
           <h2 card-title item-start text-wrap margin-top>{{element.title}}</h2>
           <span span-large float-left>{{element.price}}</span>
           <span span-small ion-text padding-left text-uppercase color="primary" text-wrap float-left>{{element.subtitle}}</span>
-          <button ion-button round float-right  (click)="onEvent('onBuy', element, $event)">{{element.buy}}</button>
+          <button ion-button round float-right  (click)="message()">{{element.buy}}</button>
         </ion-card-content>
       </ion-card>
     </ion-list>

@@ -4,14 +4,13 @@
         <ion-row>
             <ion-col col-12>
                 <ion-list no-margin>
-                    <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of animateItems; let i = index;" (click)="onEvent('onItemClick', item.title, $event)">
+                    <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of animateItems; let i = index;" (click)="onEvent('onItemClick', item.uid, 1, $event)">
                         <ion-avatar item-left>
-                            <img [src]="item.image" alt="{{item.title}}" />
+                            <img [src]="item.image" alt="{{item.prenom}}" />
                         </ion-avatar>
-                        <h2 item-title>{{item.title}}</h2>
-                        <ion-icon icon-small item-right (click)="onEvent('onFavorite', item, $event)">
-                            <i class="icon" [ngClass]="{'icon-heart': item.favorite, 'icon-heart-outline': !item.favorite}"></i>
-                        </ion-icon>
+                        <h2 item-title>{{item.user}} </h2>
+                        <h2 item-title>{{item.dateAmenagement}}</h2>
+                        
                     </ion-item>
                 </ion-list>
             </ion-col>

@@ -1,5 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { IonicPage, Content } from 'ionic-angular';
+import { IonicPage, Content, NavController } from 'ionic-angular';
+import { GestionUtilisateurPage } from '../../../../pages/gestion-utilisateur/gestion-utilisateur';
+import { GestionDemePage } from '../../../../pages/gestion-deme/gestion-deme';
 
 @IonicPage()
 @Component({
@@ -15,16 +17,18 @@ export class AppearanceAnimationLayout3 {
     animateItems = [];
     animateClass: any;
 
-    constructor() {
+    constructor(public navCtrl: NavController) {
         this.animateClass = { 'fade-in-down-item': true };
     }
 
-    onEvent(event: string, item: any, e: any) {
-        if (e) {
-            e.stopPropagation();
-        }
+    onEvent(event: string, item: any, index: any, e: any) {
         if (this.events[event]) {
             this.events[event](item);
+        }
+
+        if (event === "onItemClick")
+        {
+            this.navCtrl.push(GestionDemePage, { item:item, index: index});
         }
     }
 
@@ -32,6 +36,7 @@ export class AppearanceAnimationLayout3 {
         let that = this;
         that.data = changes['data'].currentValue;
         if (that.data && that.data.items) {
+            console.log("heeeeeeeeeeeeeeeeeeeee", that.data.items);
             that.animateItems = [];
             for (let i = 0; i < that.data.items.length; i++) {
                 setTimeout(function () {
@@ -40,4 +45,6 @@ export class AppearanceAnimationLayout3 {
             }
         }
     }
+
+    
 }

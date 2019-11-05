@@ -53,6 +53,29 @@ export class Tabs4Page {
 .catch(error=>{
 console.log('OOPS, error', error)
 })*/
+
+this.params = {
+  "items" : [ {
+    "groupName" : "Shirts",
+    "items" : [ {
+      "buy" : "buy",
+      "id" : 1,
+      "img": [
+        "assets/images/gallery/brogan/appart1.jpg",
+        "assets/images/gallery/brogan/appart2.jpg",
+        "assets/images/gallery/brogan/appart3.jpg",
+        "assets/images/gallery/brogan/appart2.jpg",
+        "assets/images/gallery/brogan/appart1.jpg",
+      ],
+      
+      "price" : "20000 XAF/jour",
+      "subtitle" : "Free shipping",
+      "title" : "Trendy White Shirt"
+    }]
+   } ]
+}
+ 
+
       
 this.ref =  firebase.database().ref("users");
 //this.params.data = this.getAllUsers();

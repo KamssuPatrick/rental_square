@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Tabs3Page } from '../tabs3/tabs3';
 
 /**
  * Generated class for the Tabs6Page page.
@@ -27,27 +28,27 @@ export class Tabs6Page {
           "buy" : "buy",
           "id" : 1,
           "img": [
-            "assets/images/background/architecture.jpg",
-            "assets/images/background/back_rental.jpg",
-            "assets/images/background/16.jpg",
-            "assets/images/background/architecture.jpg",
-            "assets/images/background/back_rental.jpg",
+            "assets/images/gallery/brogan/appart1.jpg",
+            "assets/images/gallery/brogan/appart2.jpg",
+            "assets/images/gallery/brogan/appart3.jpg",
+            "assets/images/gallery/brogan/appart2.jpg",
+            "assets/images/gallery/brogan/appart1.jpg",
           ],
           
-          "price" : "$33.99",
+          "price" : "20000 XAF/jour",
           "subtitle" : "Free shipping",
           "title" : "Trendy White Shirt"
         }, {
           "buy" : "buy",
           "id" : 2,
           "img": [
-            "assets/images/background/19.jpg",
-            "assets/images/background/15.jpg",
-            "assets/images/background/16.jpg",
-            "assets/images/background/17.jpg",
-            "assets/images/background/18.jpg",
+            "assets/images/gallery/brogan/appart3.jpg",
+            "assets/images/gallery/brogan/appart2.jpg",
+            "assets/images/gallery/brogan/appart3.jpg",
+            "assets/images/gallery/brogan/appart2.jpg",
+            "assets/images/gallery/brogan/appart1.jpg",
           ],
-          "price" : "$28.17",
+          "price" : "40000 XAF/jour",
           "subtitle" : "Free shipping",
           "title" : "Trendy Black Shirt"
         } ]
@@ -57,13 +58,13 @@ export class Tabs6Page {
           "buy" : "buy",
           "id" : 1,
           "img": [
-            "assets/images/background/19.jpg",
-            "assets/images/background/15.jpg",
-            "assets/images/background/16.jpg",
-            "assets/images/background/17.jpg",
-            "assets/images/background/18.jpg",
+            "assets/images/gallery/brogan/villa1.jpg",
+            "assets/images/gallery/brogan/villa2.jpg",
+            "assets/images/gallery/brogan/villa3.jpg",
+            "assets/images/gallery/brogan/villa4.jpg",
+            "assets/images/gallery/brogan/villa1.jpg",
           ],
-          "price" : "$31.99",
+          "price" : "50000 XAF/jour",
           "subtitle" : "Free shipping",
           "title" : "Trendy White Shoes"
         }, {
@@ -74,7 +75,7 @@ export class Tabs6Page {
           "image3" : "assets/images/background/16.jpg",
           "image4" : "assets/images/background/15.jpg",
           "image5" : "assets/images/background/19.jpg",
-          "price" : "$25.69",
+          "price" : "20000 XAF/jour",
           "subtitle" : "Free shipping",
           "title" : "Black Shoes"
         }, {
@@ -85,7 +86,7 @@ export class Tabs6Page {
           "image3" : "assets/images/background/18.jpg",
           "image4" : "assets/images/background/19.jpg",
           "image5" : "assets/images/background/15.jpg",
-          "price" : "$13.66",
+          "price" : "20000 XAF/jour",
           "subtitle" : "Free shipping",
           "title" : "Trendy Shoes"
         } ]
@@ -167,6 +168,11 @@ export class Tabs6Page {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tabs6Page');
+  }
+
+  message()
+  {
+    this.navCtrl.push(Tabs3Page);
   }
 
 }
