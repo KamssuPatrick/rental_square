@@ -48,6 +48,8 @@
                     <ion-label error-field color="primary" no-margin *ngIf="!isPasswordValid">{{data.errorPassword}}</ion-label>
                     <ion-label error-field color="primary" no-margin *ngIf="!isBadPassword">{{signupError}}</ion-label>
                 </ion-item>
+
+             
                 <!--
                 <ion-item>
                    -Input field country
@@ -64,6 +66,7 @@
                 </ion-item>
                 -Register button-->
                 <button ion-button float-right text-capitalize (click)="onEvent('onRegister')">{{data.register}}</button>
+     
             </ion-col>
         </ion-row>
     </ion-grid>

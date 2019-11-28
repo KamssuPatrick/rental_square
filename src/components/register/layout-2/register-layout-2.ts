@@ -1,9 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, ToastController } from 'ionic-angular';
 import { AccueilPage } from '../../../pages/accueil/accueil';
 import { AuthService } from '../../../services/auth.service';
 import { NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../../../pages/tabs/tabs';
+import { AppSettings } from '../../../services/app-settings';
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -38,7 +41,8 @@ export class RegisterLayout2 {
     
     private regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
-    constructor(public auth: AuthService, public navCtrl: NavController, public navParams: NavParams) { }
+    constructor(public auth: AuthService, public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,
+        public fire: AngularFireAuth) { }
 
     onEvent = (event: string): void => {
         if (event == "onRegister" && !this.validate()) {
@@ -82,6 +86,49 @@ export class RegisterLayout2 {
                 }
               );
         }
+
+        if( event == "onGoogle")
+        {
+           
+            this.auth.signInWithGoogle().then(
+                (user) =>{ 
+                    let fullName= user.user.displayName.split(" ");
+                    let userName= fullName[0];
+                    let userLastName;
+                    for(let i = 1; i < fullName.length; i++){
+                        if(i==1){
+                            userLastName  = fullName[i];
+                        }
+                        else{
+                            userLastName += " " + fullName[i];
+                        }
+                       
+                     }
+                    
+                    console.log(userLastName, userName);
+                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
+                    console.log(user.user);
+                    this.navCtrl.setRoot(AccueilPage,user);
+                },
+                error => {
+                    
+                    this.signupError = error.message;
+                    this.codeError= error.code;
+                    console.log(this.codeError);
+                    this.presentToast(this.signupError);
+                    
+                }
+            );
+        }
+
+        if( event == "onFacebook")
+        {
+            this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+            .then( res => {
+                console.log(res);
+            })
+        }
+
         if (this.events[event]) {
             this.events[event]({
                 'username': this.username,
@@ -128,4 +175,11 @@ export class RegisterLayout2 {
             this.isUsernameValid && 
             this.isPrenomValid;
     }
+
+    presentToast(message: string) {
+        let toastItem = AppSettings.TOAST;
+        toastItem["message"] = message;
+        let toast = this.toastCtrl.create(toastItem);
+        toast.present();
+      }
 }

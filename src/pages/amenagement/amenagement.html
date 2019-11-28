@@ -18,94 +18,48 @@
 <form (ngSubmit)="Ajout()" #registerForm="ngForm">
       <ion-row>
 
-      
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Date et heure d'aménagement</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-datetime displayFormat="MMM DD, YYYY HH:mm" placeholder="Date d'aménagement" name="dateAmenagement" [(ngModel)]="dateAmenagement" required></ion-datetime>
-            
-          </ion-card-content>
-        </ion-card>
+    <ion-item>
     
-  
-
-     <ion-card>
-  <ion-card-header>
-    <ion-card-title>Adresse du client</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
- 
-    <ion-input type="text" placeholder="Entrez votre adresse" name="clientAdresse" [(ngModel)]="clientAdresse" clearOnEdit="true"></ion-input>
-    
-  </ion-card-content>
-</ion-card>
-
-
-      <ion-card>
-  <ion-card-header>
-    <ion-card-title>Adresse de destination</ion-card-title>
-  </ion-card-header>
-  <ion-item>
-    <ion-input type="text" placeholder="Entrez l'adresse d'aménagement" name="destinationAdresse" [(ngModel)]="destinationAdresse"  required></ion-input>
+  <ion-label>Adresse du client</ion-label>
+    <ion-textarea placeholder="Adresse du client" name="clientAdresse" [(ngModel)]="clientAdresse" clearOnEdit="true"></ion-textarea>
     </ion-item>
-  
-</ion-card>
 
-  
-  
-
-       <ion-card>
-  <ion-card-header>
-    <ion-card-title>Distance de portage</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
+  <ion-item>
+  <ion-label>Date d'aménagement</ion-label>
+    <ion-input type="date" placeholder="Date d'aménagement" name="dateAmenagement" [(ngModel)]="dateAmenagement" required></ion-input>
     
-    <ion-input type="number" placeholder="Estimation de la distance" name="distance" [(ngModel)]="distance"  required></ion-input>
-  
-  </ion-card-content>
-</ion-card>
+  </ion-item>
 
-      <ion-card>
-  <ion-card-header>
-    <ion-card-title>Etage</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-   
-    <ion-input type="number" placeholder="A quel niveau êtes-vous ?" name="etage" [(ngModel)]="etage"  required></ion-input>
- 
-  </ion-card-content>
-</ion-card>
+<ion-item>
+<ion-label>Adresse de destination</ion-label>
+    <ion-input type="text" placeholder="Adresse de destination" name="destinationAdresse" [(ngModel)]="destinationAdresse"  required></ion-input>
+  </ion-item>
 
-      <ion-card>
-  <ion-card-header>
-    <ion-card-title>Nombre de pièce</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    
-    <ion-input type="number" placeholder="Combien de pièce à aménager ?" name="nbrepiece" [(ngModel)]="nbrepiece"  required></ion-input>
-  
-  </ion-card-content>
-</ion-card>
+    <ion-item>
+    <ion-label>Distance de portage</ion-label>
+    <ion-input type="number" placeholder="Distance de portage" name="distance" [(ngModel)]="distance"  required></ion-input>
+  </ion-item>
 
+<ion-item>
+<ion-label>Etage</ion-label>
+    <ion-input type="number" placeholder="Etage" name="etage" [(ngModel)]="etage"  required></ion-input>
+  </ion-item>
 
-      <ion-card>
-  <ion-card-header>
-    <ion-card-title>Téléphone</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    
-    <ion-input type="number" placeholder="Entrez votre numéro de téléphone" name="telephone" [(ngModel)]="telephone"  required></ion-input>
-  
-  </ion-card-content>
-</ion-card>
+  <ion-item>
+  <ion-label>Nombre de pièce</ion-label>
+    <ion-input type="number" placeholder="Nombre de pièce" name="nbrepiece" [(ngModel)]="nbrepiece"  required></ion-input>
+  </ion-item>
 
-  
+<ion-item>
+<ion-label>Heure d'Aménagement</ion-label>
+    <ion-input type="time" placeholder="Heure d'Aménagement" name="heureAmenagement" [(ngModel)]="heureAmenagement"  required></ion-input>
+  </ion-item>
 
 
-
-    
+    <ion-item>
+    <ion-label>Votre numéro de téléphone</ion-label>
+    <ion-input type="number" placeholder="Numéro de téléphone" name="telephone" [(ngModel)]="telephone"  required></ion-input>
+  </ion-item>
 
   
 

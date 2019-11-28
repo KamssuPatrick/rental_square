@@ -10,6 +10,7 @@ import { AppSettings } from '../../../services/app-settings';
 import { TabsPage } from '../../../pages/tabs/tabs';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+
 import firebase from 'firebase';
 import { AuthProvider } from '../../../providers/auth/auth';
 import { IFramePage } from '../../../pages/i-frame/i-frame';
@@ -120,11 +121,9 @@ export class LoginLayout1 {
                 
                 console.log(userLastName, userName);
                 this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
-                window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
-
                 console.log(user.user);
                 console.log("patrck");
-                this.navCtrl.setRoot(TabsPage,{user:  user.user.uid, email: user.user.email});
+                this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
                 },
                 error => {
                     
@@ -158,7 +157,7 @@ export class LoginLayout1 {
                     window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
 
                     console.log(user.user);
-                    this.navCtrl.setRoot(TabsPage,{user:  user.user.uid, email: user.user.email});
+                    this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
                 },
                 error => {
                     

@@ -15,6 +15,10 @@ register-layout-2 {
   .toolbar-title {
     color: color($colors, 'secondary') !important;
   }
+
+  .bac {
+    background: #db3236;
+  }
   .toolbar-ios {
     min-height: 64px;
   }

@@ -4,23 +4,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MenuProvider} from '../providers/menu/menu';
+import { PaypalPage } from '../pages/paypal/paypal';
 
 import { HomePage } from '../pages/home/home';
 import { AccueilPage } from '../pages/accueil/accueil';
-import { Tabs5Page } from '../pages/tabs5/tabs5';
+import { PaiementPage } from '../pages/paiement/paiement';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
-import { AmenagementPage } from '../pages/amenagement/amenagement';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
-import { GlobalProvider } from '../providers/global/global';
-
-
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = HomePage;
 
   @ViewChild(Nav) nav: Nav;
   
@@ -39,8 +36,6 @@ export class MyApp {
       { title: 'Magasins/Boutiques/Local commercial', component: "MagasinPage" },
       { title: 'Bail emphytéotique', component: "BailPage" },
       { title: 'Messagerie', component: "MessageriePage" },
-      { title: 'Aménagement', component: "Utilisateur2Page" },
-      { title: 'Déménagement', component: "Utilisateur3Page" },
       { title: 'Mon Profil', component: "MonprofilePage" },
     ];
 
