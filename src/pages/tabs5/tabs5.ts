@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Profile } from '../../models/profile';
 import * as firebase from 'firebase/app';
+import { ModificationProfilPage } from '../modification-profil/modification-profil';
 
 /**
  * Generated class for the Tabs5Page page.
@@ -79,7 +80,7 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
 			  "uid": keyyy[i],
 			  "username": data.val().username,
 			  "prenom": data.val().prenom,
-			  "image":"assets/images/avatar/user1.png"
+			  "image":"assets/img/avatar/user1.png"
 			};
 			i++;
 		  });
@@ -114,6 +115,12 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
           console.log("pas de données");
         }
       })
+    }
+
+    modifier()
+    {
+      this.navCtrl.push(ModificationProfilPage, {item: this.userId});
+
     }
 
 }

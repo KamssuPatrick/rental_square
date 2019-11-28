@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Note } from '../models/note/note.model';
+import { Note2 } from '../models/note2/note2.model';
 
 @Injectable()
 export class NoteListService {
@@ -62,6 +63,13 @@ export class NoteListService {
         }
 
         
+    }
+
+    updateNote2(note: Note2) {
+
+       
+            this.noteListRef = this.db.list<Note2>('/users/');
+            return this.noteListRef.update(note.uid, note);
     }
 
     removeNote(note: Note) {

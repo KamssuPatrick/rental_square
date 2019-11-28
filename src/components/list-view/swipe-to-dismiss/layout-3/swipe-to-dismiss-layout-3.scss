@@ -1,36 +1,43 @@
 /*  #Style Swipe To Dismiss - Full width image
 ===========================================*/
 swipe-to-dismiss-layout-3 {
-  [background-size] {
+  
+  ion-card {
     position: relative;
-    height: 215px;
-    @include darkening-blend-mode;
-    border-radius: $border-radius;
-    // Settings Ttitle and Subtitle
-    [title-block] {
-      position: absolute;
-      left: 10px;
-      bottom: 8px;
-      z-index: 9999;
+    height: 170px;
+    width: calc(100%) !important;
+    
 
-      [header-title] {
-        color: color($googleCard, card-title-full-images-cards);
-      }
-
-      [item-subtitle] {
-        margin-left: 2px;
-        color: color($googleCard, card-subtitle-full-images-cards) !important;
-      }
+    &[background-size] {
+      @include darkening-blend-mode;
     }
   }
-  // Settings Button Swipe
-  ion-item-options {
-    border-bottom: 1px solid transparent !important;
 
-    button {
-      letter-spacing: 1px;
-      padding: 16px 16px 16px 32px !important;
-      font-size: $h4-font-size !important;
-    }
+  .images{
+    border-radius: $border-radius !important;
+    box-shadow: none !important;
+
+  }
+
+  [gallery-title] {
+    color: color($imageGallery, full-gallery-1-title) !important;
+  }
+
+  [gallery-subtitle] {
+    color: color($imageGallery, full-gallery-1-subtitle) !important;
+  }
+
+  .card-md, .card-ios {
+    margin: 0 !important;
+  }
+
+  [gallery-description] {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    bottom: 0;
+    min-height: 45px;
+    z-index: 9;
   }
 }

@@ -35,7 +35,7 @@ export class ActionSheetService implements IService {
     getDataForLayout1 = (): any => {
         return {
             "headerTitle": "Basic",
-            "headerImage": "assets/images/background-small/4.jpg",
+            "headerImage": "assets/img/background-small/4.jpg",
             "shareIcon": "more",
             "actionSheet": {
                 "buttons": [
@@ -93,11 +93,11 @@ export class ActionSheetService implements IService {
     getDataForLayout2 = (): any => {
         return {
             "headerTitle": "News",
-            "headerImage": "assets/images/background-small/3.jpg",
+            "headerImage": "assets/img/background-small/3.jpg",
             "title": "Infinit bridge made in China. Locals said that is not possible to see end of bridge. 7 people lost during walk.",
             "subtitle": "by Name Surname",
             "category": "ENGINEERING",
-            "avatar": "assets/images/avatar/3.jpg",
+            "avatar": "assets/img/avatar/3.jpg",
             "shareIcon": "more",
             "actionSheet": {
                 "buttons": [
@@ -176,7 +176,7 @@ export class ActionSheetService implements IService {
                 {
                     "id": 1,
                     "category": "best offer",
-                    "image": "assets/images/background/2.jpg",
+                    "image": "assets/img/background/2.jpg",
                     "title": "Free Ride Tour",
                     "subtitle": "West Avenue, NYC",
                     "button": "$35.99"
@@ -184,7 +184,7 @@ export class ActionSheetService implements IService {
                 {
                     "id": 2,
                     "category": "main event",
-                    "image": "assets/images/background/1.jpg",
+                    "image": "assets/img/background/1.jpg",
                     "title": "Open Air Concert",
                     "subtitle": "Hyde Park, London",
                     "button": "$12.99"
@@ -192,7 +192,7 @@ export class ActionSheetService implements IService {
                 {
                     "id": 3,
                     "category": "Best Tourt",
-                    "image": "assets/images/background/0.jpg",
+                    "image": "assets/img/background/0.jpg",
                     "title": "Sea ture",
                     "subtitle": "Guilin, Kweilin",
                     "button": "$13.45"
@@ -200,7 +200,7 @@ export class ActionSheetService implements IService {
                 {
                     "id": 4,
                     "category": "Mountain",
-                    "image": "assets/images/background/3.jpg",
+                    "image": "assets/img/background/3.jpg",
                     "title": "Mountain Trout",
                     "subtitle": "SMountain Trout Camp",
                     "button": "$38.60"
@@ -208,7 +208,7 @@ export class ActionSheetService implements IService {
                 {
                     "id": 5,
                     "category": "Bridge Tour",
-                    "image": "assets/images/background/4.jpg",
+                    "image": "assets/img/background/4.jpg",
                     "title": "Bridge Tour",
                     "subtitle": "BridgeClimb, Sydney",
                     "button": "$40.85"
@@ -216,7 +216,7 @@ export class ActionSheetService implements IService {
                 {
                     "id": 6,
                     "category": "best events",
-                    "image": "assets/images/background/5.jpg",
+                    "image": "assets/img/background/5.jpg",
                     "title": "Main Stage Event",
                     "subtitle": "Hyde Park, London ",
                     "button": "$56.55"

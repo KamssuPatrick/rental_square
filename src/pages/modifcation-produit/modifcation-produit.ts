@@ -37,6 +37,7 @@ export class ModifcationProduitPage {
   terrasse
   autre
   prix
+  url
   uid
   event : any;
 
@@ -52,6 +53,7 @@ export class ModifcationProduitPage {
     terrasse: '',
     autre: '',
     prix: '',
+    url: '',
     image: ''
   };
 

@@ -39,17 +39,17 @@ export class WizardService implements IService {
          "btnFinish": "Finish",
          "items": [
              {
-                 "logo": "assets/images/logo/2.png",
+                 "logo": "assets/img/logo/2.png",
                  "title": "Welcome to our new iOS style theme",
                  "description": "Finished layouts and components for Ionic 3. Ready to use!"
              },
              {
-                 "logo": "assets/images/logo/2.png",
+                 "logo": "assets/img/logo/2.png",
                  "title": "For Developers",
                  "description": "Save hours of developing. Tons of funcional components."
              },
              {
-                 "logo": "assets/images/logo/2.png",
+                 "logo": "assets/img/logo/2.png",
                  "title": "For Designers",
                  "description": "Endless possibilities. Combine layouts as you wish."
              }
@@ -65,19 +65,19 @@ export class WizardService implements IService {
             "items": [
                 {
                     "welcome": "Welcome",
-                    "backgroundImage": "assets/images/background/9.jpg",
+                    "backgroundImage": "assets/img/background/9.jpg",
                     "title": "Welcome to our new iOS theme",
                     "description": "Text for Fragment Example 3 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                 },
                 {
                     "welcome": "Welcome",
-                    "backgroundImage": "assets/images/background/8.jpg",
+                    "backgroundImage": "assets/img/background/8.jpg",
                     "title": "Welcome to our new iOS theme",
                     "description": "Text for Fragment Example 3 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                 },
                 {
                     "welcome": "Welcome",
-                    "backgroundImage": "assets/images/background/10.jpg",
+                    "backgroundImage": "assets/img/background/10.jpg",
                     "title": "Welcome to our new iOS theme",
                     "description": "Text for Fragment Example 3 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                 }
@@ -92,17 +92,17 @@ export class WizardService implements IService {
             "btnFinish": "Finish",
             "items": [
                 {
-                    "backgroundImage": "assets/images/background/21.jpg",
+                    "backgroundImage": "assets/img/background/21.jpg",
                     "subtitle": "Page 1",
                     "title": "Lorem ipsum dolor sit amet, consectetur"
                 },
                 {
-                    "backgroundImage": "assets/images/background/22.jpg",
+                    "backgroundImage": "assets/img/background/22.jpg",
                     "subtitle": "Page 2",
                     "title": "Lorem ipsum dolor sit amet, consectetur"
                 },
                 {
-                    "backgroundImage": "assets/images/background/23.jpg",
+                    "backgroundImage": "assets/img/background/23.jpg",
                     "subtitle": "Page 3",
                     "title": "Lorem ipsum dolor sit amet, consectetur"
                 }

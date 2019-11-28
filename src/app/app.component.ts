@@ -7,17 +7,20 @@ import { MenuProvider} from '../providers/menu/menu';
 
 import { HomePage } from '../pages/home/home';
 import { AccueilPage } from '../pages/accueil/accueil';
+import { Tabs5Page } from '../pages/tabs5/tabs5';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
 import { AmenagementPage } from '../pages/amenagement/amenagement';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
 import { GlobalProvider } from '../providers/global/global';
 
+
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = TabsPage;
 
   @ViewChild(Nav) nav: Nav;
   

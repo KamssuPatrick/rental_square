@@ -43,7 +43,7 @@ export class LoginService implements IService {
         "subtitle"        : "Welcome",
         "title"           : "Login to your account",
         "skip"            : "Skip",
-        "logo"            : "assets/images/logo/2.png",
+        "logo"            : "assets/img/logo/2.png",
         "errorUser"       : "Field can't be empty.",
         "errorPassword"   : "Field can't be empty."
       };
@@ -62,7 +62,7 @@ export class LoginService implements IService {
         "register"       : "Register",
         "login"          : "Login",
         "skip"           : "Skip",
-        "logo"           : "assets/images/logo/2.png",
+        "logo"           : "assets/img/logo/2.png",
         "errorUser"      : "Field can't be empty.",
         "errorPassword"  : "Field can't be empty."
       };

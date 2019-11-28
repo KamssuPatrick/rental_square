@@ -24,11 +24,21 @@
   </ion-card-header>
   <ion-card-content>
  
-   <ion-textarea placeholder="Adresse du client" name="clientAdresse" [(ngModel)]="clientAdresse" clearOnEdit="true"></ion-textarea>
+   <ion-input placeholder="Adresse du client" name="clientAdresse" [(ngModel)]="clientAdresse" clearOnEdit="true"></ion-input>
   
   </ion-card-content>
 </ion-card>
 
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Date et heure de déménagement</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-datetime displayFormat="DD MM YYYY" placeholder="Date d'aménagement" name="dateAmenagement" [(ngModel)]="dateAmenagement" required></ion-datetime>
+   
+  </ion-card-content>
+</ion-card>
 
       <ion-card>
   <ion-card-header>
@@ -38,18 +48,7 @@
     <ion-input type="text" placeholder="Adresse de destination" name="destinationAdresse" [(ngModel)]="destinationAdresse"  required></ion-input>
   
   </ion-card-content>
-</ion-card>
-
-  <ion-card>
-  <ion-card-header>
-    <ion-card-title>Date de déménagement</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-input type="date" placeholder="Date de déménagement" name="dateAmenagement" [(ngModel)]="dateAmenagement" required></ion-input>
-   
-  </ion-card-content>
-</ion-card>
-  
+</ion-card> 
 
        <ion-card>
   <ion-card-header>
@@ -80,17 +79,6 @@
   <ion-card-content>
     
     <ion-input type="number" placeholder="Combien de pièce à déménager ?" name="nbrepiece" [(ngModel)]="nbrepiece"  required></ion-input>
-  
-  </ion-card-content>
-</ion-card>
-
-      <ion-card>
-  <ion-card-header>
-    <ion-card-title>Heure de déménagement</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-   
-    <ion-input type="time" placeholder="Heure de déménagement" name="heureAmenagement" [(ngModel)]="heureAmenagement"  required></ion-input>
   
   </ion-card-content>
 </ion-card>

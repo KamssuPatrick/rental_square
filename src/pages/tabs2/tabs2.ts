@@ -18,33 +18,106 @@ export class Tabs2Page {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
+   
     this.params.data = {
-      "items" : [ {
-        "delate" : "Delete",
-        "id" : 1,
-        "image" : "assets/images/background/4.jpg",
-        "subtitle" : "Monday, 15th Oct. 2017",
-        "title" : "Appartements"
-      }, {
-        "delate" : "Delete",
-        "id" : 2,
-        "image" : "assets/images/background/0.jpg",
-        "subtitle" : "Thursday, 20th Feb. 2017",
-        "title" : "Villa"
-      }, {
-        "delate" : "Delete",
-        "id" : 3,
-        "image" : "assets/images/background/3.jpg",
-        "subtitle" : "Friday, 10th Aug. 2017",
-        "title" : "Immeuble"
-      }, {
-        "delate" : "Delete",
-        "id" : 4,
-        "image" : "assets/images/background/5.jpg",
-        "subtitle" : "Wednesday, 17th May 2016",
-        "title" : "Fonds de commerce"
-      } ]
-    }
+      "items": [
+          {
+              "id": 1,
+              "title": "Appartements",
+              "image": "assets/img/gallery/brogan/villa1.jpg",
+              "items": [
+                  {
+                      "id": 1,
+                      "image": "assets/img/gallery/brogan/villa2.jpg"
+                  },
+                  {
+                      "id": 2,
+                      "image": "assets/img/gallery/brogan/villa3.jpg"
+                  },
+                  {
+                      "id": 3,
+                      "image": "assets/img/gallery/brogan/villa4.jpg"
+                  },
+                  {
+                      "id": 4,
+                      "image": "assets/img/gallery/brogan/villa1.jpg"
+                  }
+              ]
+          },
+          {
+              "id": 2,
+              "title": "Villa",
+              "image": "assets/img/gallery/brogan/appart1.jpg",
+              "items": [
+                  {
+                      "id": 1,
+                      "image": "assets/img/gallery/brogan/appart1.jpg"
+                  },
+                  {
+                      "id": 2,
+                      "image": "assets/img/gallery/brogan/appart2.jpg"
+                  },
+                  {
+                      "id": 3,
+                      "image": "assets/img/gallery/brogan/appart3.jpg"
+                  }
+              ]
+          },
+          {
+              "id": 4,
+              "title": "Immeuble",
+              "image": "assets/img/gallery/brogan/20.jpg",
+              "items": [
+                  {
+                      "id": 1,
+                      "image": "assets/img/gallery/brogan/10.jpg"
+                  },
+                  {
+                      "id": 2,
+                      "image": "assets/img/gallery/brogan/11.jpg"
+                  },
+                  {
+                      "id": 3,
+                      "image": "assets/img/gallery/brogan/12.jpg"
+                  },
+                  {
+                      "id": 4,
+                      "image": "assets/img/gallery/brogan/13.jpg"
+                  },
+                  {
+                      "id": 5,
+                      "image": "assets/img/gallery/brogan/14.jpg"
+                  },
+                  {
+                      "id": 6,
+                      "image": "assets/img/gallery/brogan/15.jpg"
+                  }
+              ]
+          },
+          {
+              "id": 5,
+              "title": "Fonds de commerce",
+              "image": "assets/img/gallery/brogan/17.jpg",
+              "items": [
+                  {
+                      "id": 1,
+                      "image": "assets/img/gallery/brogan/1.jpg"
+                  },
+                  {
+                      "id": 2,
+                      "image": "assets/img/gallery/brogan/2.jpg"
+                  },
+                  {
+                      "id": 3,
+                      "image": "assets/img/gallery/brogan/12.jpg"
+                  }
+              ]
+          }
+      ]
+  };
+
+this.params.data.subGallery = "ItemDetailsPageSubImageGallery";
+this.params.data.fullscreen = "ItemDetailsPageFullScreenGallery";
 
     this.params.events = {
       'onItemClick': function (item: any) {

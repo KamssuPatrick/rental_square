@@ -43,9 +43,9 @@ export class Tabs4Page {
     public auth: AuthService,
     private fireAuth: AngularFireAuth) {
 
-      this.user = firebase.auth().currentUser;
+      /*this.user = firebase.auth().currentUser;
 
-       this.userId = firebase.auth().currentUser.uid;
+       this.userId = firebase.auth().currentUser.uid;*/
 
        /*this.auth.getUsername().then(username=>{
  //console.log('Yeah, username ', username);
@@ -61,11 +61,11 @@ this.params = {
       "buy" : "buy",
       "id" : 1,
       "img": [
-        "assets/images/gallery/brogan/appart1.jpg",
-        "assets/images/gallery/brogan/appart2.jpg",
-        "assets/images/gallery/brogan/appart3.jpg",
-        "assets/images/gallery/brogan/appart2.jpg",
-        "assets/images/gallery/brogan/appart1.jpg",
+        "assets/img/gallery/brogan/appart1.jpg",
+        "assets/img/gallery/brogan/appart2.jpg",
+        "assets/img/gallery/brogan/appart3.jpg",
+        "assets/img/gallery/brogan/appart2.jpg",
+        "assets/img/gallery/brogan/appart1.jpg",
       ],
       
       "price" : "20000 XAF/jour",
@@ -105,7 +105,7 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
 			  "uid": keyyy[i],
 			  "username": data.val().username,
 			  "prenom": data.val().prenom,
-			  "image":"assets/images/avatar/user1.png"
+			  "image":"assets/img/avatar/user1.png"
 			};
 			i++;
 		  });

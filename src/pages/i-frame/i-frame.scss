@@ -1,0 +1,21 @@
+page-i-frame {
+
+    .iframe-wrapper iframe{
+        width: 100%;
+        height: 100%;
+      }
+
+      ion-header {
+        .toolbar {
+          position: absolute;
+      
+          .toolbar-background {
+            background: transparent;
+          }
+          .toolbar-title {
+            color: black;
+          }
+        }
+      }
+
+}

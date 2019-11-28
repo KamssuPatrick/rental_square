@@ -20,9 +20,9 @@
   
 
 
-          <ion-col no-padding col-12 background-size [ngStyle]="{'background-image': 'url(../../assets/images/gallery/bend/achat.jpeg)'}">
+          <ion-col no-padding col-12 background-size [ngStyle]="{'background-image': 'url(../../assets/img/gallery/bend/achat.jpeg)'}">
               <!-- Header Title -->
-              <img src="../../assets/images/gallery/bend/achat.jpeg" alt="User" class="userImage" > 
+              <img src="../../assets/img/gallery/bend/achat.jpeg" alt="User" class="userImage" > 
               
               <h1 ion-text register-title text-wrap class="nnd"> 10 000 XAF</h1>
           </ion-col>
@@ -32,16 +32,16 @@
 
               <ion-card>
               <ion-card-header>
-                <ion-card-title>MonetBil</ion-card-title>
+                <ion-card-title>FAROTY</ion-card-title>
               </ion-card-header>
               <ion-card-content>
-                MonetBil vous permettra d'effectuer votre paiement avec les principaux moyens
+                FAROTY vous permettra d'effectuer votre paiement avec les principaux moyens
                 de paiement disponibles en local,
-                c'est à dire par Orange Money, Mtn Mobile Money, Express Union
+                c'est à dire par Orange Money, Mtn Mobile Money
               </ion-card-content>
 
               <ion-card-content>
-                <button full ion-button text-only class="monet" round>Abonnez-vous par MonetBil</button>
+                <button full ion-button text-only class="monet" (click) = "faroty()" round>Abonnez-vous par FAROTY</button>
               </ion-card-content>
             </ion-card>
 

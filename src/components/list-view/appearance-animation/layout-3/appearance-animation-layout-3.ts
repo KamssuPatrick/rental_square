@@ -28,6 +28,7 @@ export class AppearanceAnimationLayout3 {
 
         if (event === "onItemClick")
         {
+            console.log("ici ae");
             this.navCtrl.push(GestionDemePage, { item:item, index: index});
         }
     }

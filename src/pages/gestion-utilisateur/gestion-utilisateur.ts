@@ -110,7 +110,7 @@ export class GestionUtilisateurPage {
           "username": snapshot.val().username,
           "prenom": snapshot.val().prenom,
           "email":snapshot.val().email,
-          "avatar":"assets/images/avatar/user1.png"
+          "avatar":"../assets/img/avatar/user1.png"
         };
        
        

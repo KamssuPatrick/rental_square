@@ -19,6 +19,15 @@
       <ion-row>
 
       
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Date et heure d'aménagement</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-datetime displayFormat="MMM DD, YYYY HH:mm" placeholder="Date d'aménagement" name="dateAmenagement" [(ngModel)]="dateAmenagement" required></ion-datetime>
+            
+          </ion-card-content>
+        </ion-card>
     
   
 
@@ -28,7 +37,7 @@
   </ion-card-header>
   <ion-card-content>
  
-    <ion-textarea placeholder="Entrez votre adresse" name="clientAdresse" [(ngModel)]="clientAdresse" clearOnEdit="true"></ion-textarea>
+    <ion-input type="text" placeholder="Entrez votre adresse" name="clientAdresse" [(ngModel)]="clientAdresse" clearOnEdit="true"></ion-input>
     
   </ion-card-content>
 </ion-card>
@@ -38,21 +47,13 @@
   <ion-card-header>
     <ion-card-title>Adresse de destination</ion-card-title>
   </ion-card-header>
-  <ion-card-content>
+  <ion-item>
     <ion-input type="text" placeholder="Entrez l'adresse d'aménagement" name="destinationAdresse" [(ngModel)]="destinationAdresse"  required></ion-input>
+    </ion-item>
   
-  </ion-card-content>
 </ion-card>
 
-  <ion-card>
-  <ion-card-header>
-    <ion-card-title>Date d'aménagement</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-input type="date" placeholder="Date d'aménagement" name="dateAmenagement" [(ngModel)]="dateAmenagement" required></ion-input>
-    
-  </ion-card-content>
-</ion-card>
+  
   
 
        <ion-card>
@@ -88,17 +89,6 @@
   </ion-card-content>
 </ion-card>
 
-      <ion-card>
-  <ion-card-header>
-    <ion-card-title>Heure d'Aménagement</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-   
-    <ion-input type="time" placeholder="Heure d'Aménagement" name="heureAmenagement" [(ngModel)]="heureAmenagement"  required></ion-input>
-  
-
-  </ion-card-content>
-</ion-card>
 
       <ion-card>
   <ion-card-header>

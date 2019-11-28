@@ -73,7 +73,7 @@ export class Utilisateur3Page {
           "nbrepiece": data.val().nbrepiece,
           "telephone": data.val().telephone,
           "user": data.val().user,
-          "image":"assets/images/avatar/user1.png"
+          "image":"assets/img/avatar/user1.png"
         };
         i++;
       });

@@ -17,8 +17,6 @@
        <ion-row>
 
   <ion-card>
-  <ion-card-header>
-  </ion-card-header>
 
     <ion-item>
     <img src="{{value.image}}">
@@ -110,6 +108,14 @@
 
     <ion-item>
     <ion-textarea [(ngModel)]="value.prix" name="prix" clearOnEdit="true">{{value.prix}}</ion-textarea>
+    </ion-item>
+
+    <ion-card-header>
+    <ion-card-title>Lien de la visite guidée</ion-card-title>
+  </ion-card-header>
+
+    <ion-item>
+    <ion-textarea [(ngModel)]="value.url" name="url" clearOnEdit="true">{{value.url}}</ion-textarea>
     </ion-item>
 
 

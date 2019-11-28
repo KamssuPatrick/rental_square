@@ -34,8 +34,8 @@ export class SplashScreenService implements IService {
     getDataForLayout1 = (): any => {
         return {
             "duration": 10000,
-            "backgroundImage": "assets/images/splashscreen/2.jpg",
-            "logo": "assets/images/logo/4.png",
+            "backgroundImage": "assets/img/splashscreen/2.jpg",
+            "logo": "assets/img/logo/4.png",
             "title": ""
         };
     }
@@ -44,8 +44,8 @@ export class SplashScreenService implements IService {
     getDataForLayout2 = (): any => {
         return {
             "duration": 10000,
-            "backgroundImage": "assets/images/splashscreen/3.jpg",
-            "logo": "assets/images/logo/3.png",
+            "backgroundImage": "assets/img/splashscreen/3.jpg",
+            "logo": "assets/img/logo/3.png",
             "title": ""
         };
     };
@@ -54,8 +54,8 @@ export class SplashScreenService implements IService {
     getDataForLayout3 = (): any => {
         return {
             "duration": 10000,
-            "backgroundImage": "assets/images/splashscreen/1.jpg",
-            "logo": "assets/images/logo/4.png",
+            "backgroundImage": "assets/img/splashscreen/1.jpg",
+            "logo": "assets/img/logo/4.png",
             "title": "Welcome to our new iOS 11 theme"
         };
     };

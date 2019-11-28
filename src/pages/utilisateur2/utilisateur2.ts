@@ -68,7 +68,6 @@ export class Utilisateur2Page {
           "destinationAdresse": data.val().destinationAdresse,
           "distance": data.val().distance,
           "etage": data.val().etage,
-          "heureAmenagement": data.val().heureAmenagement,
           "myDate": data.val().myDate,
           "nbrepiece": data.val().nbrepiece,
           "telephone": data.val().telephone,

@@ -4,6 +4,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Tabs4Page } from '../tabs4/tabs4';
 import * as firebase from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
+import { ChatProvider } from '../../providers/chat/chat';
+import { ChatbodyPage } from '../chatbody/chatbody';
 
 /**
  * Generated class for the AmenagementPage page.
@@ -30,6 +32,7 @@ export class AmenagementPage {
   myDate
   nbrepiece
   user
+item
   
 
   myImages: Array<string>;
@@ -38,7 +41,7 @@ export class AmenagementPage {
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase
-    , public alertCtrl: AlertController,
+    , public alertCtrl: AlertController, public chatProvider: ChatProvider,
     public auth: AuthService) {
   }
 
@@ -51,6 +54,7 @@ export class AmenagementPage {
 
 
     this.user = firebase.auth().currentUser.email;
+    this.item = firebase.auth().currentUser.uid;
     this.myDate = new Date().toISOString();
       let alert = this.alertCtrl.create({
         title: 'Confirm purchase',
@@ -68,7 +72,7 @@ export class AmenagementPage {
             handler: () => {
     
               this.afData.list("/amenagement").push({clientAdresse: this.clientAdresse, dateAmenagement: this.dateAmenagement, etage: this.etage, 
-                distance: this.distance, destinationAdresse: this.destinationAdresse, telephone: this.telephone, heureAmenagement: this.heureAmenagement, myDate: this.myDate,
+                distance: this.distance, destinationAdresse: this.destinationAdresse, telephone: this.telephone, myDate: this.myDate,
                 nbrepiece: this.nbrepiece, user: this.user});
     
               this.navCtrl.setRoot(Tabs4Page);
@@ -78,6 +82,11 @@ export class AmenagementPage {
         ]
       });
      alert.present();
+
+    //  this.chatProvider.initialize(this.item)
+    //  this.navCtrl.push(ChatbodyPage, {
+    //  Details: this.item
+    //  });
     
   }
 

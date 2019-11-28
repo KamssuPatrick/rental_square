@@ -40,13 +40,13 @@
   </ion-card-content>
 </ion-card>
 
-  <ion-card>
+<ion-card>
   <ion-card-header>
-    <ion-card-title>Date </ion-card-title>
+    <ion-card-title>Date et heure d'aménagement</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <ion-input type="date"  name="dateAmenagement" [(ngModel)]="value2.dateAmenagement" required></ion-input>
-   
+    <ion-datetime displayFormat="MMM DD, YYYY HH:mm" name="dateAmenagement" [(ngModel)]="value2.dateAmenagement" required></ion-datetime>
+    
   </ion-card-content>
 </ion-card>
   
@@ -86,17 +86,6 @@
 
       <ion-card>
   <ion-card-header>
-    <ion-card-title>Heure voulue</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-   
-    <ion-input type="time"  name="heureAmenagement" [(ngModel)]="value2.heureAmenagement"  required></ion-input>
-  
-  </ion-card-content>
-</ion-card>
-
-      <ion-card>
-  <ion-card-header>
     <ion-card-title>Téléphone</ion-card-title>
   </ion-card-header>
   <ion-card-content>
@@ -114,7 +103,7 @@
       <ion-row>
         <ion-col class="signup-col">
           <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
-          <button  full ion-button text-only round>Envoyer un message</button>
+          <!-- <button  full ion-button text-only (click)="message(value2.item)" round>Envoyer un message</button> -->
         </ion-col>
       </ion-row>
 

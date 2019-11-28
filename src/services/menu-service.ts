@@ -40,8 +40,8 @@ export class MenuService implements IService {
 
     getDataForTheme = () => {
       return {
-        "background": "assets/images/background/14.jpg",
-        "image": "assets/images/logo/1.png",
+        "background": "assets/img/background/14.jpg",
+        "image": "assets/img/logo/1.png",
         "title": "Ionic 3 theme iOS 11 style",
         "description": "Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt"
       };

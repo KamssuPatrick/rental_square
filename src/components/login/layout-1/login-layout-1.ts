@@ -12,6 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import firebase from 'firebase';
 import { AuthProvider } from '../../../providers/auth/auth';
+import { IFramePage } from '../../../pages/i-frame/i-frame';
 
 declare var window: any;
 
@@ -91,7 +92,7 @@ export class LoginLayout1 {
             });
         }
         if(event== "onRegister"){
-            this.navCtrl.push(RegisterPage);
+            this.navCtrl.push(IFramePage);
         }
 
         

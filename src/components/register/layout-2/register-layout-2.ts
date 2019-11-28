@@ -3,6 +3,7 @@ import { IonicPage } from 'ionic-angular';
 import { AccueilPage } from '../../../pages/accueil/accueil';
 import { AuthService } from '../../../services/auth.service';
 import { NavController, NavParams } from 'ionic-angular';
+import { TabsPage } from '../../../pages/tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -58,7 +59,7 @@ export class RegisterLayout2 {
               this.auth.signUp(credentials).then(
                 (user) => {
                     this.auth.writeUserData(user.user.uid, this.username, this.email, this.prenom);
-                    this.navCtrl.setRoot(AccueilPage,user);
+                    this.navCtrl.setRoot(TabsPage,user);
                 },
                 error => {
                             this.signupError = error.message;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
 
 @Component({
   selector: 'page-home',
@@ -10,7 +11,7 @@ export class HomePage {
   params: any = {};
 
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private menu: MenuController) {
 
     this.params.data = {
 
@@ -20,11 +21,11 @@ export class HomePage {
       "login"    : "Se Connecter",
       "email"    : "Votre adresse e-mail",
       "passer"   : "Passer",
-      "logo"     : "assets/images/logo/logo_rental.jpg",
-      "backgroundImage" : "assets/images/logo/back_rental.jpg",
+      "logo"     : "assets/img/logo/logo_rental.jpg",
+      "backgroundImage" : "assets/imgs/arch.jpg",
       "iconAccount" : "icon-key",
       "iconKey" : "",
-      "iconLock" : "assets/images/background/20.jpg",
+      "iconLock" : "assets/img/background/20.jpg",
       "errorPassword"       : "Le champ ne peut pas être vide.",
       "errorEmail"          : "Adresse électronique invalide.",
       "errorUser"           : "Le champ ne peut pas être vide."
@@ -58,5 +59,21 @@ export class HomePage {
     };
 
   }
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+
+    // If you have more than one side menu, use the id like below
+    // this.menu.swipeEnable(false, 'menu1');
+  }
+
+  ionViewWillLeave() {
+    // Don't forget to return the swipe to normal, otherwise 
+    // the rest of the pages won't be able to swipe to open menu
+    this.menu.swipeEnable(true);
+
+    // If you have more than one side menu, use the id like below
+    // this.menu.swipeEnable(true, 'menu1');
+   }
 
 }

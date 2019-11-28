@@ -27,18 +27,18 @@ export class WizardPage {
       "toolBarTitle" : "Simple + icon ",
       "btnPrev" : "Previous",
       "btnNext"    : "Next",
-      "backgroundImage" : "assets/images/logo/logo_rental.jpg",
+      "backgroundImage" : "assets/img/logo/logo_rental.jpg",
       "btnFinish"     : "Finish",
       "items" : [
         {
-          logo: 'assets/images/logo/logo_rental.jpg',
-          iconSlider: 'assets/images/logo/logo_rental.jpg',
+          logo: 'assets/img/logo/logo_rental.jpg',
+          iconSlider: 'assets/img/logo/logo_rental.jpg',
           title: 'Fragment Exmaple ',
           description: 'Test for the fragment exemple sdqd',
           buttonNext: 'Next'
         },
         {
-          logo: 'assets/images/logo/logo_rental.jpg',
+          logo: 'assets/img/logo/logo_rental.jpg',
           iconSlider: 'icon-star-outline',
           title: 'Fragment Exmaple 2',
           description: 'Test for the fragment 2 exemple sdqd',

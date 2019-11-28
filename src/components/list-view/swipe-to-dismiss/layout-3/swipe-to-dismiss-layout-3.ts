@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { IonicPage, Content, ItemSliding, AlertController, NavController } from 'ionic-angular';
 import { PaiementPage } from '../../../../pages/paiement/paiement';
+import { ProduitVentePage } from '../../../../pages/produit-vente/produit-vente';
 
 @IonicPage()
 @Component({
@@ -30,6 +31,7 @@ export class SwipeToDismissLayout3 {
                     text: 'Annuler',
                     role: 'cancel',
                     handler: () => {
+                      this.navCtrl.push(ProduitVentePage);
                     }
                   },
                   {

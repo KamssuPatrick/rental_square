@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController, NavParams, IonicPage, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase/app';
+import { ChatbodyPage } from '../chatbody/chatbody';
 
 /**
  * Generated class for the GestionDemePage page.
@@ -123,11 +124,11 @@ export class GestionDemePage {
           "destinationAdresse": snapshot.val().destinationAdresse,
           "distance": snapshot.val().distance,
           "etage": snapshot.val().etage,
-          "heureAmenagement": snapshot.val().heureAmenagement,
           "myDate": snapshot.val().myDate,
           "nbrepiece": snapshot.val().nbrepiece,
           "telephone": snapshot.val().telephone,
           "user": snapshot.val().user,
+          "item": snapshot.val().item,
           "image":"assets/images/avatar/user1.png"
         };
        
@@ -144,5 +145,10 @@ export class GestionDemePage {
     
     
     // go to Next Page
+  }
+
+  message(user)
+  {
+    ////this.navCtrl.push(ChatbodyPage, {Details: user})
   }
 }

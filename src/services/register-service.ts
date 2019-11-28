@@ -36,7 +36,7 @@ export class RegisterService implements IService {
     getDataForLayout1 = (): any => {
       return {
         "toolbarTitle"        : "Register + logo",
-        "logo"                : "assets/images/logo/2.png",
+        "logo"                : "assets/img/logo/2.png",
         "register"            : "register",
         "title"               : "Register your new account",
         "username"            : "Enter your username",
@@ -63,7 +63,7 @@ export class RegisterService implements IService {
       return {
         "toolbarTitle"        : "Register + image",
         "title"               : "Register",
-        "background"          : "assets/images/background/2.jpg",
+        "background"          : "assets/img/background/2.jpg",
         "username"            : "Enter your username",
         "city"                : "Your home town",
         "country"             : "Where are you from?",
