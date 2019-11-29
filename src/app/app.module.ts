@@ -67,6 +67,12 @@ import { PaypalPage } from '../pages/paypal/paypal';
 
 import { DemenagementPage } from '../pages/demenagement/demenagement';
 import { AmenagementPage } from '../pages/amenagement/amenagement';
+import { GlobalProvider } from '../providers/global/global';
+import { ChatProvider } from '../providers/chat/chat';
+import { AuthProvider } from '../providers/auth/auth';
+import { IFramePage } from '../pages/i-frame/i-frame';
+import { Tabs6Page } from '../pages/tabs6/tabs6';
+import { FarotyPage } from '../pages/faroty/faroty';
 
 
 var firebaseConfig = {
@@ -110,7 +116,10 @@ firebase.initializeApp(firebaseConfig);
     PaiementPage,
     PaypalPage,
     DemenagementPage,
-    AmenagementPage
+    AmenagementPage,
+    IFramePage,
+    Tabs6Page,
+    FarotyPage
   ],
   imports: [
     BrowserModule,
@@ -152,7 +161,10 @@ firebase.initializeApp(firebaseConfig);
     PaiementPage,
     PaypalPage,
     AmenagementPage,
-    DemenagementPage
+    DemenagementPage,
+    IFramePage,
+    Tabs6Page,
+    FarotyPage
     
     
   ],
@@ -165,6 +177,9 @@ firebase.initializeApp(firebaseConfig);
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
+    GlobalProvider,
+    ChatProvider,
+    AuthProvider,
     NoteListService
   ]
 })
