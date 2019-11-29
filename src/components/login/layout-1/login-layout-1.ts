@@ -93,7 +93,7 @@ export class LoginLayout1 {
             });
         }
         if(event== "onRegister"){
-            this.navCtrl.push(IFramePage);
+            this.navCtrl.push(RegisterPage);
         }
 
         
@@ -120,7 +120,7 @@ export class LoginLayout1 {
                  }
                 
                 console.log(userLastName, userName);
-                this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
+                this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '','');
                 console.log(user.user);
                 console.log("patrck");
                 this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
@@ -153,7 +153,7 @@ export class LoginLayout1 {
                      }
                     
                     console.log(userLastName, userName);
-                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
+                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '');
                     window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
 
                     console.log(user.user);

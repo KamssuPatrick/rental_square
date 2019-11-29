@@ -114,7 +114,7 @@ export class ProduitPage {
        
       });
 
-      console.log("helllllllllooooooooooo",params)
+      console.log("helllllllllooooooooooo" + this.value,params)
 	   return params;
     }
 
@@ -178,12 +178,12 @@ export class ProduitPage {
        
       });
 
-      console.log("helllllllllooooooooooo",params)
+      console.log("helllllllllooooooooooo"+ this.value,params)
 	   return params;
 
     }
 
-    if(values == 2)
+    /*if(values == 2)
     {
       this.types = "Appartement meublé";
 
@@ -254,11 +254,11 @@ export class ProduitPage {
        
       });
 
-      console.log("helllllllllooooooooooo",params)
+      console.log("helllllllllooooooooooo"+ this.value,params)
 	   return params;
-    }
+    }*/
 
-    if(values == 3)
+    if(values == 2)
     {
       this.types = "Immeuble";
 
@@ -325,12 +325,12 @@ export class ProduitPage {
        
       });
 
-      console.log("helllllllllooooooooooo",params)
+      console.log("helllllllllooooooooooo"+ this.value,params)
 	   return params;
 
     }
 
-    if(values == 4)
+    if(values == 3)
     {
       this.types = "Bureau";
 
@@ -390,11 +390,11 @@ export class ProduitPage {
        
       });
 
-      console.log("helllllllllooooooooooo",params)
+      console.log("helllllllllooooooooooo"+ this.value,params)
 	   return params;
     }
 
-    if(values == 5)
+    if(values == 4)
     {
       this.types = "Magasin";
 
@@ -454,11 +454,11 @@ export class ProduitPage {
        
       });
 
-      console.log("helllllllllooooooooooo",params)
+      console.log("helllllllllooooooooooo"+ this.value,params)
 	   return params;
     }
 
-    if(values == 6)
+    if(values == 5)
     {
       this.types = "Bail";
 
@@ -518,7 +518,7 @@ export class ProduitPage {
        
       });
 
-      console.log("helllllllllooooooooooo",params)
+      console.log("helllllllllooooooooooo"+ this.value,params)
 	   return params;
 
     }
@@ -558,16 +558,16 @@ export class ProduitPage {
         }
       }
 
-      if(values == 2)
+      /*if(values == 2)
       {
         this.ref =  firebase.database().ref("services/appt_meuble");
         if(this.ref === 'null')
         {
           this.presentAlert();
         }
-      }
+      }*/
 
-      if(values == 3)
+      if(values == 2)
       {
         this.ref =  firebase.database().ref("services/immeuble");
         if(this.ref == null)
@@ -576,7 +576,7 @@ export class ProduitPage {
         }
       }
 
-      if(values == 4)
+      if(values == 3)
       {
         this.ref =  firebase.database().ref("services/bureau");
         if(this.ref == null)
@@ -585,7 +585,7 @@ export class ProduitPage {
         }
       }
 
-      if(values == 5)
+      if(values == 4)
       {
         this.ref =  firebase.database().ref("services/magasin");
         if(this.ref == null)
@@ -594,7 +594,7 @@ export class ProduitPage {
         }
       }
 
-      if(values == 6)
+      if(values == 5)
       {
         this.ref =  firebase.database().ref("services/bail");
         if(this.ref == null)

@@ -62,7 +62,7 @@ export class RegisterLayout2 {
       
               this.auth.signUp(credentials).then(
                 (user) => {
-                    this.auth.writeUserData(user.user.uid, this.username, this.email, this.prenom);
+                    this.auth.writeUserData(user.user.uid, this.username, this.email, this.prenom, this.profession, this.societe, this.telephone);
                     this.navCtrl.setRoot(TabsPage,user);
                 },
                 error => {
@@ -106,7 +106,7 @@ export class RegisterLayout2 {
                      }
                     
                     console.log(userLastName, userName);
-                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName);
+                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '');
                     console.log(user.user);
                     this.navCtrl.setRoot(AccueilPage,user);
                 },
@@ -135,6 +135,9 @@ export class RegisterLayout2 {
                 'prenom'  : this.prenom,
                 'email': this.email,
                 'password': this.password,
+                'profession': this.profession,
+                'societe' : this.societe,
+                'telephone': this.telephone
                
             });
         }

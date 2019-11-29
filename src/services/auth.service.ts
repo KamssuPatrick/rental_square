@@ -55,11 +55,14 @@ export class AuthService {
   
 
 	
-	writeUserData(userId, username, email, prenom) {
+	writeUserData(userId, username, email, prenom, profession, societe, telephone) {
 		firebase.database().ref('users/' + userId).set({
 		  username: username,
 		  email: email,
-		  prenom : prenom
+		  prenom : prenom,
+		  profession: profession,
+		  societe: societe,
+		  telephone: telephone
 		});
 	  }
 

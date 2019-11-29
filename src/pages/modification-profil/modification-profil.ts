@@ -128,6 +128,9 @@ export class ModificationProfilPage {
           "username": snapshot.val().username,
           "prenom": snapshot.val().prenom,
           "email":snapshot.val().email,
+          "profession": snapshot.val().profession,
+          "societe": snapshot.val().societe,
+          "telephone": snapshot.val().telephone,
           "avatar":"assets/img/avatar/user1.png"
         };
        
@@ -140,7 +143,7 @@ export class ModificationProfilPage {
     
   }
 
-  updateNote() {
+  updateNote(note: Note2) {
 
    
       let alert = this.alertCtrl.create({
@@ -159,9 +162,9 @@ export class ModificationProfilPage {
             handler: () => {
     
               
-             firebase.database().ref('/users/'+ this.value).set({email: this.email, prenom: this.prenom, username:this.username, 
-              profession: this.profession, societe:this.societe, telephone: this.telephone});
-    
+              this.noteListService.updateNote2(note).then(() => {
+                this.navCtrl.setRoot(Tabs5Page);
+                });
               
     
             }
