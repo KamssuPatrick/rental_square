@@ -1,6 +1,8 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { IonicPage, Content, NavController } from 'ionic-angular';
 import { ProduitDetailsPage } from '../../../../pages/produit-details/produit-details';
+import { Tabs3Page } from '../../../../pages/tabs3/tabs3';
+import { IFramePage } from '../../../../pages/i-frame/i-frame';
 
 @IonicPage()
 @Component({
@@ -68,6 +70,7 @@ export class GoogleCardLayout2 {
             this.navCtrl.push(ProduitDetailsPage, { item:item, image:image, index: index});
         }
 
+
         
     }
 
@@ -75,4 +78,13 @@ export class GoogleCardLayout2 {
     {
         this.navCtrl.push(ProduitDetailsPage, { item:item, image:image, index: index});
     }
+
+    share(card) {
+        this.navCtrl.push(Tabs3Page);
+      }
+
+      onVisite(){
+        this.navCtrl.push(IFramePage);
+
+      }
 }

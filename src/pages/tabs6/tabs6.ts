@@ -25,7 +25,7 @@ export class Tabs6Page {
       id: 0,
       imageUrl: 'assets/img/appart1/1.jpg',
       title: 'Bonapriso/Douala',
-      description: 'Appartement ultra-moderne 3chambres ( meublé ) à louer à Bonapriso Haut Standing - Grandes pieces - Ascenseur - Groupe électrogène - Parking - Gardiens H24 - Cameras de surveillance -  Grand Jardin 💰 :  100mille  fcfa/jour',
+      description: 'Appartement ultra-moderne 3 chambres ( meublé ) à louer à Bonapriso Haut Standing - Grandes pieces - Ascenseur - Groupe électrogène - Parking - Gardiens H24 - Cameras de surveillance -  Grand Jardin 💰 :  100mille  fcfa/jour',
       img : [
         "assets/img/appart1/1.jpg",
         "assets/img/appart1/2.jpg",

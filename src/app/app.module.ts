@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 
-
 import { LoginLayout1 } from '../components/login/layout-1/login-layout-1';
 import { RegisterLayout2 } from '../components/register/layout-2/register-layout-2';
 import { WizardLayout3 } from '../components/wizard/layout-3/wizard-layout-3';
@@ -31,6 +30,7 @@ import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { Config } from '../config';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ChatbodyPage } from '../pages/chatbody/chatbody';
 
 
 
@@ -45,6 +45,7 @@ import { GalleryImagePage } from '../pages/gallery-image/gallery-image';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AppSettings } from '../services/app-settings';
 import { RegisterPage } from '../pages/register/register';
 import { AuthService } from '../services/auth.service';
@@ -62,17 +63,33 @@ import { AjoutProduitPage } from '../pages/ajout-produit/ajout-produit';
 import * as firebase from 'firebase/app';
 import { ModifcationProduitPage } from '../pages/modifcation-produit/modifcation-produit';
 import { NoteListService } from '../services/note-list.service';
+
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { Camera } from '@ionic-native/camera';
+import { DataProvider } from '../providers/data-service/data';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { GlobalProvider } from '../providers/global/global';
+import { HttpModule } from '@angular/http';
+import { Tabs5Page } from '../pages/tabs5/tabs5';
 import { PaiementPage } from '../pages/paiement/paiement';
 import { PaypalPage } from '../pages/paypal/paypal';
-
-import { DemenagementPage } from '../pages/demenagement/demenagement';
-import { AmenagementPage } from '../pages/amenagement/amenagement';
-import { GlobalProvider } from '../providers/global/global';
 import { ChatProvider } from '../providers/chat/chat';
 import { AuthProvider } from '../providers/auth/auth';
+import { AmenagementPage } from '../pages/amenagement/amenagement';
 import { IFramePage } from '../pages/i-frame/i-frame';
 import { Tabs6Page } from '../pages/tabs6/tabs6';
 import { FarotyPage } from '../pages/faroty/faroty';
+import { DemenagementPage } from '../pages/demenagement/demenagement';
+import { GestionDemePage } from '../pages/gestion-deme/gestion-deme';
+import { ModificationProfilPage } from '../pages/modification-profil/modification-profil';
+import { AppartPage } from '../pages/appart/appart';
+import { ProduitVentePage } from '../pages/produit-vente/produit-vente';
+import { SplashPage } from '../pages/splash/splash';
+import { SplashScreenLayout3 } from '../components/splash-screen/layout-3/splash-screen-layout-3';
+import { IonAffixModule } from 'ion-affix';
+import { StickyListHeaderLayout2Module } from '../components/list-view/sticky-list-header/layout-2/sticky-list-header-layout-2.module';
+import { AppearanceAnimationLayout3Module } from '../components/list-view/appearance-animation/layout-3/appearance-animation-layout-3.module';
 
 
 var firebaseConfig = {
@@ -110,15 +127,23 @@ firebase.initializeApp(firebaseConfig);
     TabsPage,
     Tabs3Page,
     Tabs4Page,
+    Tabs5Page,
+    Tabs6Page,
     GestionUtilisateurPage, 
     AjoutProduitPage,
     ModifcationProduitPage,
     PaiementPage,
     PaypalPage,
-    DemenagementPage,
+    ChatbodyPage,
     AmenagementPage,
+    DemenagementPage,
+    GestionDemePage,
+    ModificationProfilPage,
+    AppartPage,
+    ProduitVentePage,
+    SplashPage,
+    SplashScreenLayout3,
     IFramePage,
-    Tabs6Page,
     FarotyPage
   ],
   imports: [
@@ -126,12 +151,11 @@ firebase.initializeApp(firebaseConfig);
     NgxErrorsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
-    AngularFireDatabaseModule, AngularFireAuthModule,
+    AngularFireDatabaseModule, AngularFireAuthModule, AngularFireStorageModule,IonAffixModule,
+    HttpModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
-    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module,
-    AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module
-    
-
+    ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module, 
+    StickyListHeaderLayout2Module,AppearanceAnimationLayout3Module, StickyListHeaderLayout2Module
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -155,32 +179,45 @@ firebase.initializeApp(firebaseConfig);
     TabsPage,
     Tabs3Page,
     Tabs4Page,
+    Tabs5Page,
+    Tabs6Page,
     GestionUtilisateurPage,
     AjoutProduitPage,
     ModifcationProduitPage,
     PaiementPage,
     PaypalPage,
+    ChatbodyPage,
     AmenagementPage,
     DemenagementPage,
+    GestionDemePage,
+    ModificationProfilPage,
+    AppartPage,
+    ProduitVentePage,
+    SplashPage,
+    SplashScreenLayout3,
     IFramePage,
-    Tabs6Page,
     FarotyPage
-    
     
   ],
   providers: [
     Config,
     StatusBar,
+    FileTransferObject,
+    FileTransfer, // <--- This one!        
+    File,
+    Camera,
+    ImagePicker,
+    DataProvider,
     SplashScreen,
     AngularFireAuth,
     GoogleAnalytics,
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
+    NoteListService,
     GlobalProvider,
     ChatProvider,
-    AuthProvider,
-    NoteListService
+    AuthProvider
   ]
 })
 export class AppModule {}

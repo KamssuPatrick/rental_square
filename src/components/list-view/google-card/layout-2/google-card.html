@@ -4,7 +4,7 @@
     <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onEvent('onTextChange', $event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
+s
 <!--Theme Google Card - Styled cards 2-->
 <ion-content>
 <ion-grid no-padding >
@@ -13,23 +13,30 @@
       <ion-card text-left>
         <!--Card Image-->
         <div card-image>
-          <img [src]="item.image" height='240' (click)="detail(item.uid,item.image, item.index)"/>
+          <img [src]="item.image" height='200' (click)="detail(item.uid,item.image, item.index)"/>
           <ion-badge ion-fixed item-end class="badge-dark">{{item.prix}} / jour</ion-badge>
-          <button ion-fixed ion-button button-action-shit (click)="onEvent('onShare', '', $event)">
-             <ion-icon ></ion-icon>
+          <button ion-fixed ion-button button-action-shit (click)="onVisite()">
+             <ion-icon name='eye-off'></ion-icon>
           </button>
+          
         </div>
         <!--Card descriptiom-->
         <ion-card-content (click)="onEvent('onItemClick', item.uid, item.image, $event)">
-          <ion-card-title>
-            <!--Card Title-->
-            <h2 card-title>{{item.surface}} m²</h2>
-            <!--Card Subtitle-->
-            <h1 card-subtitle>{{item.avis}}</h1>
-            <!--Card Body Text
-            <p card-body-text>{{item.description}}</p>-->
-          </ion-card-title>
+            <p>Appartement ultra-moderne 3 chambres ( meublé ) à louer à Bonapriso Haut Standing - Grandes pieces - Ascenseur - Groupe électrogène - Parking - Gardiens H24 - Cameras de surveillance -  Grand Jardin 💰 :  100mille  fcfa/jour</p>
+            
         </ion-card-content>
+
+
+      <ion-row no-padding>
+      
+      
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-left (click)="share(card)">
+          <ion-icon name="mail"></ion-icon>
+          Envoyer un Message
+        </button>
+      </ion-col>
+    </ion-row>
       </ion-card>
     </ion-col>
   </ion-row>
