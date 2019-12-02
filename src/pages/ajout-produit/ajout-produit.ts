@@ -33,6 +33,7 @@ export class AjoutProduitPage {
   files1: any;
   myphoto:any;
 
+  orderBy
   imageURI:any;
   imageFileName:any;  
   avis: string;
@@ -47,6 +48,7 @@ export class AjoutProduitPage {
   autre
   prix
   url
+  type
 
   myImages: Array<string>;
   value : any;
@@ -72,7 +74,7 @@ export class AjoutProduitPage {
      
       let alert = this.alertCtrl.create({
         title: 'Confirm purchase',
-        message: 'Voulez-vous vraiment Ajouter ce produit ?',
+        message: 'Voulez-vous vraiment Ajouter ce produit ?' + this.type,
         buttons: [
           {
             text: 'Annuler',
@@ -93,7 +95,7 @@ export class AjoutProduitPage {
                 this.dataProvider.storeInfoToDatabase(res.metadata,"villa","profile").then(data => {
                   this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, profilePic:data.key});
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
                     
                   this.navCtrl.setRoot(VillaPage);
 
@@ -141,7 +143,7 @@ export class AjoutProduitPage {
                 this.dataProvider.storeInfoToDatabase(res.metadata,"appt_non_meuble","profile").then(data => {
                   this.afData.list("/services/appt_non_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, profilePic:data.key});
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
                     
                   this.navCtrl.setRoot(AppartementNmPage);
 
@@ -189,7 +191,7 @@ export class AjoutProduitPage {
                 this.dataProvider.storeInfoToDatabase(res.metadata,"appt_meuble","profile").then(data => {
                   this.afData.list("/services/appt_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, profilePic:data.key});
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
                     
                   this.navCtrl.setRoot(AppartementMPage);
 
@@ -237,7 +239,7 @@ export class AjoutProduitPage {
                 this.dataProvider.storeInfoToDatabase(res.metadata,"immeuble","profile").then(data => {
                   this.afData.list("/services/immeuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, profilePic:data.key});
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
                     
                   this.navCtrl.setRoot(ImmeublePage);
 
@@ -285,7 +287,7 @@ export class AjoutProduitPage {
                 this.dataProvider.storeInfoToDatabase(res.metadata,"bureau","profile").then(data => {
                   this.afData.list("/services/bureau").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, profilePic:data.key});
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
                     
                   this.navCtrl.setRoot(BureauPage);
 
@@ -333,7 +335,7 @@ export class AjoutProduitPage {
                 this.dataProvider.storeInfoToDatabase(res.metadata,"magasin","profile").then(data => {
                   this.afData.list("/services/magasin").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, profilePic:data.key});
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
                     
                   this.navCtrl.setRoot(MagasinPage);
 
@@ -381,7 +383,7 @@ export class AjoutProduitPage {
                 this.dataProvider.storeInfoToDatabase(res.metadata,"bail","profile").then(data => {
                   this.afData.list("/services/bail").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, profilePic:data.key});
+                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
                     
                   this.navCtrl.setRoot(BailPage);
 
@@ -436,6 +438,8 @@ export class AjoutProduitPage {
       // Handle error
     });
   }
+
+  
  
 
 }

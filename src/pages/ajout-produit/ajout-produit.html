@@ -113,6 +113,13 @@
     <ion-textarea placeholder="URL du site" name="url" [(ngModel)]="url" clearOnEdit="true"></ion-textarea>
     </ion-item>
 
+<ion-item>
+  <ion-label>Type</ion-label>
+  <ion-select name="type" [(ngModel)]="type">
+    <ion-option value="location">Location</ion-option>
+    <ion-option value="vente">Vente</ion-option>
+  </ion-select>
+</ion-item>
 
 
  <ion-card text-center>

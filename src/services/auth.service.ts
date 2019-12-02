@@ -66,6 +66,14 @@ export class AuthService {
 		});
 	  }
 
+	  writeUserData2(userId, profession, societe, telephone) {
+		firebase.database().ref('users/' + userId).set({
+		  profession: profession,
+		  societe: societe,
+		  telephone: telephone
+		});
+	  }
+
 	get authenticated(): boolean {
 		return this.user !== null;
 	}

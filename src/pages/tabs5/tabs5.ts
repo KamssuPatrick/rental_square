@@ -123,4 +123,9 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
 
     }
 
+    adminLogin()
+    {
+      
+    }
+
 }

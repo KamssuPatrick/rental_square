@@ -13,4 +13,5 @@ export interface Note {
     toilette: string;
     url: string;
     image: string;
+    type: string;
 }

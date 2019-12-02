@@ -44,10 +44,13 @@
         </ion-col>
       </ion-row>
 
+   <button *ngIf="user.email === 'p.arnold69@yahoo.fr'" full ion-button text-only round (click)="adminLogin()">Se connecter en tant qu'Administrateur</button>
+  
+
     </form>
 
-    <ion-footer (click)="deconnexion()">
-  <ion-toolbar class="modif">
+  <ion-footer (click)="deconnexion()">
+ <ion-toolbar class="modif">
     <ion-title>
       Se déconnecter
     </ion-title>

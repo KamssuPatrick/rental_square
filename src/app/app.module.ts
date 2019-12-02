@@ -213,6 +213,7 @@ firebase.initializeApp(firebaseConfig);
     AngularFireAuth,
     GoogleAnalytics,
     AuthService,
+    HttpClientModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
     NoteListService,

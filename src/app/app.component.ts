@@ -11,13 +11,15 @@ import { AccueilPage } from '../pages/accueil/accueil';
 import { PaiementPage } from '../pages/paiement/paiement';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AdminPage } from '../pages/admin/admin';
+
+import { FarotyPage } from '../pages/faroty/faroty';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = FarotyPage;
 
   @ViewChild(Nav) nav: Nav;
   

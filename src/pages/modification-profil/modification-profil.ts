@@ -103,6 +103,8 @@ export class ModificationProfilPage {
           emailVerified: user.emailVerified,
           refreshToken: user.refreshToken
         }
+        
+        
 
         console.log("les donneesss", user.photoURL);
       }
@@ -134,6 +136,9 @@ export class ModificationProfilPage {
           "avatar":"assets/img/avatar/user1.png"
         };
        
+        this.email = this.params.data.email;
+        this.username = this.params.username;
+        this.prenom = this.params.prenom;
        
       
      
@@ -162,9 +167,9 @@ export class ModificationProfilPage {
             handler: () => {
     
               
-              this.noteListService.updateNote2(note).then(() => {
-                this.navCtrl.setRoot(Tabs5Page);
-                });
+              this.auth.writeUserData2(this.userId, this.profession, this.societe, this.telephone);
+              this.navCtrl.setRoot(Tabs5Page);
+              
               
     
             }

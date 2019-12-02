@@ -54,7 +54,8 @@ export class ModifcationProduitPage {
     autre: '',
     prix: '',
     url: '',
-    image: ''
+    image: '',
+    type: ''
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
