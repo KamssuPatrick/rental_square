@@ -57,6 +57,18 @@ page-appart {
             bottom: 10px;
             left:20px;
             z-index: 10;
+            color: white;
+            font-weight: 200;
+           
+        }
+        ion-col button.nnd3{
+            position: absolute;
+            bottom: 10px;
+            right:20px;
+            z-index: 10;
+            padding:5px!important;
+            color: white;
+            font-weight: 200;
            
         }
         ion-item .detail{
