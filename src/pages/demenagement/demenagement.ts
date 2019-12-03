@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Tabs4Page } from '../tabs4/tabs4';
 import * as firebase from 'firebase/app';
@@ -37,7 +37,7 @@ export class DemenagementPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase
     , public alertCtrl: AlertController,
-    public auth: AuthService) {
+    public auth: AuthService, public toastController: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -77,6 +77,14 @@ export class DemenagementPage {
       });
      alert.present();
     
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Votre demande a été effectuée avec succès.',
+      duration: 2000
+    });
+    toast.present();
   }
 
 }

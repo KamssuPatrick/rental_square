@@ -90,6 +90,7 @@ import { SplashPage } from '../pages/splash/splash';
 import { SplashScreenLayout3 } from '../components/splash-screen/layout-3/splash-screen-layout-3';
 import { IFramePage } from '../pages/i-frame/i-frame';
 import { FarotyPage } from '../pages/faroty/faroty';
+import { HTTP } from '@ionic-native/http/ngx';
 
 
 
@@ -219,7 +220,8 @@ firebase.initializeApp(firebaseConfig);
     NoteListService,
     GlobalProvider,
     ChatProvider,
-    AuthProvider
+    AuthProvider,
+    HTTP
   ]
 })
 export class AppModule {}

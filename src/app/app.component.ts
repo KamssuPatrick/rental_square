@@ -19,7 +19,7 @@ import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-uti
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = FarotyPage;
+  rootPage:any = HomePage;
 
   @ViewChild(Nav) nav: Nav;
   

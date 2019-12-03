@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, Toast, ToastController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Tabs4Page } from '../tabs4/tabs4';
 import * as firebase from 'firebase/app';
@@ -42,7 +42,7 @@ item
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase
     , public alertCtrl: AlertController, public chatProvider: ChatProvider,
-    public auth: AuthService) {
+    public auth: AuthService, public toastController: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -76,6 +76,7 @@ item
                 nbrepiece: this.nbrepiece, user: this.user});
     
               this.navCtrl.setRoot(Tabs4Page);
+              this.presentToast();
     
             }
           }
@@ -88,6 +89,14 @@ item
     //  Details: this.item
     //  });
     
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Votre demande a été effectuée avec succès.',
+      duration: 2000
+    });
+    toast.present();
   }
 
 }
