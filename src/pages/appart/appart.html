@@ -15,47 +15,70 @@
 
 <ion-content>
 
-<ion-grid >
-        <ion-row center>
+<ion-grid no-padding >
+   <ion-row center>
   
-         <ion-card>
+    <ion-col no-padding col-12 background-size [ngStyle]="{'background-image': 'url('+img+')' }" >
+      
+      <!--<img src="{{img}}" height = "380" (click) = "openGallery(value)">-->
+      
+        <span ion-text register-title text-wrap class="nnd" >{{prix}} XAF/ jour</span>
+        <button ion-button outline color="primary" class="nnd2" (click)="openGallery(value)"><ion-icon name="images"></ion-icon>Galerie</button>
+        <button ion-button outline color="primary" class="nnd3" (click)="visiteGuide()"><ion-icon name="eye"></ion-icon>Visite virtuelle</button>
+        
+     
+      
+    </ion-col>
 
-    <ion-item>
-    <img src="{{img}}" height = "380" (click) = "openGallery(value)">
-    <h1 ion-text register-title text-wrap class="nnd">{{prix}} XAF/ jour</h1>
-    </ion-item>
-</ion-card>
 
 
-
-<ion-card>
+<ion-card class="ff">
   <ion-card-header>
-    <ion-card-title>A l'intérieur</ion-card-title>
+    <ion-card-title class="titleDesc">Intérieur</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <p>* {{salon}} Salon </p>
-    <p>* {{chambre}} Chambre </p>
-    <p>* {{cuisine}} Cuisine </p>
-    <p>* {{douche}} Douches </p>
-    <p>* {{jacuzzi}} Jacuzzi </p>
-    <p>* Wifi: {{wifi}} </p>
-    <p>* Groupe électrogène: {{groupe}} </p>
+    <hr>
+    <p><ion-grid no-padding><ion-row><ion-col>Salon: </ion-col><ion-col class="bl">{{salon}}</ion-col></ion-row></ion-grid>    </p>
+    <hr/>
+    <hr>
+    <p><ion-grid no-padding><ion-row><ion-col>Chambre: </ion-col><ion-col class="bl">{{chambre}}</ion-col></ion-row></ion-grid>    </p>
+    <hr/>
+    <hr>
+    <p><ion-grid no-padding><ion-row><ion-col>Cuisine: </ion-col><ion-col class="bl">{{cuisine}}</ion-col></ion-row></ion-grid>    </p>
+    <hr/>
+    <hr>
+    <p><ion-grid no-padding><ion-row><ion-col>Douches: </ion-col><ion-col class="bl">{{douche}}</ion-col></ion-row></ion-grid>    </p>
+    <hr/>
+    <hr>
+    <p><ion-grid no-padding><ion-row><ion-col>Jacuzzi: </ion-col><ion-col class="bl">{{jacuzzi}}</ion-col></ion-row></ion-grid>    </p>
+    <hr/>
+    <hr>
+    <p><ion-grid no-padding><ion-row><ion-col>Wifi: </ion-col><ion-col class="bl">{{wifi}}</ion-col></ion-row></ion-grid>    </p>
+    <hr/>
+    <hr>
+    <p><ion-grid no-padding><ion-row><ion-col>Groupe électrogène: </ion-col><ion-col class="bl">{{groupe}}</ion-col></ion-row></ion-grid>    </p>
+    <hr/>
   </ion-card-content>
 </ion-card>
 
-<ion-card>
+<ion-card class="ff">
   <ion-card-header>
-    <ion-card-title>A l'extérieur</ion-card-title>
+    <ion-card-title class="titleDesc">Extérieur</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <p>* {{jardin}}  </p>
-    <p>* {{parking}} Parking </p>
+      <hr>
+      <hr>
+      <p><ion-grid no-padding><ion-row><ion-col>Jardin: </ion-col><ion-col class="bl">{{jardin}}</ion-col></ion-row></ion-grid>    </p>
+      <hr/>
+      <hr>
+      <p><ion-grid no-padding><ion-row><ion-col>Parking: </ion-col><ion-col class="bl">{{parking}}</ion-col></ion-row></ion-grid>    </p>
+      <hr/>
   </ion-card-content>
 </ion-card>
 
-<ion-card>
+<ion-card class="ff">
   <ion-card-header>
-    <ion-card-title>Autres</ion-card-title>
+    <ion-card-title class="titleDesc">Autres</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <p>* {{gardien}}  Gardien</p>

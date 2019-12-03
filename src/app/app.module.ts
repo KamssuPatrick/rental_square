@@ -77,20 +77,20 @@ import { PaypalPage } from '../pages/paypal/paypal';
 import { ChatProvider } from '../providers/chat/chat';
 import { AuthProvider } from '../providers/auth/auth';
 import { AmenagementPage } from '../pages/amenagement/amenagement';
-import { DemenagementPage } from '../pages/demenagement/demenagement';
+import { IFramePage } from '../pages/i-frame/i-frame';
 import { Tabs6Page } from '../pages/tabs6/tabs6';
-import { StickyListHeaderLayout2Module } from '../components/list-view/sticky-list-header/layout-2/sticky-list-header-layout-2.module';
-import { IonAffixModule } from 'ion-affix';
-import { AppearanceAnimationLayout3Module } from '../components/list-view/appearance-animation/layout-3/appearance-animation-layout-3.module';
+import { FarotyPage } from '../pages/faroty/faroty';
+import { DemenagementPage } from '../pages/demenagement/demenagement';
 import { GestionDemePage } from '../pages/gestion-deme/gestion-deme';
 import { ModificationProfilPage } from '../pages/modification-profil/modification-profil';
 import { AppartPage } from '../pages/appart/appart';
 import { ProduitVentePage } from '../pages/produit-vente/produit-vente';
 import { SplashPage } from '../pages/splash/splash';
 import { SplashScreenLayout3 } from '../components/splash-screen/layout-3/splash-screen-layout-3';
-import { IFramePage } from '../pages/i-frame/i-frame';
-import { FarotyPage } from '../pages/faroty/faroty';
 import { HTTP } from '@ionic-native/http/ngx';
+import { StickyListHeaderLayout2Module } from '../components/list-view/sticky-list-header/layout-2/sticky-list-header-layout-2.module';
+import { IonAffixModule } from 'ion-affix';
+import { AppearanceAnimationLayout3Module } from '../components/list-view/appearance-animation/layout-3/appearance-animation-layout-3.module';
 
 
 

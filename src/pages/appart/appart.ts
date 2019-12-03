@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GalleryImagePage } from '../gallery-image/gallery-image';
+import { IFramePage } from '../i-frame/i-frame';
 
 /**
  * Generated class for the AppartPage page.
@@ -107,5 +108,9 @@ export class AppartPage {
     
     this.navCtrl.push(GalleryImagePage, {value: value});
   }
+
+  visiteGuide(){
+    this.navCtrl.push(IFramePage);
+   }
 
 }
