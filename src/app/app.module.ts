@@ -90,7 +90,9 @@ import { SplashScreenLayout3 } from '../components/splash-screen/layout-3/splash
 import { IonAffixModule } from 'ion-affix';
 import { StickyListHeaderLayout2Module } from '../components/list-view/sticky-list-header/layout-2/sticky-list-header-layout-2.module';
 import { AppearanceAnimationLayout3Module } from '../components/list-view/appearance-animation/layout-3/appearance-animation-layout-3.module';
-
+import { PageAccueilPage } from '../pages/page-accueil/page-accueil';
+import { IonicSelectableModule } from 'ionic-selectable';
+import { PortService } from '../services';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBYWFYzzECy4ftcnac0D-j3EseW27jfXw8",
@@ -144,7 +146,8 @@ firebase.initializeApp(firebaseConfig);
     SplashPage,
     SplashScreenLayout3,
     IFramePage,
-    FarotyPage
+    FarotyPage,
+    PageAccueilPage
   ],
   imports: [
     BrowserModule,
@@ -155,7 +158,7 @@ firebase.initializeApp(firebaseConfig);
     HttpModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
     ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module, 
-    StickyListHeaderLayout2Module,AppearanceAnimationLayout3Module, StickyListHeaderLayout2Module
+    StickyListHeaderLayout2Module,AppearanceAnimationLayout3Module, StickyListHeaderLayout2Module,IonicSelectableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -196,7 +199,8 @@ firebase.initializeApp(firebaseConfig);
     SplashPage,
     SplashScreenLayout3,
     IFramePage,
-    FarotyPage
+    FarotyPage,
+    PageAccueilPage
     
   ],
   providers: [
@@ -217,7 +221,8 @@ firebase.initializeApp(firebaseConfig);
     NoteListService,
     GlobalProvider,
     ChatProvider,
-    AuthProvider
+    AuthProvider,
+    PortService
   ]
 })
 export class AppModule {}
