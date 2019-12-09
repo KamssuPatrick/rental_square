@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, App } from 'ionic-angular';
+import { NavController, NavParams, App, MenuController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../../services/auth.service';
@@ -39,7 +39,8 @@ export class Tabs5Page {
     public navParams: NavParams, 
     public app: App,
     public auth: AuthService,
-    private fireAuth: AngularFireAuth) {
+    private fireAuth: AngularFireAuth,
+    public menuCtrl: MenuController) {
 
       this.user = firebase.auth().currentUser;
 
@@ -90,6 +91,10 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
 		console.log("helllllllllooooooooooo",params)
 	   return params;
 		
+    }
+
+    ionViewDidEnter(){
+      this.menuCtrl.swipeEnable(false);
     }
     
     ngOnInit() {
