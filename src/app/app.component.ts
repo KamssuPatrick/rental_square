@@ -19,7 +19,7 @@ import { PageAccueilPage } from '../pages/page-accueil/page-accueil';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = PageAccueilPage;
+  rootPage:any = HomePage;
 
   @ViewChild(Nav) nav: Nav;
   
