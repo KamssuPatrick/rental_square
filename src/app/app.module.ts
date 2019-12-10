@@ -94,6 +94,9 @@ import { AppearanceAnimationLayout3Module } from '../components/list-view/appear
 import { ListeFavorisPage } from '../pages/liste-favoris/liste-favoris';
 
 
+import { PageAccueilPage } from '../pages/page-accueil/page-accueil';
+import { IonicSelectableModule } from 'ionic-selectable';
+import { PortService } from '../services';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBYWFYzzECy4ftcnac0D-j3EseW27jfXw8",
@@ -148,7 +151,8 @@ firebase.initializeApp(firebaseConfig);
     SplashScreenLayout3,
     IFramePage,
     FarotyPage,
-    ListeFavorisPage
+    ListeFavorisPage,
+    PageAccueilPage
   ],
   imports: [
     BrowserModule,
@@ -159,7 +163,7 @@ firebase.initializeApp(firebaseConfig);
     HttpModule,
     ImageGalleryLayout1Module, SubImageGalleryModule, FullScreenGalleryModule, GoogleCardLayout2Module,
     ParallaxLayout3Module,SpinnerModule,SearchBarLayout1Module, AppearanceAnimationLayout5Module, HttpClientModule, SwipeToDismissLayout1Module,SwipeToDismissLayout3Module, 
-    StickyListHeaderLayout2Module,AppearanceAnimationLayout3Module, StickyListHeaderLayout2Module
+    StickyListHeaderLayout2Module,AppearanceAnimationLayout3Module, StickyListHeaderLayout2Module,IonicSelectableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -201,7 +205,8 @@ firebase.initializeApp(firebaseConfig);
     SplashScreenLayout3,
     IFramePage,
     FarotyPage,
-    ListeFavorisPage
+    ListeFavorisPage,
+    PageAccueilPage
     
   ],
   providers: [
@@ -224,7 +229,8 @@ firebase.initializeApp(firebaseConfig);
     GlobalProvider,
     ChatProvider,
     AuthProvider,
-    HTTP
+    HTTP,
+    PortService
   ]
 })
 export class AppModule {}

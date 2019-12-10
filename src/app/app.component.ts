@@ -14,12 +14,14 @@ import { AdminPage } from '../pages/admin/admin';
 
 import { FarotyPage } from '../pages/faroty/faroty';
 import { GestionUtilisateurPage } from '../pages/gestion-utilisateur/gestion-utilisateur';
+import { PageAccueilPage } from '../pages/page-accueil/page-accueil';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = PageAccueilPage;
 
   @ViewChild(Nav) nav: Nav;
   
