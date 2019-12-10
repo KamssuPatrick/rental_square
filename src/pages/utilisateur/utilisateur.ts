@@ -31,7 +31,7 @@ export class UtilisateurPage {
 
     this.value = navParams.get('item');
 
-    this.params.events = {
+    /*this.params.events = {
       'onItemClick': function(item: any) {
           //console.log("onItemClick" + this.data.items.title);
           
@@ -40,7 +40,7 @@ export class UtilisateurPage {
           item.favorite = !item.favorite;
           console.log("onFavorite");
       }
-  };
+  };*/
 
 
   }
@@ -90,7 +90,7 @@ export class UtilisateurPage {
 
     
 
-    this.params.events = {
+    /*this.params.events = {
       'onItemClick': function(item: any) {
           //console.log("onItemClick" + this.data.items.title);
           
@@ -99,7 +99,7 @@ export class UtilisateurPage {
           item.favorite = !item.favorite;
           console.log("onFavorite");
       }
-  };
+  };*/
 
 
     loader.present();

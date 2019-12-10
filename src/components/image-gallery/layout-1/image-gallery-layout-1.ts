@@ -27,7 +27,7 @@ export class ImageGalleryLayout1 {
       'layout': 1
     });
 
-    console.log("ici", index);
+    //console.log("ici", index);
   }
 
   ngOnChanges(changes: { [propKey: string]: any }) {
@@ -38,7 +38,7 @@ export class ImageGalleryLayout1 {
   {
     
 
-    console.log("icicici", index);
+    //console.log("icicicis", index);
     this.index = index;
 
     this.navCtrl.push(ProduitPage, {pat: this.index});

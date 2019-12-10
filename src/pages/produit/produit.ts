@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, Events, NavParams, IonicPage, LoadingController, AlertController } from 'ionic-angular';
 import { ModifcationProduitPage } from '../modifcation-produit/modifcation-produit';
 import { AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Tabs1Page } from '../tabs1/tabs1';
+import { ChatProvider } from '../../providers/chat/chat';
+import { AuthService } from '../../services/auth.service';
+import { Component, NgZone, ViewChild } from '@angular/core';
+import { AuthProvider } from '../../providers/auth/auth';
 /**
  * Generated class for the ProduitPage page.
  *
@@ -19,11 +22,19 @@ export class ProduitPage {
 
   params: any = {};
   ref: any;
+  refs: any;
   value:any;
   types: any;
+  type : any;
   newVal
+  
+  allFav = [];
+  
+  userId: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public alertController: AlertController) {
+  constructor(public authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public ngZone: NgZone, public events: Events,
+    public alertController: AlertController, public chatProvider: ChatProvider,
+    public auth: AuthService, public afData: AngularFireDatabase, ) {
 
     this.value = navParams.get('pat');
     
@@ -32,6 +43,18 @@ export class ProduitPage {
     this.newVal = this.value;
 
     this.presentLoading(this.newVal);
+
+    this.userId = firebase.auth().currentUser.uid;
+    console.log("id", this.userId);
+    
+
+    // this.events.subscribe('favoris', ()=>{
+    //   this.ngZone.run(()=>{
+    //     this.allFav = this.authProvider.allFav;
+    //     console.log("fav", this.allFav);
+    //   })
+    // })
+    
 
   }
 
@@ -43,6 +66,7 @@ export class ProduitPage {
     if(values == 0)
     {
       this.types = "Villa";
+      this.type = "villa";
 
       console.log("paa", this.types);
 		let params={"titre" : this.types,"items":[]};
@@ -121,6 +145,7 @@ export class ProduitPage {
     if(values == 1)
     {
       this.types = "Appartement";
+      this.type = "appartement";
 
       console.log("paa", this.types);
 		let params={"titre" : this.types,"items":[]};
@@ -261,6 +286,7 @@ export class ProduitPage {
     if(values == 2)
     {
       this.types = "Immeuble";
+      this.type = "immeuble";
 
       console.log("paa", this.types);
 		let params={"titre" : this.types,"items":[]};
@@ -333,6 +359,7 @@ export class ProduitPage {
     if(values == 3)
     {
       this.types = "Bureau";
+      this.type = "bureau";
 
       console.log("paa", this.types);
 		let params={"titre" : this.types,"items":[]};
@@ -390,6 +417,8 @@ export class ProduitPage {
        
       });
 
+     // this.readFavoris(this.userId);
+
       console.log("helllllllllooooooooooo"+ this.value,params)
 	   return params;
     }
@@ -397,6 +426,7 @@ export class ProduitPage {
     if(values == 4)
     {
       this.types = "Magasin";
+      this.type = "magasin";
 
       console.log("paa", this.types);
 		let params={"titre" : this.types,"items":[]};
@@ -461,6 +491,7 @@ export class ProduitPage {
     if(values == 5)
     {
       this.types = "Bail";
+      this.type = "bail";
 
       console.log("paa", this.types);
 		let params={"titre" : this.types,"items":[]};
@@ -543,6 +574,7 @@ export class ProduitPage {
       if(values == 0)
       {
         this.ref =  firebase.database().ref("services/villa");
+        this.type = "villa";
         if(this.ref === 'null')
         {
           this.presentAlert();
@@ -552,6 +584,7 @@ export class ProduitPage {
       if(values == 1)
       {
         this.ref =  firebase.database().ref("services/appt_non_meuble");
+        this.type = "appt_non_meuble";
         if(this.ref == null)
         {
           this.presentAlert();
@@ -561,6 +594,7 @@ export class ProduitPage {
       /*if(values == 2)
       {
         this.ref =  firebase.database().ref("services/appt_meuble");
+        this.type = "appt_meuble";
         if(this.ref === 'null')
         {
           this.presentAlert();
@@ -570,6 +604,7 @@ export class ProduitPage {
       if(values == 2)
       {
         this.ref =  firebase.database().ref("services/immeuble");
+        this.type = "immeuble";
         if(this.ref == null)
         {
           this.presentAlert();
@@ -579,15 +614,22 @@ export class ProduitPage {
       if(values == 3)
       {
         this.ref =  firebase.database().ref("services/bureau");
+        this.type = "bureau";
+       
+
+   // console.log("hellllloooooooooooss",this.refs)
         if(this.ref == null)
         {
           this.presentAlert();
         }
+
+        
       }
 
       if(values == 4)
       {
         this.ref =  firebase.database().ref("services/magasin");
+        this.type = "magasin";
         if(this.ref == null)
         {
           this.presentAlert();
@@ -597,6 +639,7 @@ export class ProduitPage {
       if(values == 5)
       {
         this.ref =  firebase.database().ref("services/bail");
+        this.type = "bail";
         if(this.ref == null)
         {
           this.presentAlert();
@@ -621,4 +664,44 @@ export class ProduitPage {
       await alert.present();
     }
 
-}
+     
+    
+    
+      //this.params.data = this.getAllFav();
+    
+
+
+      ionViewDidLeave(){
+        this.events.subscribe('favoris')
+      }
+    
+      ionViewDidEnter(){
+        this.authProvider.getFavoris(this.userId, this.type);
+      }
+
+    // getAllFav(){ 
+    //   let params={"items2":[]};
+    //   let items=[];
+    //   this.ref.on('value', function(snapshot) {
+    //     let i=0;
+        
+    //     let keyyy=[];
+        
+    //     keyyy= Object.keys(snapshot.val());
+    //     snapshot.forEach(function(data){
+    //       console.log(i);
+    //       params.items2[i]={
+    //         "Id": keyyy[i],
+    //         "Time": data.val().Time
+    //       };
+    //       i++;
+    //     });
+        
+       
+    //   });
+    //   console.log("hell",params)
+    //  return params;
+      
+    // }
+
+    }

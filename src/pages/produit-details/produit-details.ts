@@ -44,25 +44,20 @@ export class ProduitDetailsPage {
 
     if(this.index == 2)
     {
-      this.ref= firebase.database().ref("services/appt_meuble/"+ this.value);
+      this.ref= firebase.database().ref("services/immeuble/"+ this.value);
     }
 
     if(this.index == 3)
     {
-      this.ref= firebase.database().ref("services/immeuble/"+ this.value);
+      this.ref= firebase.database().ref("services/bureau/"+ this.value);
     }
 
     if(this.index == 4)
     {
-      this.ref= firebase.database().ref("services/bureau/"+ this.value);
-    }
-
-    if(this.index == 5)
-    {
       this.ref= firebase.database().ref("services/magasin/"+ this.value);
     }
 
-    if(this.index == 6)
+    if(this.index == 5)
     {
       this.ref= firebase.database().ref("services/bail/"+ this.value);
     }
@@ -71,7 +66,7 @@ export class ProduitDetailsPage {
 
     this.params.data = this.getAllUsers();
     this.value2=this.params.data;
-    console.log("jkkjdkfjkdjfdfh",this.img);
+    console.log("jkkjdkfjkdjfdfh",this.index);
     
 
     this.params.events = {
@@ -90,38 +85,6 @@ export class ProduitDetailsPage {
     let params={};
     this.ref.on('value', function(snapshot) {
       let i=0;
-      
-      let keyyy=[];
-		  let link: any;
-		  keyyy= Object.keys(snapshot.val());
-		  
-        let propic:any;
-        let nn= firebase.database().ref(`files/villa/profile/${snapshot.val().profilePic}`);
-        nn.on('value', async function(idPP){
-          propic=idPP;
-          console.log("propicss: ",propic.val().fullPath);
-          let urli=propic.val().fullPath;
-          var storage = firebase.storage();
-          var pathReference = storage.ref();
-          //console.log("urli: ",urli);
-
-          pathReference.child(urli).getDownloadURL().then(function(url) {
-            link=url;
-
-            console.log("urliss: ",snapshot.val().autre);
-           
-  
-          }).catch(function(error) {
-            // Handle any errors
-            console.log("error admin: ",error)
-          });
-        });
-
-        
-        
-      
-      
-      
         console.log(snapshot.val());
         
         params={

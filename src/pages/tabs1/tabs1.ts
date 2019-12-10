@@ -201,7 +201,7 @@ this.params.data.fullscreen = "ItemDetailsPageFullScreenGallery";
       },
       'onFavorite': function(item) {
           item.favorite = !item.favorite;
-          console.log("onFavorite");
+         // console.log("onFavorite");
       }
   };
 
@@ -234,7 +234,7 @@ this.params.data.fullscreen = "ItemDetailsPageFullScreenGallery";
       
      
     });
-    console.log("helllllllllooooooooooo",params)
+    //console.log("helllllllllooooooooooo",params)
    return params;
     
   }

@@ -91,6 +91,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { StickyListHeaderLayout2Module } from '../components/list-view/sticky-list-header/layout-2/sticky-list-header-layout-2.module';
 import { IonAffixModule } from 'ion-affix';
 import { AppearanceAnimationLayout3Module } from '../components/list-view/appearance-animation/layout-3/appearance-animation-layout-3.module';
+import { ListeFavorisPage } from '../pages/liste-favoris/liste-favoris';
 
 
 
@@ -146,7 +147,8 @@ firebase.initializeApp(firebaseConfig);
     SplashPage,
     SplashScreenLayout3,
     IFramePage,
-    FarotyPage
+    FarotyPage,
+    ListeFavorisPage
   ],
   imports: [
     BrowserModule,
@@ -198,7 +200,8 @@ firebase.initializeApp(firebaseConfig);
     SplashPage,
     SplashScreenLayout3,
     IFramePage,
-    FarotyPage
+    FarotyPage,
+    ListeFavorisPage
     
   ],
   providers: [

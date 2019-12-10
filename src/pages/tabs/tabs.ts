@@ -5,6 +5,7 @@ import { Tabs3Page } from '../tabs3/tabs3';
 import { Tabs4Page } from '../tabs4/tabs4';
 import { Tabs5Page } from '../tabs5/tabs5';
 import { Tabs6Page } from '../tabs6/tabs6';
+import { ListeFavorisPage } from '../liste-favoris/liste-favoris';
 import { MenuController, NavParams, AlertController, NavController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -22,7 +23,7 @@ export class TabsPage {
   Tabs1Page = Tabs1Page;
   Tabs2Page = Tabs2Page;
   Tabs3Page = Tabs3Page;
-  Tabs4Page = Tabs4Page;
+  Tabs4Page = ListeFavorisPage;
   Tabs5Page = Tabs5Page;
   Tabs6Page = Tabs6Page;
 

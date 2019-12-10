@@ -4,7 +4,7 @@
     <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onEvent('onTextChange', $event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-s
+
 <!--Theme Google Card - Styled cards 2-->
 <ion-content>
 <ion-grid no-padding >
@@ -15,9 +15,15 @@ s
         <div card-image>
           <img [src]="item.image" height='200' (click)="detail(item.uid,item.image, item.index)"/>
           <ion-badge ion-fixed item-end class="badge-dark">{{item.prix}} / jour</ion-badge>
+
+        
+    
           <button ion-fixed ion-button button-action-shit (click)="onVisite()">
-             <ion-icon name='eye-off'></ion-icon>
+             <ion-icon name='eye'> </ion-icon>
+             <!--<ion-icon name='eye-off'*ngIf="fav.Id != item.uid"> </ion-icon>-->
           </button>
+
+         
           
         </div>
         <!--Card descriptiom-->
@@ -30,15 +36,39 @@ s
       <ion-row no-padding>
       
       
-      <ion-col text-center>
+      <ion-col text-left>
+      <span *ngIf="allFav != null">
+      
+        <span *ngFor="let fav of allFav">
+          <span *ngIf="fav.Id === item.uid">
+            <button ion-button clear small color="danger" icon-left (click)="Delfavoris(item.uid, item.index, fav.Key)">
+            <ion-icon name="star" color="danger" ></ion-icon>
+            
+            Favoris 
+          </button>
+          </span>
+          
+          </span>
+      </span>
+
+        <span *ngIf="allFav.length == 0">
+          <button  ion-button clear small color="danger" icon-left (click)="Addfavoris(item.uid, item.index, item, item.image)">
+            <ion-icon name="star-outline" color="danger" ></ion-icon>
+            Favoris
+          </button>
+        </span>
+      </ion-col>
+
+      <ion-col text-right>
         <button ion-button clear small color="danger" icon-left (click)="share(card)">
           <ion-icon name="mail"></ion-icon>
-          Envoyer un Message
+          Message
         </button>
       </ion-col>
     </ion-row>
       </ion-card>
     </ion-col>
+    
   </ion-row>
 </ion-grid>
 </ion-content>

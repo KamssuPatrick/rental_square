@@ -15,8 +15,35 @@ export class AuthProvider {
   ProfileDetails;
   myDetails;
 
+  allFav =[];
+  allFav2 =[];
+
   constructor(public afAuth: AngularFireAuth, public afDB: AngularFireDatabase, public events: Events) {
     console.log(this.UserUid)
+  }
+
+  getFavoris(userId, type){
+
+    console.log("tes " + type + userId);
+    
+    this.afDB.database.ref('Favoris').child(userId).child(type).on('value', snap =>{
+      this.allFav = []
+      //let keyyy=[];
+      var res = snap.val()
+     // keyyy= Object.keys(snap.val());
+  
+      for(var i in res){
+        this.allFav.push(res[i]);
+       // this.allFav2 = keyyy[i];
+
+        //console.log("tes " + this.allFav2)
+        
+      }
+
+      this.events.publish('favoris');
+
+    })
+
   }
 
 
