@@ -46,17 +46,41 @@ page-tabs3 {
     .you{
         float: right;
         margin: 5px 20px 5px 45px;
-        background-color: #387ef5;
+        background-color: #DCF8C6;
     }
 
     .you::before{
         box-shadow: 2px -2px 2px 0 rgba(178, 178, 178, .4);
         right: -9px;
-        background-color: #387ef5;
+        background-color: #DCF8C6;
     }
 
-    .chatwindow{
-        padding-bottom: 70px;
+
+    #ancre{
+        width: auto;
+        height: 50%;
+        overflow: hidden;
+    }
+
+    .image{
+        display: block;
+        border-radius: 8px;
+        float: right;
+        width: 50%;
+        
+    }
+
+    h6{
+        text-align: right;
+        color: rgb(143, 143, 143);
+        opacity: 0.7;        
+    }
+
+    ion-textarea{
+        border-radius: 5px;
+        background-color: rgb(238, 238, 238);
+        text-align: center;
+        padding-top: 2px;
     }
   
   }

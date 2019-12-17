@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Clipboard } from '@ionic-native/clipboard';
 
 
 import { LoginLayout1 } from '../components/login/layout-1/login-layout-1';
@@ -219,6 +220,7 @@ firebase.initializeApp(firebaseConfig);
     ImagePicker,
     DataProvider,
     SplashScreen,
+    Clipboard,
     AngularFireAuth,
     GoogleAnalytics,
     AuthService,

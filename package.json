@@ -23,6 +23,7 @@
         "@google-cloud/storage": "^3.3.0",
         "@ionic-native/browser-tab": "^4.20.0",
         "@ionic-native/camera": "^4.20.0",
+        "@ionic-native/clipboard": "^4.20.0",
         "@ionic-native/core": "4.3.2",
         "@ionic-native/crop": "^5.14.0",
         "@ionic-native/date-picker": "^5.16.0",
@@ -41,6 +42,7 @@
         "com.paypal.cordova.mobilesdk": "3.5.0",
         "cordova-android": "8.1.0",
         "cordova-browser": "^4.1.0",
+        "cordova-clipboard": "1.3.0",
         "cordova-plugin-advanced-http": "2.3.0",
         "cordova-plugin-browsertab": "0.2.0",
         "cordova-plugin-buildinfo": "^4.0.0",
@@ -64,7 +66,6 @@
         "ion-affix": "^2.0.0",
         "ionic-angular": "3.9.2",
         "ionic-plugin-keyboard": "^2.2.1",
-        "ionic-selectable": "^3.4.0",
         "ionicons": "3.0.0",
         "rxjs": "5.5.2",
         "sw-toolbox": "3.6.0",
@@ -98,7 +99,8 @@
             "cordova-plugin-buildinfo": {},
             "cordova-plugin-browsertab": {},
             "cordova-plugin-datepicker": {},
-            "cordova-plugin-advanced-http": {}
+            "cordova-plugin-advanced-http": {},
+            "cordova-clipboard": {}
         },
         "platforms": [
             "browser"

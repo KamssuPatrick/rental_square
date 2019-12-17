@@ -41,7 +41,7 @@ export class LoginLayout1 {
     signupError: string;
     codeError: string;
     
-    constructor(public authProvider: AuthProvider, public auth: AuthService, public navCtrl: NavController, public toastCtrl: ToastController, 
+    constructor( public auth: AuthService, public navCtrl: NavController, public toastCtrl: ToastController, 
         public fire: AngularFireAuth) {
         //this.toast=toastCtrl;
      }
@@ -60,7 +60,7 @@ export class LoginLayout1 {
               this.auth.signInWithEmail(credentials).then(
                 (user) => {
                     this.navCtrl.setRoot(TabsPage,{user:  user.user.uid, email: user.user.email});
-                    window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
+                    // window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
 
                     console.log("test", user.user.email);
                 },
@@ -121,9 +121,10 @@ export class LoginLayout1 {
                 
                 console.log(userLastName, userName);
                 this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '','');
+                // window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
                 console.log(user.user);
                 console.log("patrck");
-                this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
+                this.navCtrl.setRoot(TabsPage,{email:  user.user.email});
                 },
                 error => {
                     
@@ -154,7 +155,7 @@ export class LoginLayout1 {
                     
                     console.log(userLastName, userName);
                     this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '');
-                    window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
+                    // window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
 
                     console.log(user.user);
                     this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});

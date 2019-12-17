@@ -17,9 +17,10 @@ export class AuthProvider {
 
   allFav =[];
   allFav2 =[];
+  allFavType = [];
 
   constructor(public afAuth: AngularFireAuth, public afDB: AngularFireDatabase, public events: Events) {
-    console.log(this.UserUid)
+    console.log('UserUid',this.UserUid)
   }
 
   getFavoris(userId, type){
@@ -46,6 +47,30 @@ export class AuthProvider {
 
   }
 
+  getTypes(type){
+
+    console.log("tes " + type );
+    
+    this.afDB.database.ref('services').child(type).on('value', snap =>{
+      this.allFavType = [];
+      //let keyyy=[];
+      var res = snap.val()
+     // keyyy= Object.keys(snap.val());
+  
+      for(var i in res){
+        this.allFavType.push(res[i]);
+       // this.allFav2 = keyyy[i];
+
+        //console.log("tes " + this.allFav2)
+        
+      }
+
+      this.events.publish('typesElement');
+
+    })
+
+  }
+
 
 
   getUserDetails(){
@@ -63,37 +88,41 @@ export class AuthProvider {
 
   getMyDetails(){
     this.afDB.database.ref('users').child(this.UserUid).on('value', snap =>{
-     this.myDetails;
-     this.myDetails = snap.val();
-
-     this.events.publish('myDetails');
+        
+        this.myDetails ={
+          "email":snap.val().email,
+          "prenom":snap.val().prenom,
+          "profession":snap.val().profession,
+          "societe":snap.val().societe,
+          "telephone":snap.val().telephone,
+          "username":snap.val().username,
+          "id":this.UserUid
+        }
+    
+      this.events.publish('myDetails')      
            
   });
 }
 
 
-  getAdminDetails(){
-    this.afDB.database.ref('users').child('QVbwfPEMT6hsoj7aWlytER7V94F2').on('value', snap =>{
-     this.AdminDetails;
-     this.AdminDetails = snap.val();
 
-     this.events.publish('AdminDetails');
-           
-  });
-}
+getAdminDetails(){
+  this.afDB.database.ref('users').child('QVbwfPEMT6hsoj7aWlytER7V94F2').on('value', snap =>{
+   
+    this.AdminDetails ={
+      "email":snap.val().email,
+      "prenom":snap.val().prenom,
+      "profession":snap.val().profession,
+      "societe":snap.val().societe,
+      "telephone":snap.val().telephone,
+      "username":snap.val().username,
+      "id":"QVbwfPEMT6hsoj7aWlytER7V94F2"
+    }
 
-getProfileDetails(userDetails){
-  this.afDB.database.ref('users').child(userDetails.uid).on('value', snap =>{
-   this.ProfileDetails;
-   this.ProfileDetails = snap.val();
-
-   this.events.publish('ProfileDetails');
+   this.events.publish('AdminDetails');
          
 });
 }
-
-
-
 
 
  

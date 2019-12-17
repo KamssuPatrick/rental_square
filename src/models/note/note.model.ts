@@ -14,4 +14,15 @@ export interface Note {
     url: string;
     image: string;
     type: string;
+    climatiseur: string;
+    gardien: string;
+    groupeE: string;
+    jacuzzi: string;
+    wifi: string;
+    ascenseur: string;
+    camera: string;
+    typeAppartement: string;
+    jardin: string;
+    ville: string;
+    quartier: string;
 }

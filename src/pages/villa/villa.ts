@@ -67,10 +67,10 @@ export class VillaPage {
           var pathReference = storage.ref();
           
           
-          pathReference.child(urli).getDownloadURL().then(function(url) {
+          pathReference.child(urli).getDownloadURL().then(async function(url) {
             link=url;
 
-            params.items[i]={
+            params.items[i]= await {
               "uid": keyyy[i],
               "autre": data.val().autre,
               "avis": data.val().avis,
@@ -83,7 +83,20 @@ export class VillaPage {
               "terrasse": data.val().terrasse,
               "toilette": data.val().toilette,
               "etage": data.val().etage,
-              "image": link
+              "image": link,
+              "url": data.val().url,
+              "type": data.val().type,
+              "climatiseur": data.val().climatiseur,
+              "gardien": data.val().gardien,
+              "groupeE": data.val().groupeE,
+              "jacuzzi": data.val().jacuzzi,
+              "wifi": data.val().wifi,
+              "ascenseur": data.val().ascenseur,
+              "camera": data.val().camera,
+              "typeAppartement": data.val().typeAppartement,
+              "jardin": data.val().jardin,
+              "ville": data.val().ville,
+              "quartier": data.val().quartier
             };
             console.log("ImgUrlqsdqsdqsdq",i);
 			      i++;

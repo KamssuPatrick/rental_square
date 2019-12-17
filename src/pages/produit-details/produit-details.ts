@@ -31,6 +31,8 @@ export class ProduitDetailsPage {
     this.img = navParams.get('image');
     this.index = navParams.get('index');
 
+    console.log("val " + this.value + " img "+ this.img + "index "+ this.index);
+
 
     if(this.index == 0)
     {
@@ -66,7 +68,7 @@ export class ProduitDetailsPage {
 
     this.params.data = this.getAllUsers();
     this.value2=this.params.data;
-    console.log("jkkjdkfjkdjfdfh",this.index);
+    console.log("jkkjdkfjkdjfdfh" + this.value,this.value2);
     
 
     this.params.events = {
@@ -100,7 +102,20 @@ export class ProduitDetailsPage {
           "surface": snapshot.val().surface,
           "terrasse": snapshot.val().terrasse,
           "toilette": snapshot.val().toilette,
-          "uid": snapshot.val().uid
+          "uid": snapshot.val().uid,
+          "url": snapshot.val().url,
+          "wifi": snapshot.val().wifi,
+          "ascenseur": snapshot.val().ascenseur,
+          "camera": snapshot.val().camera,
+          "climatiseur": snapshot.val().climatiseur,
+          "gardien": snapshot.val().gardien,
+          "groupeE": snapshot.val().groupeE,
+          "jacuzzi": snapshot.val().jacuzzi,
+          "typeAppartement": snapshot.val().typeAppartement,
+          "jardin" : snapshot.val().jardin,
+          "ville" : snapshot.val().ville,
+          "quartier" : snapshot.val().quartier
+
         };
        
       

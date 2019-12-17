@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage, LoadingController  } from 'ionic-angular';
-import { AuthService } from '../../services/auth.service';
-import * as firebase from 'firebase/app';
+import { Component, NgZone } from '@angular/core';
+import { NavController, NavParams, Events } from 'ionic-angular';
 
+import { ChatbodyPage } from '../chatbody/chatbody';
+import { AuthProvider } from '../../providers/auth/auth';
+import { ChatProvider } from '../../providers/chat/chat';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 /**
  * Generated class for the MessageriePage page.
  *
@@ -16,93 +18,92 @@ import * as firebase from 'firebase/app';
 })
 export class MessageriePage {
 
-  params: any = {};
-  value : any;
-  Keys: any;
-  ref:any;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+  Friends = []
+  allUsers = []
+  Conversations = []
 
 
-    this.ref =  firebase.database().ref("users");
-    this.params.data = this.getAllUsers();
-    //console.log("helllllllllooooooooooo",this.params.data);
+ constructor( public chatProvider: ChatProvider, public authProvider: AuthProvider, public ngZone: NgZone, public events: Events,  public navCtrl: NavController, public navParams: NavParams) {
+   
+   var days = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
 
-    this.value = navParams.get('item');
+   var today = new Date
+   var toYear = today.getFullYear()
+   var toMonth = 1 + today.getMonth()
+   var toDays =  today.getDate()
+   var toHours = today.getHours()
+   var toMinutes = '0' + today.getMinutes()
 
-    this.params.events = {
-      'onItemClick': function(item: any) {
-          //console.log("onItemClick" + this.data.items.title);
-          
-      },
-      'onFavorite': function(item) {
-          item.favorite = !item.favorite;
-          console.log("onFavorite");
-      }
-  };
+   var todayRes1 = toYear + '/' + toMonth + '/' + toDays
+   var todayRes2 = toYear + '/' + toMonth
+   var todayRes3 = toYear
 
+   this.events.subscribe('Conversations', () =>{
+     this.ngZone.run(() =>{
+       this.Conversations = this.chatProvider.Conversations
+       this.allUsers = this.chatProvider.buddyUsers.reverse()
 
-  }
+       for (var key in this.Conversations){
+         var d = new Date(this.Conversations[key].Time)
 
-  
-  ionViewDidLoad() {
-  
-  }
+         var years = d.getFullYear()
+         var month = 1 + d.getMonth()
+         var days =  d.getDate()
+         var hours = d.getHours()
+         var minutes = '0' + d.getMinutes()
 
-  getAllUsers(){ 
-    let params={"items":[]};
-    let items=[];
-    this.ref.on('value', function(snapshot) {
-      let i=0;
-      
-      let keyyy=[];
-      
-      keyyy= Object.keys(snapshot.val());
-      snapshot.forEach(function(data){
-        console.log(i);
-        params.items[i]={
-          "uid": keyyy[i],
-          "username": data.val().username,
-          "prenom": data.val().prenom,
-          "image":"assets/img/avatar/user1.png",
-          "phoneNumber": snapshot.val().phooneNumber,
-          "displayName": snapshot.val().displayName,
-        };
-        i++;
-      });
-      
-     
-    });
-    //console.log("helllllllllooooooooooo",params)
-   return params;
-    
-  }
+         var messageTime1 = years + '/' + month + '/' + days
+         var messageTime2 = years + '/' + month
+         var messageTime3 = years
 
-  presentLoading() {
+         if(messageTime1 == todayRes1){
+           this.Conversations[key].Time = hours + ":" + minutes.substr(-2)
+         }else{
+            if(messageTime2 == todayRes2){
+               var DN = toDays + days
+               if(DN = 1){
+                 this.Conversations[key].Time = 'Yesterday , ' + hours + ":" + minutes.substr(-2)
+               }else if(DN < 7){
+                 this.Conversations[key].Time = days[DN] + hours + ":" + minutes.substr(-2)
+               }else{
+                 this.Conversations[key].Time = months[month] + ',' + days
+               }
+            }else{
+              if(todayRes3 == messageTime3){
+               this.Conversations[key].Time = months[month] + "," + days
+              }else{
+               this.Conversations[key].Time = months[month] + "," + days + ',' + years
+              }
+              
+            }
+         }
 
-    this.ref =  firebase.database().ref("users");
-    this.params.data = this.getAllUsers();
+       }
 
-    this.value = this.navParams.get('item');
-    const loader = this.loadingCtrl.create({
-      content: "Please wait...",
-      duration: 1000
-    });
-
-    
-
-    this.params.events = {
-      'onItemClick': function(item: any) {
-          //console.log("onItemClick" + this.data.items.title);
-          
-      },
-      'onFavorite': function(item) {
-          item.favorite = !item.favorite;
-          console.log("onFavorite");
-      }
-  };
+     })
+   })
 
 
-    loader.present();
-  }
+ }
+
+
+ 
+ ionViewDidLeave(){
+   this.events.subscribe('Conversations')
+ }
+ 
+
+
+ ionViewDidEnter(){
+   this.chatProvider.getConversations()
+ }
+
+ openChatBody(userDetails){
+   this.chatProvider.initialize(userDetails)
+   this.navCtrl.push(ChatbodyPage, {
+     Details: userDetails
+   });
+ }
+
 }

@@ -48,10 +48,20 @@ export class AjoutProduitPage {
   autre
   prix
   url
-  type
-
+  typeL
+  typeAppartement
+  cameras
+  gardien
+  groupeE
+  ascenseur
+  climatiseur
+  wifi
+  jac
   myImages: Array<string>;
   value : any;
+  jardin
+  ville
+  quartier
   
   constructor( private dataProvider: DataProvider, public navCtrl: NavController, private camera: Camera, public navParams: NavParams, public afData: AngularFireDatabase, private alertCtrl: AlertController, private toastCtrl: ToastController ) {
     
@@ -74,7 +84,7 @@ export class AjoutProduitPage {
      
       let alert = this.alertCtrl.create({
         title: 'Confirm purchase',
-        message: 'Voulez-vous vraiment Ajouter ce produit ?' + this.type,
+        message: 'Voulez-vous vraiment Ajouter ce produit ?' + this.typeL,
         buttons: [
           {
             text: 'Annuler',
@@ -86,7 +96,10 @@ export class AjoutProduitPage {
           {
             text: 'Ajouter',
             handler: () => {
-              let upload= this.dataProvider.uploadToStorage(this.myphoto, "villa");
+              
+              //console.log("/"+this.typeAppartement+"/"+this.cameras+"/"+this.gardien+"/"+this.groupeE+"/"+this.ascenseur+"/"+
+              //this.climatiseur+"/"+ this.wifi+ "/"+ this.jac);
+               let upload= this.dataProvider.uploadToStorage(this.myphoto, "villa");
               
               upload.then().then(res => {
                 console.log("this.dataProvider.url", this.dataProvider.url);
@@ -95,16 +108,20 @@ export class AjoutProduitPage {
                 this.dataProvider.storeInfoToDatabase(res.metadata,"villa","profile").then(data => {
                   this.afData.list("/services/villa").push({avis: this.avis, surface: this.surface, etage: this.etage, 
                   salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
-                    
-                  this.navCtrl.setRoot(VillaPage);
+                  terrasse: this.terrasse, typeAppartement: this.typeAppartement, camera: this.cameras, gardien: this.gardien, groupeE: this.groupeE, 
+                  ascenseur: this.ascenseur, climatiseur: this.climatiseur, wifi: this.wifi, jacuzzi: this.jac
+                  , autre: this.autre, prix: this.prix, url: this.url, type: this.typeL, profilePic:data.key, jardin:this.jardin, ville: this.ville,
+                quartier: this.quartier});
+                   
+                  
+                  //this.navCtrl.setRoot(VillaPage);
 
-                  /*  
-                   let toast= this.toastCtrl.create({
+                   
+                   /*let toast= this.toastCtrl.create({
                      message: data.toString(),
                      duration:5000
-                   })*/
-                   console.log(data);
+                   })
+                   console.log(data);*/
                 });
                 
               });
@@ -142,8 +159,11 @@ export class AjoutProduitPage {
                 
                 this.dataProvider.storeInfoToDatabase(res.metadata,"appt_non_meuble","profile").then(data => {
                   this.afData.list("/services/appt_non_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
+                    salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                    terrasse: this.terrasse, typeAppartement: this.typeAppartement, camera: this.cameras, gardien: this.gardien, groupeE: this.groupeE, 
+                    ascenseur: this.ascenseur, climatiseur: this.climatiseur, wifi: this.wifi, jacuzzi: this.jac
+                    , autre: this.autre, prix: this.prix, url: this.url, type: this.typeL, profilePic:data.key, jardin:this.jardin, ville: this.ville,
+                    quartier: this.quartier});
                     
                   this.navCtrl.setRoot(AppartementNmPage);
 
@@ -190,8 +210,11 @@ export class AjoutProduitPage {
                 
                 this.dataProvider.storeInfoToDatabase(res.metadata,"appt_meuble","profile").then(data => {
                   this.afData.list("/services/appt_meuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
+                    salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                    terrasse: this.terrasse, typeAppartement: this.typeAppartement, camera: this.cameras, gardien: this.gardien, groupeE: this.groupeE, 
+                    ascenseur: this.ascenseur, climatiseur: this.climatiseur, wifi: this.wifi, jacuzzi: this.jac
+                    , autre: this.autre, prix: this.prix, url: this.url, type: this.typeL, profilePic:data.key, jardin:this.jardin, ville: this.ville,
+                    quartier: this.quartier});
                     
                   this.navCtrl.setRoot(AppartementMPage);
 
@@ -238,8 +261,11 @@ export class AjoutProduitPage {
                 
                 this.dataProvider.storeInfoToDatabase(res.metadata,"immeuble","profile").then(data => {
                   this.afData.list("/services/immeuble").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
+                    salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                    terrasse: this.terrasse, typeAppartement: this.typeAppartement, camera: this.cameras, gardien: this.gardien, groupeE: this.groupeE, 
+                    ascenseur: this.ascenseur, climatiseur: this.climatiseur, wifi: this.wifi, jacuzzi: this.jac
+                    , autre: this.autre, prix: this.prix, url: this.url, type: this.typeL, profilePic:data.key, jardin:this.jardin, ville: this.ville,
+                    quartier: this.quartier});
                     
                   this.navCtrl.setRoot(ImmeublePage);
 
@@ -286,8 +312,11 @@ export class AjoutProduitPage {
                 
                 this.dataProvider.storeInfoToDatabase(res.metadata,"bureau","profile").then(data => {
                   this.afData.list("/services/bureau").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
+                    salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                    terrasse: this.terrasse, typeAppartement: this.typeAppartement, camera: this.cameras, gardien: this.gardien, groupeE: this.groupeE, 
+                    ascenseur: this.ascenseur, climatiseur: this.climatiseur, wifi: this.wifi, jacuzzi: this.jac
+                    , autre: this.autre, prix: this.prix, url: this.url, type: this.typeL, profilePic:data.key, jardin:this.jardin, ville: this.ville,
+                    quartier: this.quartier});
                     
                   this.navCtrl.setRoot(BureauPage);
 
@@ -334,8 +363,11 @@ export class AjoutProduitPage {
                 
                 this.dataProvider.storeInfoToDatabase(res.metadata,"magasin","profile").then(data => {
                   this.afData.list("/services/magasin").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
+                    salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                    terrasse: this.terrasse, typeAppartement: this.typeAppartement, camera: this.cameras, gardien: this.gardien, groupeE: this.groupeE, 
+                    ascenseur: this.ascenseur, climatiseur: this.climatiseur, wifi: this.wifi, jacuzzi: this.jac
+                    , autre: this.autre, prix: this.prix, url: this.url, type: this.typeL, profilePic:data.key, jardin:this.jardin, ville: this.ville,
+                    quartier: this.quartier});
                     
                   this.navCtrl.setRoot(MagasinPage);
 
@@ -382,12 +414,15 @@ export class AjoutProduitPage {
                 
                 this.dataProvider.storeInfoToDatabase(res.metadata,"bail","profile").then(data => {
                   this.afData.list("/services/bail").push({avis: this.avis, surface: this.surface, etage: this.etage, 
-                  salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
-                  terrasse: this.terrasse, autre: this.autre, prix: this.prix, url: this.url, type: this.type, profilePic:data.key});
+                    salon: this.salon, toilette: this.toilette, cuisine: this.cuisine, chambre: this.chambre, parking: this.parking,
+                    terrasse: this.terrasse, typeAppartement: this.typeAppartement, camera: this.cameras, gardien: this.gardien, groupeE: this.groupeE, 
+                    ascenseur: this.ascenseur, climatiseur: this.climatiseur, wifi: this.wifi, jacuzzi: this.jac
+                    , autre: this.autre, prix: this.prix, url: this.url, type: this.typeL, profilePic:data.key, jardin:this.jardin, ville: this.ville,
+                    quartier: this.quartier});
                     
                   this.navCtrl.setRoot(BailPage);
 
-                  /*  
+                 /*  
                    let toast= this.toastCtrl.create({
                      message: data.toString(),
                      duration:5000

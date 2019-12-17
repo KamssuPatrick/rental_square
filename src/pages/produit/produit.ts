@@ -113,7 +113,16 @@ export class ProduitPage {
                   "toilette": data.val().toilette,
                   "etage": data.val().etage,
                   "image": link,
-                  "index": values
+                  "index": values,
+                  "url": data.val().url,
+                  "wifi": data.val().wifi,
+                  "ascenseur": data.val().ascenseur,
+                  "camera": data.val().camera,
+                  "climatiseur": data.val().climatiseur,
+                  "gardien": data.val().gardien,
+                  "groupeE": data.val().groupeE,
+                  "jacuzzi": data.val().jacuzzi,
+                  "typeAppartement": data.val().typeAppartement
                 };
                 
                 i++;
@@ -186,7 +195,16 @@ export class ProduitPage {
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
                 "image": link,
-                "index": values
+                "index": values,
+                "url": data.val().url,
+                "wifi": data.val().wifi,
+                "ascenseur": data.val().ascenseur,
+                "camera": data.val().camera,
+                "climatiseur": data.val().climatiseur,
+                "gardien": data.val().gardien,
+                "groupeE": data.val().groupeE,
+                "jacuzzi": data.val().jacuzzi,
+                "typeAppartement": data.val().typeAppartement
               };
               
               i++;
@@ -332,7 +350,16 @@ export class ProduitPage {
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
                 "image": link,
-                "index": values
+                "index": values,
+                "url": data.val().url,
+                "wifi": data.val().wifi,
+                "ascenseur": data.val().ascenseur,
+                "camera": data.val().camera,
+                "climatiseur": data.val().climatiseur,
+                "gardien": data.val().gardien,
+                "groupeE": data.val().groupeE,
+                "jacuzzi": data.val().jacuzzi,
+                "typeAppartement": data.val().typeAppartement
               };
               
               i++;
@@ -400,7 +427,16 @@ export class ProduitPage {
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
                 "image": link,
-                "index": values
+                "index": values,
+                "url": data.val().url,
+                "wifi": data.val().wifi,
+                "ascenseur": data.val().ascenseur,
+                "camera": data.val().camera,
+                "climatiseur": data.val().climatiseur,
+                "gardien": data.val().gardien,
+                "groupeE": data.val().groupeE,
+                "jacuzzi": data.val().jacuzzi,
+                "typeAppartement": data.val().typeAppartement
               };
               
               i++;
@@ -467,7 +503,16 @@ export class ProduitPage {
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
                 "image": link,
-                "index": values
+                "index": values,
+                "url": data.val().url,
+                "wifi": data.val().wifi,
+                "ascenseur": data.val().ascenseur,
+                "camera": data.val().camera,
+                "climatiseur": data.val().climatiseur,
+                "gardien": data.val().gardien,
+                "groupeE": data.val().groupeE,
+                "jacuzzi": data.val().jacuzzi,
+                "typeAppartement": data.val().typeAppartement
               };
               
               i++;
@@ -532,7 +577,19 @@ export class ProduitPage {
                 "toilette": data.val().toilette,
                 "etage": data.val().etage,
                 "image": link,
-                "index": values
+                "index": values,
+                "url": data.val().url,
+                "wifi": data.val().wifi,
+                "ascenseur": data.val().ascenseur,
+                "camera": data.val().camera,
+                "climatiseur": data.val().climatiseur,
+                "gardien": data.val().gardien,
+                "groupeE": data.val().groupeE,
+                "jacuzzi": data.val().jacuzzi,
+                "typeAppartement": data.val().typeAppartement,
+                "jardin" : data.val().jardin,
+                "ville" : data.val().ville,
+                "quartier" : data.val().quartier
               };
               
               i++;
@@ -565,7 +622,7 @@ export class ProduitPage {
 		
     }
     
-    presentLoading(values) {
+    async presentLoading(values) {
       const loader = this.loadingCtrl.create({
         content: "Please wait...",
         duration: 1000
@@ -573,7 +630,7 @@ export class ProduitPage {
 
       if(values == 0)
       {
-        this.ref =  firebase.database().ref("services/villa");
+         this.ref =  await firebase.database().ref("services/villa");
         this.type = "villa";
         if(this.ref === 'null')
         {
@@ -583,7 +640,7 @@ export class ProduitPage {
 
       if(values == 1)
       {
-        this.ref =  firebase.database().ref("services/appt_non_meuble");
+        this.ref = await firebase.database().ref("services/appt_non_meuble");
         this.type = "appt_non_meuble";
         if(this.ref == null)
         {
@@ -593,7 +650,7 @@ export class ProduitPage {
 
       /*if(values == 2)
       {
-        this.ref =  firebase.database().ref("services/appt_meuble");
+        this.ref = await firebase.database().ref("services/appt_meuble");
         this.type = "appt_meuble";
         if(this.ref === 'null')
         {
@@ -603,7 +660,7 @@ export class ProduitPage {
 
       if(values == 2)
       {
-        this.ref =  firebase.database().ref("services/immeuble");
+        this.ref = await firebase.database().ref("services/immeuble");
         this.type = "immeuble";
         if(this.ref == null)
         {
@@ -613,7 +670,7 @@ export class ProduitPage {
 
       if(values == 3)
       {
-        this.ref =  firebase.database().ref("services/bureau");
+        this.ref = await firebase.database().ref("services/bureau");
         this.type = "bureau";
        
 
@@ -628,7 +685,7 @@ export class ProduitPage {
 
       if(values == 4)
       {
-        this.ref =  firebase.database().ref("services/magasin");
+        this.ref = await firebase.database().ref("services/magasin");
         this.type = "magasin";
         if(this.ref == null)
         {
@@ -638,7 +695,7 @@ export class ProduitPage {
 
       if(values == 5)
       {
-        this.ref =  firebase.database().ref("services/bail");
+        this.ref = await firebase.database().ref("services/bail");
         this.type = "bail";
         if(this.ref == null)
         {
@@ -677,6 +734,7 @@ export class ProduitPage {
     
       ionViewDidEnter(){
         this.authProvider.getFavoris(this.userId, this.type);
+        this.authProvider.getTypes(this.type);
       }
 
     // getAllFav(){ 

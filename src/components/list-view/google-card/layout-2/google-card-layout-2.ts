@@ -25,7 +25,12 @@ export class GoogleCardLayout2 {
     animateClass: any;
     userId: any;
 
+    newMessage = {
+      body: ''
+    }
+
     allFav = [];
+    allFavType = [];
 
     searchTerm: any = "";
   allItems: any;
@@ -45,6 +50,13 @@ export class GoogleCardLayout2 {
             console.log("fav", this.allFav);
           })
         })
+
+        this.evente.subscribe('typesElement', ()=>{
+          this.ngZone.run(()=>{
+            this.allFavType = this.authProvider.allFavType;
+            console.log("typesElement", this.allFavType);
+          })
+        })
         console.log("allFav",this.allFav);
     }
 
@@ -53,7 +65,7 @@ export class GoogleCardLayout2 {
           this.allItems = this.data.items;
         }
         this.data.items = this.allItems.filter((item) => {
-          return item.ville.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
+          return item.parking.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
         });
       }
 
@@ -95,10 +107,34 @@ export class GoogleCardLayout2 {
         
     }
 
-    detail( item: any, image: any, index: any)
+    detail( id: any, image: any, index: any, item: any)
     {
-        this.navCtrl.push(ProduitDetailsPage, { item:item, image:image, index: index});
+        this.navCtrl.push(ProduitDetailsPage, { item:id, image:image, index: index});
     }
+
+    share(id, card, index) {
+        this.navCtrl.push(Tabs3Page, {id:id, img:card, index: index, }); 
+        this.newMessage.body = card;
+        this.sendMessageA()
+        console.log("lien", card)
+      
+  }
+
+  sendMessageA(){
+    var res = this.newMessage.body;
+    var res1 = res.trim();
+      if(res1 == ''){
+          console.log("Can't send empty message");
+          this.newMessage.body = '';
+      } else{
+          this.chatProvider.sendMessageA(this.newMessage).then(()=>{
+            this.newMessage.body = '';
+          }).catch((err)=>{
+            console.log(err);
+          })
+      }
+
+  }
 
     Addfavoris(item: any,  index: any, tout: any, image: any) {
 
@@ -153,12 +189,12 @@ export class GoogleCardLayout2 {
       
       }
 
-      Delfavoris(item: any,  index: any, key: any) {
+      Delfavoris(item: any,  index: any) {
 
         if(index == 0)
         {
           
-         this.DelFav(this.userId, 'villa', item, key);
+         this.DelFav(this.userId, 'villa', item);
           console.log("ciis" + item + " "+ index);
           this.type = 'villa';
         }
@@ -166,7 +202,7 @@ export class GoogleCardLayout2 {
         if(index == 1)
         {
           
-          this.DelFav(this.userId, 'appartement', item, key);
+          this.DelFav(this.userId, 'appartement', item);
           console.log("ciis" + item + " "+ index);
           this.type = 'appartement';
         }
@@ -174,7 +210,7 @@ export class GoogleCardLayout2 {
         if(index == 2)
         {
           
-         this.DelFav(this.userId, 'immeuble', item, key);
+         this.DelFav(this.userId, 'immeuble', item);
           console.log("ciis" + item + " "+ index);
           this.type = 'immeuble';
         }
@@ -182,7 +218,7 @@ export class GoogleCardLayout2 {
         if(index == 3)
         {
           
-          this.DelFav(this.userId, 'bureau', item, key);
+          this.DelFav(this.userId, 'bureau', item);
           console.log("ciis" + item + " "+ index);
           this.type = 'bureau';
         }
@@ -190,7 +226,7 @@ export class GoogleCardLayout2 {
         if(index == 4)
         {
           
-          this.DelFav(this.userId, 'magasin', item, key);
+          this.DelFav(this.userId, 'magasin', item);
           console.log("ciis" + item + " "+ index);
           this.type = 'magasin';
         }
@@ -198,22 +234,14 @@ export class GoogleCardLayout2 {
         if(index == 5)
         {
           
-          this.DelFav(this.userId, 'bail', item, key);
+          this.DelFav(this.userId, 'bail', item);
           console.log("ciis" + item + " "+ index);
           this.type = 'bail';
         }
   
         
         }
-  
-
-      
-      share(card){
-        this.navCtrl.push(Tabs3Page);
-
-      }
-
-     
+    
 
       PutFavoris(userId, type, item, tout, image){
         this.afData.database.ref('Favoris').child(userId).child(type).push({
@@ -240,11 +268,11 @@ export class GoogleCardLayout2 {
       });
       }
 
-      DelFav(userId, type, item, key){
+      DelFav(userId, type, item){
 
         console.log("Remove succeeded." + userId + "///" + type + " //// "+ item)
 
-        this.afData.database.ref('Favoris').child(userId).child(type).child(key).remove().then(function() {
+        this.afData.database.ref('Favoris').child(userId).child(type).child(item).remove().then(function() {
           console.log("Remove succeeded.")
         })
         .catch(function(error) {
@@ -254,9 +282,36 @@ export class GoogleCardLayout2 {
 
       ionViewDidLeave(){
         this.events.subscribe('favoris')
+        this.events.subscribe('messages')
       }
     
       ionViewDidEnter(){
-        this.authProvider.getFavoris(this.userId, this.type);
+        this.chatProvider.getMessagesA()
       }
+
+      onVisite(){
+        this.navCtrl.push(IFramePage);
+
+      }
+
+      find(x,y){
+        
+        var found= x.find(function(element){
+          return element.Id==y;
+        });
+        
+        //console.log("xxxxxxxxx",x);
+        //console.log("yyyyyyyyyy",y);
+        if(found){
+          //console.log("found",found);
+          return true;
+        }
+        else{
+          // console.log("found2",found);
+          return false;
+        }
+
+      }
+
+     
 }

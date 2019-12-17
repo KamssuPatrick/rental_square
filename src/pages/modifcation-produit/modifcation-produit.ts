@@ -55,7 +55,18 @@ export class ModifcationProduitPage {
     prix: '',
     url: '',
     image: '',
-    type: ''
+    type: '',
+    climatiseur: '',
+    gardien: '',
+    groupeE: '',
+    jacuzzi: '',
+    wifi: '',
+    ascenseur: '',
+    camera: '',
+    typeAppartement: '',
+    jardin:'',
+    ville: '',
+    quartier: ''
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 

@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Profile } from '../../models/profile';
 import * as firebase from 'firebase/app';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
 @Component({
@@ -29,6 +30,8 @@ export class AdminPage {
     private fireAuth: AngularFireAuth) {
 
       this.ngOnInit();
+      window.localStorage.setItem('userid', firebase.auth().currentUser.uid);
+      console.log('UserUid_admin',firebase.auth().currentUser.uid)
 
   }
 

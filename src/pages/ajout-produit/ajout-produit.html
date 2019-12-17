@@ -18,7 +18,7 @@
 
  
 
-
+  <ion-card>
   <ion-card-header>
     <ion-card-title>Avis du professionnel</ion-card-title>
   </ion-card-header>
@@ -27,8 +27,10 @@
     <ion-textarea placeholder="Avis du professionnel" name="avis" [(ngModel)]="avis" clearOnEdit="true"></ion-textarea>
     </ion-item>
 
+    </ion-card>
 
 
+<ion-card>
   <ion-card-header>
     <ion-card-title>Général</ion-card-title>
   </ion-card-header>
@@ -42,10 +44,27 @@
 <ion-label>Etage</ion-label>
     <ion-input type="number" placeholder="Etage" name="etage" [(ngModel)]="etage"  required></ion-input>
   </ion-item>
+  </ion-card>
+
+  <ion-card>
+  <ion-card-header>
+    <ion-card-title>Localisation</ion-card-title>
+  </ion-card-header>
+
+  <ion-item>
+  <ion-label>Ville</ion-label>
+    <ion-input type="number" placeholder="Ville" name="ville" [(ngModel)]="ville" required></ion-input>
+  </ion-item>
+
+<ion-item>
+<ion-label>Quartier</ion-label>
+    <ion-input type="number" placeholder="Quartier" name="quartier" [(ngModel)]="quartier"  required></ion-input>
+  </ion-item>
+  </ion-card>
 
 
 
-
+<ion-card>
   <ion-card-header>
     <ion-card-title>A l'intérieur</ion-card-title>
   </ion-card-header>
@@ -69,24 +88,113 @@
 <ion-label>Chambre</ion-label>
     <ion-input type="number" placeholder="Chambre" name="chambre" [(ngModel)]="chambre"  required></ion-input>
   </ion-item>
+</ion-card>
 
-
-
+<ion-card>
   <ion-card-header>
     <ion-card-title>A l'extérieur</ion-card-title>
   </ion-card-header>
 
     <ion-item>
-    <ion-label>Parking</ion-label>
-    <ion-input type="number" placeholder="Parking" name="parking" [(ngModel)]="parking"  required></ion-input>
-  </ion-item>
+  <ion-label>Parking</ion-label>
+  <ion-select name="parking" [(ngModel)]="parking">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
 
   <ion-item>
   <ion-label>Terrasse</ion-label>
-    <ion-input type="number" placeholder="Terrasse" name="terrasse" [(ngModel)]="terrasse"  required></ion-input>
-  </ion-item>
+  <ion-select name="terrasse" [(ngModel)]="terrasse">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
 
+ <ion-item>
+  <ion-label>Jardin</ion-label>
+  <ion-select name="jardin" [(ngModel)]="jardin">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
+  </ion-card>
 
+  <ion-card>
+  <ion-card-header>
+    <ion-card-title>Particularité</ion-card-title>
+  </ion-card-header>
+
+    <ion-item>
+  <ion-label>Type appartement</ion-label>
+  <ion-select name="typeAppartement" [(ngModel)]="typeAppartement">
+    <ion-option value="moderne">Moderne</ion-option>
+    <ion-option value="ultra-moderne">Ultra moderne</ion-option>
+    <ion-option value="haut-standing">Haut Standing</ion-option>
+    <ion-option value="autre">Autre</ion-option>
+  </ion-select>
+</ion-item>
+
+ <ion-item>
+  <ion-label>Caméra de surveillance</ion-label>
+  <ion-select name="cameras" [(ngModel)]="cameras">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>Gardien</ion-label>
+  <ion-select name="gardien" [(ngModel)]="gardien">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>Groupe électrogène</ion-label>
+  <ion-select name="groupeE" [(ngModel)]="groupeE">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>Ascenseur</ion-label>
+  <ion-select name="ascenseur" [(ngModel)]="ascenseur">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>Climatiseur</ion-label>
+  <ion-select name="climatiseur" [(ngModel)]="climatiseur">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>Wi-fi</ion-label>
+  <ion-select name="wifi" [(ngModel)]="wifi">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>Jacuzzi</ion-label>
+  <ion-select name="jac" [(ngModel)]="jac">
+    <ion-option value="oui">Oui</ion-option>
+    <ion-option value="non">Non</ion-option>
+  </ion-select>
+</ion-item>
+
+  
+  </ion-card>
+
+<ion-card>
   <ion-card-header>
     <ion-card-title>Autres</ion-card-title>
   </ion-card-header>
@@ -94,15 +202,15 @@
     <ion-item>
     <ion-textarea placeholder="Autre" name="autre" [(ngModel)]="autre" clearOnEdit="true"></ion-textarea>
     </ion-item>
+</ion-card>
 
-
-
+<ion-card>
   <ion-card-header>
     <ion-card-title>Prix</ion-card-title>
   </ion-card-header>
 
     <ion-item>
-    <ion-textarea placeholder="Prix" name="prix" [(ngModel)]="prix" clearOnEdit="true"></ion-textarea>
+    <ion-input type="number" placeholder="Prix" name="prix" [(ngModel)]="prix"  required></ion-input>
     </ion-item>
 
      <ion-card-header>
@@ -115,12 +223,12 @@
 
 <ion-item>
   <ion-label>Type</ion-label>
-  <ion-select name="type" [(ngModel)]="type">
+  <ion-select name="typeL" [(ngModel)]="typeL">
     <ion-option value="location">Location</ion-option>
     <ion-option value="vente">Vente</ion-option>
   </ion-select>
 </ion-item>
-
+</ion-card>
 
  <ion-card text-center>
     <ion-card-header>
