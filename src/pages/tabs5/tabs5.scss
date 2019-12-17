@@ -42,8 +42,13 @@ page-tabs5 {
             color: color($register, register-image-title);
             position: absolute;
             bottom: 10px;
-            text-align: center;
+            left:0;
+            right:0;
+            margin-left:auto;
+            margin-right:auto;
             z-index: 999;
+            background: transparent;
+            border-style: none;
         }
         ion-col img.userImage{
             position: absolute;
@@ -55,6 +60,28 @@ page-tabs5 {
             border-radius: 100%;
            
         }
+        ion-card.ff{
+            margin-top: 10px;
+            padding: none;
+            ion-card-header ion-card-title.titleDesc{
+                color: #60a3bc;
+            }
+            ion-card-content ion-grid ion-col.bl{
+                color: #333333;
+                //text-align: center;
+                font-weight: 500;
+                margin: 0;
+                //background: #FE3939;
+                ion-input{
+                    //background: blue;
+                    
+                    height: 15px; 
+                    line-height: 15px!important;
+                }
+                
+            }
+            
+        }
         ion-item .detail{
             font-size: 18px;
             margin-bottom: 5px ;
@@ -64,8 +91,12 @@ page-tabs5 {
         }
         div.boss{
             padding: 5px;
-            
             margin-top:0!important;
+            div#enreg{
+                width: 100%;
+                text-align: center;
+                
+            }
         }
     }
 

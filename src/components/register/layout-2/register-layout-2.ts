@@ -26,6 +26,7 @@ export class RegisterLayout2 {
     public profession : string;
     public societe : string;
     public telephone: any;
+    public profilPic: string;
 
     private isEmailValid: boolean = true;
     private isUsernameValid: boolean = true;
@@ -57,12 +58,13 @@ export class RegisterLayout2 {
                 prenom: this.prenom,
                 profession: this.profession,
                 societe: this.societe,
-                telephone: this.telephone
+                telephone: this.telephone,
+                profilPic: this.profilPic
               };
       
               this.auth.signUp(credentials).then(
                 (user) => {
-                    this.auth.writeUserData(user.user.uid, this.username, this.email, this.prenom, this.profession, this.societe, this.telephone);
+                    this.auth.writeUserData(user.user.uid, this.username, this.email, this.prenom, this.profession, this.societe, this.telephone, this.profilPic);
                     this.navCtrl.setRoot(TabsPage,user);
                 },
                 error => {
@@ -106,8 +108,8 @@ export class RegisterLayout2 {
                      }
                     
                     console.log(userLastName, userName);
-                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '');
-                    console.log(user.user);
+                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '', user.user.photoURL);
+                    console.log("hkdjshkjhdjkhfkdshfk",user.user);
                     this.navCtrl.setRoot(AccueilPage,user);
                 },
                 error => {
@@ -128,7 +130,7 @@ export class RegisterLayout2 {
                 console.log(res);
             })
         }
-
+        
         if (this.events[event]) {
             this.events[event]({
                 'username': this.username,

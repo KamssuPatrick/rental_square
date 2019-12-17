@@ -14,6 +14,7 @@ export class AuthProvider {
   AdminDetails;
   ProfileDetails;
   myDetails;
+  params={};
 
   constructor(public afAuth: AngularFireAuth, public afDB: AngularFireDatabase, public events: Events) {
     console.log(this.UserUid)
@@ -64,6 +65,49 @@ getProfileDetails(userDetails){
          
 });
 }
+
+getAllUsers(){ 
+  var keyyy;
+  var imUser="";
+
+  this.afDB.database.ref('users').child(this.UserUid).on('value', snapshot =>{
+  
+    keyyy = snapshot.key;
+   // console.log("snapshotttttttt",snapshot.key);
+    if(snapshot.val().profilPic!=""){
+      imUser=snapshot.val().profilPic;
+      //console.log("imgU",imUser);
+    }
+    else{
+      imUser="../../assets/img/avatar/user1.png";
+    }
+    this.params={
+      "uid":keyyy,
+      "username": snapshot.val().username,
+      "prenom": snapshot.val().prenom,
+      "image": imUser,
+      "profession": snapshot.val().profession,
+      "societe": snapshot.val().societe,
+      "telephone": snapshot.val().telephone,
+      "email": snapshot.val().email
+    };
+   
+    this.events.publish('params');
+   console.log("params", this.params)
+  });  
+  }
+
+  updateUser(key){
+    //console.log("keyyyyyyyyyyyyyyyyyyy", key);
+    return this.afDB.database.ref("users").child(key.uid).update({ 
+      prenom: key.prenom,
+      profession: key.profession,
+      societe: key.societe,
+      telephone: key.telephone,
+      username: key.username,
+     }); 
+  }
+
 
 
 

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, App, MenuController } from 'ionic-angular';
+import { Component, NgZone } from '@angular/core';
+import { NavController, NavParams, App, MenuController, Events } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../../services/auth.service';
@@ -7,6 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Profile } from '../../models/profile';
 import * as firebase from 'firebase/app';
 import { ModificationProfilPage } from '../modification-profil/modification-profil';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the Tabs5Page page.
@@ -20,7 +21,7 @@ import { ModificationProfilPage } from '../modification-profil/modification-prof
   templateUrl: 'tabs5.html',
 })
 export class Tabs5Page {
-
+  val2 : any={};
   profile = {} as Profile;
   data : any;
   user: any;
@@ -28,8 +29,14 @@ export class Tabs5Page {
   email: any;
   uid: any;
   userId: any;
+  telephone: any;
+  prenom: any;
+  societe: any;
+  profession: any;
   ref: any;
-  params: any = {};
+  isenabled=false;
+  params = {}
+  params2: any = {};
 
 
   constructor(
@@ -40,12 +47,14 @@ export class Tabs5Page {
     public app: App,
     public auth: AuthService,
     private fireAuth: AngularFireAuth,
-    public menuCtrl: MenuController) {
+    public menuCtrl: MenuController,
+    public authP:AuthProvider,
+    public ngZone: NgZone, public events: Events) {
 
       this.user = firebase.auth().currentUser;
 
-       this.userId = firebase.auth().currentUser.uid;
-
+      this.userId = firebase.auth().currentUser.uid;
+      console.log('uid', this.userId);
        /*this.auth.getUsername().then(username=>{
  //console.log('Yeah, username ', username);
 })
@@ -53,10 +62,15 @@ export class Tabs5Page {
 console.log('OOPS, error', error)
 })*/
       
-this.ref =  firebase.database().ref("users");
-this.params.data = this.getAllUsers();
-console.log('ionViewDidLoad Tabs4Page', this.params.data);
+     // this.ref =  firebase.database().ref("users/"+this.userId);
       
+      this.events.subscribe('params', ()=>{
+        this.ngZone.run(()=>{
+          this.val2 = this.authP.params
+          console.log("params2",this.val2);
+        })
+      })
+     
   }
 
 
@@ -66,39 +80,14 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
     this.app.getRootNav().push(HomePage);
   }
 
-  getAllUsers(){ 
-		let params={"items":[]};
-		let items=[];
-		this.ref.on('value', function(snapshot) {
-		  let i=0;
-		  
-		  let keyyy=[];
-		  
-		  keyyy= Object.keys(snapshot.val());
-		  snapshot.forEach(function(data){
-			console.log(i);
-			params.items[i]={
-			  "uid": keyyy[i],
-			  "username": data.val().username,
-			  "prenom": data.val().prenom,
-			  "image":"assets/img/avatar/user1.png"
-			};
-			i++;
-		  });
-		  
-		 
-		});
-		console.log("helllllllllooooooooooo",params)
-	   return params;
-		
-    }
-
+  
     ionViewDidEnter(){
       this.menuCtrl.swipeEnable(false);
+      this.authP.getAllUsers()
     }
     
     ngOnInit() {
-      this.fireAuth.auth.onAuthStateChanged(user => {
+      /*this.fireAuth.auth.onAuthStateChanged(user => {
         if (user) {
           this.user = {
             uid: user.uid,
@@ -119,13 +108,35 @@ console.log('ionViewDidLoad Tabs4Page', this.params.data);
           //this.router.navigate(["/home"]);
           console.log("pas de données");
         }
-      })
+      })*/
     }
 
-    modifier()
-    {
-      this.navCtrl.push(ModificationProfilPage, {item: this.userId});
+    modifier(){
 
+      let donnee={
+        "uid":this.userId,
+        "username": this.val2.username,
+        "prenom": this.val2.prenom,
+        "profession": this.val2.profession,
+        "societe": this.val2.societe,
+        "telephone": this.val2.telephone,
+      };
+      //console.log("donneeeeeeeeeeeee",donnee);
+
+      this.authP.updateUser(donnee);
     }
-
+    inputChange(){
+      this.isenabled=true;
+      
+      console.log("kdf,dl,flk,dlf,ld", this.isenabled);
+     
+    }
+    onChangeTime(data) : void {
+      console.log(data);    
+      this.isenabled=true;    
+    }
+    ionViewDidLeave(){
+      this.events.subscribe('params')
+    }
+  
 }

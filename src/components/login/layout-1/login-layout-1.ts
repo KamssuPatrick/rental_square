@@ -120,7 +120,7 @@ export class LoginLayout1 {
                  }
                 
                 console.log(userLastName, userName);
-                this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '','');
+                this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '','', user.user.photoURL);
                 console.log(user.user);
                 console.log("patrck");
                 this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});
@@ -153,7 +153,7 @@ export class LoginLayout1 {
                      }
                     
                     console.log(userLastName, userName);
-                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '');
+                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '', user.user.photoURL);
                     window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
 
                     console.log(user.user);
