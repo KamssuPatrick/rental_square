@@ -107,7 +107,7 @@ export class GoogleCardLayout2 {
         
     }
 
-    detail( id: any, image: any, index: any, item: any)
+    detail( id: any, image: any, index: any)
     {
         this.navCtrl.push(ProduitDetailsPage, { item:id, image:image, index: index});
     }

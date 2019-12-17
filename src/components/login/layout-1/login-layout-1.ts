@@ -42,7 +42,7 @@ export class LoginLayout1 {
     codeError: string;
     
     constructor( public auth: AuthService, public navCtrl: NavController, public toastCtrl: ToastController, 
-        public fire: AngularFireAuth) {
+        public fire: AngularFireAuth, public authProvider: AuthProvider) {
         //this.toast=toastCtrl;
      }
 
@@ -120,8 +120,9 @@ export class LoginLayout1 {
                  }
                 
                 console.log(userLastName, userName);
-                this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '','');
+                //this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '','');
                 // window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
+                this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '','', user.user.photoURL);
                 console.log(user.user);
                 console.log("patrck");
                 this.navCtrl.setRoot(TabsPage,{email:  user.user.email});
@@ -154,8 +155,10 @@ export class LoginLayout1 {
                      }
                     
                     console.log(userLastName, userName);
-                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '');
+                    //this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '');
                     // window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
+                    this.auth.writeUserData(user.user.uid, userName, user.user.email, userLastName, '', '', '', user.user.photoURL);
+                    window.localStorage.setItem('userid', this.authProvider.afAuth.auth.currentUser.uid);
 
                     console.log(user.user);
                     this.navCtrl.setRoot(TabsPage,{user:  user.user.uid});

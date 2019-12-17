@@ -5,10 +5,8 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+  <ion-navbar transparent>
+    
     <ion-title>Mon Profiles</ion-title>
   </ion-navbar>
 </ion-header>
@@ -16,7 +14,73 @@
 
 <ion-content >
 
-<form #registerForm="ngForm" *ngIf="user">
+    <ion-grid no-padding  >
+        <ion-row center *ngIf="val2">
+  
+          <ion-col no-padding col-12 background-size [ngStyle]="{'background-image': 'url(../../assets/img/gallery/bend/home.jpg)'}">
+              <!-- Header Title -->
+              <img (click)="changeImage()" src={{val2.image}} alt="User" class="userImage" > 
+              
+          </ion-col>
+          
+          <ion-col form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+              <div class="boss" >
+                
+                <ion-card class="ff">
+                  <ion-card-header>
+                    <ion-card-title class="titleDesc">Général</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <hr>
+                    <p><ion-grid no-padding><ion-row><ion-col>Nom: </ion-col><ion-col class="bl"><ion-input type="text" [(ngModel)]="val2.username" name="name"  (ionChange)='inputChange()'   required></ion-input> </ion-col><ion-col col-1><ion-icon name="create"></ion-icon></ion-col></ion-row></ion-grid>    </p>
+                    <hr/>
+                    <hr>
+                    <p><ion-grid no-padding><ion-row><ion-col>Prénom: </ion-col><ion-col class="bl"><ion-input type="text" [(ngModel)]="val2.prenom" name="prenom"   required></ion-input> </ion-col><ion-col col-1><ion-icon name="create"></ion-icon></ion-col></ion-row></ion-grid>    </p>
+                    <hr/>
+                    <hr>
+                    <p><ion-grid no-padding><ion-row><ion-col>Adresse mail: </ion-col><ion-col class="bl">{{val2.email}}  </ion-col></ion-row></ion-grid>   </p>
+                    <hr/>
+                    
+                  </ion-card-content>
+                </ion-card>
+                <!--<ion-item >
+                    
+                  <div class="detail">    <span class="deco">{{val2.username}}</span></div>
+                  <div class="detail">Prénom: <span class="deco">{{val2.prenom}}</span></div>
+                  <div class="detail">Adresse mail: <span class="deco">{{val2.email}}</span> </div>
+                
+                </ion-item>-->
+  
+                <ion-card class="ff">
+                  <ion-card-header>
+                    <ion-card-title class="titleDesc">Plus de détails</ion-card-title>
+                  </ion-card-header>
+      
+                  <ion-item>
+                    <ion-label>Profession</ion-label>
+                    <ion-input type="text" [(ngModel)]="val2.profession" name="profession"  required></ion-input>
+                  </ion-item>
+      
+                  <ion-item>
+                    <ion-label>Société</ion-label>
+                    <ion-input type="text" [(ngModel)]="val2.societe" name="societe"  required></ion-input>
+                  </ion-item>
+      
+                  <ion-item>
+                    <ion-label>Téléphone</ion-label>
+                    <ion-input type="number" [(ngModel)]="val2.telephone" name="telephone"  required></ion-input>
+                  </ion-item>
+                </ion-card>
+
+                <div id="enreg"><button ion-button (click)="modifier()">Enregistrer </button></div>
+              
+              </div>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+          
+<!--
   <ion-row>
 
     <ion-item>
@@ -38,8 +102,8 @@
     </ion-row>
 
       <ion-row>
-        <ion-col class="signup-col">
-          <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>-->
+        <ion-col class="signup-col">-->
+          <!--<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Ajouter</button>
           <button  full ion-button text-only  (click)= "modifier()" round>Modifier</button>
         </ion-col>
       </ion-row>
@@ -55,6 +119,7 @@
       Se déconnecter
     </ion-title>
   </ion-toolbar>
-</ion-footer>
+</ion-footer>-->
+
 
 </ion-content>
